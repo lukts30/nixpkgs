@@ -51,11 +51,11 @@ let
 in
 stdenv.mkDerivation rec {
   pname = "libguestfs";
-  version = "1.50.1";
+  version = "1.52.2";
 
   src = fetchurl {
     url = "https://libguestfs.org/download/${lib.versions.majorMinor version}-stable/${pname}-${version}.tar.gz";
-    sha256 = "sha256-Xmhx6I+C5SHjHUQt5qELZJcCN8t5VumdEXsSO1hWWm8=";
+    sha256 = "sha256-H3ItBdV2xyUBOEiJ0voTNMsxQYU2Lwa/GRZcT4p5rNQ=";
   };
 
   strictDeps = true;
@@ -109,6 +109,7 @@ stdenv.mkDerivation rec {
       libapparmor
       perlPackages.ModuleBuild
       libtirpc
+      zstd
     ]
     ++ (with ocamlPackages'; [
       ocamlbuild
