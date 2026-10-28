@@ -1,0 +1,20 @@
+Subject: [PATCH] vhost-user-bridge: do not advertise unsupported guest announce
+
+VIRTIO_NET_F_GUEST_ANNOUNCE requires VIRTIO_NET_F_CTRL_VQ and a control
+virtqueue implementing VIRTIO_NET_CTRL_ANNOUNCE_ACK. The bridge implements
+neither. Linux rejects the device when it sees this invalid combination
+through UML's direct vhost-user transport.
+
+diff --git a/contrib/vhost-user-bridge/vhost-user-bridge.c b/contrib/vhost-user-bridge/vhost-user-bridge.c
+--- a/contrib/vhost-user-bridge/vhost-user-bridge.c
++++ b/contrib/vhost-user-bridge/vhost-user-bridge.c
+@@ -460,8 +460,7 @@
+ static uint64_t
+ vubr_get_features(VuDev *dev)
+ {
+-    return 1ULL << VIRTIO_NET_F_GUEST_ANNOUNCE |
+-        1ULL << VIRTIO_NET_F_MRG_RXBUF |
++    return 1ULL << VIRTIO_NET_F_MRG_RXBUF |
+         1ULL << VIRTIO_F_VERSION_1;
+ }
+ 

@@ -241,6 +241,49 @@ def host(args):
                             "backend.log",
                         )
                         device = f"vec0:transport=bess,dst={transport},depth=128,gro=1"
+                    elif args.backend == "qemu":
+                        bridge_port = free_port(socket.SOCK_DGRAM)
+                        qemu_port = free_port(socket.SOCK_DGRAM)
+                        while bridge_port == qemu_port:
+                            qemu_port = free_port(socket.SOCK_DGRAM)
+                        start(
+                            [
+                                args.qemu,
+                                "-machine",
+                                "none",
+                                "-nodefaults",
+                                "-display",
+                                "none",
+                                "-monitor",
+                                "none",
+                                "-serial",
+                                "none",
+                                "-netdev",
+                                f"socket,id=wire,udp=127.0.0.1:{bridge_port},localaddr=127.0.0.1:{qemu_port}",
+                                "-netdev",
+                                "user,id=slirp,net=10.0.2.0/24,"
+                                f"hostfwd=tcp:127.0.0.1:{tcp_forward}-10.0.2.100:8080,"
+                                f"hostfwd=udp:127.0.0.1:{udp_forward}-10.0.2.100:8081",
+                                "-netdev",
+                                "hubport,id=wireport,hubid=0,netdev=wire",
+                                "-netdev",
+                                "hubport,id=slirpport,hubid=0,netdev=slirp",
+                            ],
+                            "qemu.log",
+                        )
+                        backend = start(
+                            [
+                                args.bridge,
+                                "-u",
+                                str(transport),
+                                "-l",
+                                f"127.0.0.1:{bridge_port}",
+                                "-r",
+                                f"127.0.0.1:{qemu_port}",
+                            ],
+                            "backend.log",
+                        )
+                        device = f"virtio_uml.device={transport}:1"
                     else:
                         backend = start(
                             [
@@ -329,7 +372,9 @@ if __name__ == "__main__":
     host_parser = commands.add_parser("host")
     for flag in ["kernel", "initrd", "passt", "slirp", "vsock"]:
         host_parser.add_argument(f"--{flag}", required=True)
-    host_parser.add_argument("backend", choices=["slirp", "passt", "vsock"])
+    host_parser.add_argument("--qemu")
+    host_parser.add_argument("--bridge")
+    host_parser.add_argument("backend", choices=["slirp", "passt", "vsock", "qemu"])
     host_parser.add_argument("output", type=Path)
     args = parser.parse_args()
     if args.command == "guest":

@@ -143,6 +143,7 @@ These standalone UML tests passed without root or KVM:
 | slirp4netns 1.3.6 | `vec0:transport=bess,dst=/path/to/socket,depth=128,gro=1` | HTTP/TCP and UDP, guest→host and forwarded host→guest |
 | passt 2026_07_16 | `virtio_uml.device=/path/to/socket:1` | Same TCP/UDP checks through virtio-net |
 | rust-vmm vhost-device-vsock 0.3.0 | `virtio_uml.device=/path/to/socket:19` | Guest `AF_VSOCK` ↔ host Unix sockets, both directions |
+| QEMU 11.1.2 vhost-user-bridge (patched) | `virtio_uml.device=/path/to/socket:1` | HTTP/TCP and UDP both ways, through QEMU's network hub and slirp |
 
 ```sh
 nix-build -A user-mode-linux.tests.slirp -A user-mode-linux.tests.passt \
@@ -157,6 +158,29 @@ Start slirp4netns with `--target-type=bess`, or passt with `--vhost-user` and
 `--socket=/path/to/socket`. The tests configure `10.0.2.100/24`, gateway
 `10.0.2.2`, and only contact local test servers. Internet access and DNS are not
 covered. The NixOS `umls` runner can now opt into passt as described above.
+
+### QEMU networking without a guest CPU
+
+```sh
+nix-build -A user-mode-linux.tests.qemuNetwork -o result-uml-qemu-network
+cat result-uml-qemu-network/result.txt
+
+# The same check as a normal user, outside the build sandbox.
+nix-build -A user-mode-linux.tests.qemuNetwork.runner -o result-uml-qemu-runner
+./result-uml-qemu-runner/bin/uml-qemu-network-test /tmp/uml-qemu-results
+```
+
+The tested path is UML virtio-net → vhost-user Unix socket → QEMU's standalone
+`vhost-user-bridge` → Ethernet frames over loopback UDP → QEMU network hub and
+slirp. QEMU runs with `-machine none -nodefaults`: no guest CPU, firmware, kernel
+or KVM. The bridge maps UML's guest RAM for virtqueues; QEMU's hub receives
+Ethernet frames. The test checks HTTP/TCP and UDP in both directions.
+
+Upstream calls this bridge a development tool and does not install it. The test
+builds its target separately and applies a small
+[feature-advertisement fix](pkgs/by-name/us/user-mode-linux/qemu-vhost-user-bridge-features.patch):
+unmodified QEMU 11.1.2 advertises `GUEST_ANNOUNCE` without `CTRL_VQ`, which
+Linux's virtio-net driver rejects. The patch removes the unsupported feature.
 
 **QEMU without guest CPU execution:** the Xen term is *device model*
 (`xenpvh`/`-xen-attach`); it requires Xen interfaces. For UML, use standalone
