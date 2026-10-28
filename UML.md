@@ -80,9 +80,55 @@ nix-build -A user-mode-linux.tests.virtiofs -o result-uml-fs
 cat result-uml-fs/comparison.txt
 ```
 
-The NixOS runner uses a fresh **tmpfs root**, read-only **hostfs `/nix/store`**,
-and writable **hostfs `/tmp/shared`** for file transfers. It needs no root disk
-image. The separate virtio test mounts a real guest block device, `/dev/vda`.
+By default, the NixOS runner uses a fresh **tmpfs root**, read-only
+**hostfs `/nix/store`**, and writable **hostfs `/tmp/shared`** for file transfers.
+The separate virtio test mounts a real guest block device, `/dev/vda`.
+
+### NixOS tests with a block-image root
+
+Enable this in a test to give each UML guest its own ext4 root on `/dev/vda`:
+
+```nix
+umlDefaults.virtualisation.uml.rootDisk = {
+  enable = true;
+  size = 1024; # MiB; default, excluding the shared Nix store
+};
+```
+
+The driver copies a blank qcow2 seed into each machine's `root.qcow2` state file
+and starts **QEMU `-machine none -nodefaults`** to export it over vhost-user-blk.
+QMP checks that QEMU has no guest CPUs. NixOS still boots through its initrd and
+uses hostfs for `/nix/store` and `/tmp/shared`; the image contains the writable
+root, not a self-contained NixOS installation. The initrd enables writeback in
+the virtio disk configuration before mounting ext4, so guest flushes reach the
+buffered QEMU backend.
+
+```sh
+# Existing two-machine Git daemon test, now with block roots and passt.
+nix-build -A nixosTests.user-mode-linux.gitdaemon-block-root -o result-uml-git-block
+nix-build --check -A nixosTests.user-mode-linux.gitdaemon-block-root --no-out-link
+
+# Interactive driver: start_all(), client.succeed(...), server.succeed(...).
+nix-build -A nixosTests.user-mode-linux.gitdaemon-block-root.driverInteractive -o result-uml-block-driver
+./result-uml-block-driver/bin/nixos-test-driver
+```
+
+The test checks Git push/clone over TCP, UDP both ways, ext4 on `/dev/vda`,
+hostfs store access, file transfers, and persistent files and repositories after
+restarting **both guests and their storage/network backends**. Test outputs
+include `<machine>-root-disk.log` and `<machine>-root-disk.jsonl`; the latter
+records the empty CPU list and active block export on each backend start.
+Verified on x86-64 Linux, alongside the default-root Git daemon and lighttpd
+regressions; the NixOS manual also builds successfully.
+
+Images survive guest restarts within a driver invocation. A new invocation
+resets machine state by default. For interactive reuse, pass
+`--keep-machine-state` and use the same state directory: images live under
+`$XDG_RUNTIME_DIR/vm-state-<machine>/root.qcow2`, falling back to the driver's
+temporary directory (normally `$TMPDIR` or `/tmp`). Use a dedicated directory
+for each test session.
+
+### Standalone block-root tests
 
 UML also boots with its **root filesystem on a block image**:
 

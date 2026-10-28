@@ -1,4 +1,4 @@
-# A diskless NixOS guest running on an unprivileged User Mode Linux kernel.
+# A NixOS guest running on an unprivileged User Mode Linux kernel.
 {
   config,
   lib,
@@ -54,6 +54,18 @@ in
       default = 1024;
       description = "Memory available to the UML guest, in MiB.";
     };
+    uml.rootDisk = {
+      enable = lib.mkEnableOption ''
+        an ext4 root filesystem on a qcow2 image, exported by a CPU-less QEMU
+        process over vhost-user-blk. The test driver keeps the image across
+        guest restarts. The Nix store and file-transfer directory still use hostfs
+      '';
+      size = lib.mkOption {
+        type = lib.types.ints.positive;
+        default = 1024;
+        description = "Size of the UML root disk in MiB, excluding the hostfs Nix store.";
+      };
+    };
   };
 
   config = {
@@ -92,6 +104,28 @@ in
     boot.initrd.services.udev.rules = ''
       SUBSYSTEM=="tty", KERNEL=="tty0", TAG+="systemd"
     '';
+    # QEMU's vhost-user-blk export starts with wce=0. Negotiate writeback before
+    # checking or mounting the root, so guest sync requests issue flushes.
+    boot.initrd.systemd.services.uml-root-writeback = lib.mkIf cfg.rootDisk.enable {
+      description = "Configure UML root disk flushes";
+      requiredBy = [ "sysroot.mount" ];
+      before = [
+        "systemd-fsck-root.service"
+        "sysroot.mount"
+      ];
+      requires = [ "dev-vda.device" ];
+      after = [ "dev-vda.device" ];
+      unitConfig.DefaultDependencies = false;
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+      };
+      script = ''
+        echo 'write back' > /sys/block/vda/cache_type
+        read -r mode < /sys/block/vda/queue/write_cache
+        test "$mode" = 'write back'
+      '';
+    };
     networking.useDHCP = lib.mkDefault false;
     networking.firewall.enable = lib.mkDefault false;
     networking.enableIPv6 = lib.mkIf cfg.networking.enable (lib.mkDefault false);
@@ -123,11 +157,18 @@ in
     # UML uses fixed ASLR entropy and has no ARCH_MMAP_RND_BITS_MAX knob.
     environment.etc."sysctl.d/55-nixos-aslr-entropy.conf".enable = false;
 
-    fileSystems."/" = {
-      device = "none";
-      fsType = "tmpfs";
-      options = [ "mode=755" ];
-    };
+    fileSystems."/" =
+      if cfg.rootDisk.enable then
+        {
+          device = "/dev/vda";
+          fsType = "ext4";
+        }
+      else
+        {
+          device = "none";
+          fsType = "tmpfs";
+          options = [ "mode=755" ];
+        };
     fileSystems."/nix/store" = {
       device = "none";
       fsType = "hostfs";
@@ -170,6 +211,23 @@ in
         con=null con0=fd:0,fd:1 ssl=null uml_dir="$TMPDIR" \
         "uml_shared=''${UML_SHARED_DIR:-$TMPDIR}" "$@"
     '';
+
+    # The driver copies this empty filesystem into its writable machine state.
+    # No system closure is embedded: /nix/store is shared just as in tmpfs mode.
+    system.build.umlRootDisk = lib.mkIf cfg.rootDisk.enable (
+      pkgs.runCommand "uml-root-${toString cfg.rootDisk.size}M.qcow2"
+        {
+          nativeBuildInputs = [
+            pkgs.e2fsprogs
+            pkgs.qemu-utils
+          ];
+        }
+        ''
+          truncate -s ${toString cfg.rootDisk.size}M root.raw
+          mkfs.ext4 -q -F -L uml-root -E lazy_itable_init=0,lazy_journal_init=0 root.raw
+          qemu-img convert -f raw -O qcow2 root.raw "$out"
+        ''
+    );
 
     system.build.umlPasst = lib.mkIf cfg.networking.enable (
       pkgs.writeShellScriptBin "run-${config.networking.hostName}-passt" ''

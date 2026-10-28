@@ -12,6 +12,7 @@ from pathlib import Path
 from test_driver.duration import Duration
 from test_driver.logger import AbstractLogger
 from test_driver.machine import SerialMachine
+from test_driver.machine.uml_storage import UmlRootDisk, UmlRootDiskConfiguration
 
 
 class UmlMachine(SerialMachine):
@@ -25,11 +26,17 @@ class UmlMachine(SerialMachine):
         keep_machine_state: bool,
         start_command: Path,
         passt_command: Path | None = None,
+        root_disk: UmlRootDiskConfiguration | None = None,
     ) -> None:
         super().__init__(out_dir, name, logger, tmp_dir, callbacks, keep_machine_state)
         self.start_command = start_command
         self.passt_command = passt_command
         self.passt_process: subprocess.Popen | None = None
+        self.root_disk = (
+            UmlRootDisk(root_disk, self.state_dir, out_dir, name, self.log)
+            if root_disk is not None
+            else None
+        )
         self.process: subprocess.Popen | None = None
         self.shell: socket.socket | None = None
         self.serial_thread: threading.Thread | None = None
@@ -48,7 +55,9 @@ class UmlMachine(SerialMachine):
         self.connected = False
         self.full_console_log = []
         try:
-            network_args = []
+            device_args = []
+            if self.root_disk is not None:
+                device_args.append(self.root_disk.start())
             if self.passt_command is not None:
                 transport = self.state_dir / "passt.sock"
                 transport.unlink(missing_ok=True)
@@ -65,12 +74,12 @@ class UmlMachine(SerialMachine):
                     if time.monotonic() > deadline:
                         raise TimeoutError(f"{self.name}: waiting for passt socket")
                     time.sleep(0.05)
-                network_args = [f"virtio_uml.device={transport}:1"]
+                device_args.append(f"virtio_uml.device={transport}:1")
             self.process = subprocess.Popen(
                 [
                     str(self.start_command),
                     f"ssl0=fd:{guest.fileno()},fd:{guest.fileno()}",
-                    *network_args,
+                    *device_args,
                 ],
                 env=os.environ
                 | {
@@ -106,6 +115,8 @@ class UmlMachine(SerialMachine):
         if self.process is not None:
             self.process.wait(timeout=timeout.total_seconds() if timeout else None)
         self.connected = False
+        if self.root_disk is not None:
+            self.root_disk.stop()
 
     def shutdown(self) -> None:
         if self.is_up():
@@ -130,6 +141,8 @@ class UmlMachine(SerialMachine):
             if self.process.stdout:
                 self.process.stdout.close()
             self.process = None
+        if self.root_disk is not None:
+            self.root_disk.stop()
         if self.passt_process is not None:
             if self.passt_process.poll() is None:
                 self.passt_process.terminate()

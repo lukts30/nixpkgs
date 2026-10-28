@@ -243,12 +243,41 @@ Use [`umlDefaults`](#test-opt-umlDefaults) for configuration shared by all UML
 guests, or [`defaults`](#test-opt-defaults) for configuration shared by all
 machine types. Names must be unique across `nodes`, `containers` and `umls`.
 
-Each guest has an ephemeral tmpfs root. Hostfs shares `/nix/store` read-only
+Each guest has an ephemeral tmpfs root by default. Hostfs shares `/nix/store` read-only
 and `/tmp/shared` read-write for `copy_from_host` and `copy_from_machine`.
-The runner uses no root disk image. Only loopback networking is currently
-supported; configuring test VLANs or interfaces produces an evaluation error.
-QEMU monitor commands, graphical interaction, emulated keyboards and the SSH
-backdoor are unavailable.
+For an ext4 root on a qcow2 image, enable:
+
+```nix
+{
+  umlDefaults.virtualisation.uml.rootDisk = {
+    enable = true;
+    size = 1024; # MiB, excluding the shared Nix store
+  };
+}
+```
+
+The driver exports one image per guest using QEMU `-machine none -nodefaults`
+and vhost-user-blk, without running guest CPUs in QEMU. The Nix store and
+file-transfer directory still use hostfs. Root images survive guest restarts
+within the test; a new driver invocation resets them unless
+`--keep-machine-state` is passed with the same state directory.
+
+Networking defaults to loopback. Set
+`umlDefaults.virtualisation.uml.networking.enable = true` to connect guests
+through passt. This requires unprivileged user and network namespaces and
+supports TCP/UDP on one automatically addressed IPv4 test VLAN. It does not
+provide an Ethernet switch or support ping, broadcast, DHCP or routing tests.
+Allowed firewall ports are forwarded; additional listeners can be declared
+with `virtualisation.uml.networking.extraTCPPorts` and `extraUDPPorts`.
+
+Run `nix-build -A nixosTests.user-mode-linux.gitdaemon-block-root` to exercise
+the existing two-machine Git daemon test with both options, including UDP,
+file transfers and root persistence after restarting the guests and backends.
+Add `--check --no-out-link` to rerun a cached result, or build the test's
+`driverInteractive` attribute for an interactive session.
+
+QEMU monitor commands, graphical interaction, emulated keyboards and the
+SSH backdoor are unavailable.
 
 Existing service tests can reuse their NixOS configurations and Python script
 with `umls`. See `nixosTests.user-mode-linux.lighttpd` and

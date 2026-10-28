@@ -32,6 +32,7 @@ from test_driver.machine import (
 )
 from test_driver.machine.nspawn_display import NspawnVncConfiguration
 from test_driver.machine.uml import UmlMachine
+from test_driver.machine.uml_storage import UmlRootDiskConfiguration
 from test_driver.polling_condition import PollingCondition
 from test_driver.vlan import VLan
 
@@ -44,6 +45,7 @@ class NodeConfiguration(BaseModel):
 
 class UmlConfiguration(NodeConfiguration):
     passt_start_script: Path | None = None
+    root_disk: UmlRootDiskConfiguration | None = None
 
 
 class DriverConfiguration(BaseModel):
@@ -240,6 +242,7 @@ class Driver:
                 name=name,
                 start_command=uml_config.start_script,
                 passt_command=uml_config.passt_start_script,
+                root_disk=uml_config.root_disk,
                 keep_machine_state=self.keep_machine_state,
                 tmp_dir=tmp_dir,
                 callbacks=[self.check_polling_conditions],

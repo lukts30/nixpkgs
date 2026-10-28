@@ -37,6 +37,26 @@ in
         options = {
           vms = nodeConfigurationAttrs { };
           umls = nodeConfigurationAttrs {
+            root_disk = lib.mkOption {
+              internal = true;
+              default = null;
+              type = types.nullOr (
+                types.submodule {
+                  options = {
+                    image = lib.mkOption {
+                      internal = true;
+                      type = types.path;
+                      description = "Read-only qcow2 seed copied into the UML machine state.";
+                    };
+                    qemu = lib.mkOption {
+                      internal = true;
+                      type = types.path;
+                      description = "QEMU executable used to export the UML root disk over vhost-user-blk.";
+                    };
+                  };
+                }
+              );
+            };
             passt_start_script = lib.mkOption {
               internal = true;
               type = types.nullOr types.path;
@@ -93,6 +113,14 @@ in
       umls = lib.mapAttrs (name: value: {
         inherit name;
         start_script = lib.getExe value.system.build.uml;
+        root_disk =
+          if value.virtualisation.uml.rootDisk.enable then
+            {
+              image = value.system.build.umlRootDisk;
+              qemu = "${hostPkgs.qemu_test}/bin/qemu-system-x86_64";
+            }
+          else
+            null;
         passt_start_script =
           if value.virtualisation.uml.networking.enable then lib.getExe value.system.build.umlPasst else null;
       }) config.umls;
