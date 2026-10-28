@@ -1046,6 +1046,19 @@ in
         seccomp = true;
       }
     );
+    gitdaemon-direct = runTestOn [ "x86_64-linux" ] (
+      import ./user-mode-linux-gitdaemon.nix {
+        blockRoot = true;
+        directBoot = true;
+      }
+    );
+    gitdaemon-direct-seccomp = runTestOn [ "x86_64-linux" ] (
+      import ./user-mode-linux-gitdaemon.nix {
+        blockRoot = true;
+        directBoot = true;
+        seccomp = true;
+      }
+    );
     lighttpd = runTestOn [ "x86_64-linux" ] ./user-mode-linux.nix;
     grafana = runTestOn [ "x86_64-linux" ] ./user-mode-linux-grafana.nix;
   };

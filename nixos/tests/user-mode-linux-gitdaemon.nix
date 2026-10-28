@@ -1,6 +1,7 @@
 {
   blockRoot ? false,
   seccomp ? false,
+  directBoot ? false,
 }:
 { pkgs, ... }:
 let
@@ -29,12 +30,14 @@ in
   name =
     "user-mode-linux-gitdaemon"
     + pkgs.lib.optionalString blockRoot "-block-root"
-    + pkgs.lib.optionalString seccomp "-seccomp";
+    + pkgs.lib.optionalString seccomp "-seccomp"
+    + pkgs.lib.optionalString directBoot "-direct";
   umls = original.nodes;
   umlDefaults.virtualisation.uml.networking.enable = true;
   umlDefaults.virtualisation.uml.networking.extraUDPPorts = [ 18080 ];
   umlDefaults.virtualisation.uml.rootDisk.enable = pkgs.lib.mkIf blockRoot true;
   umlDefaults.virtualisation.uml.seccomp.enable = seccomp;
+  umlDefaults.virtualisation.uml.bootMode = if directBoot then "direct" else "initrd";
   testScript = ''
     from pathlib import Path
   ''
@@ -45,17 +48,26 @@ in
             assert machine.process is not None
             arguments = Path(f"/proc/{machine.process.pid}/cmdline").read_bytes().split(b"\0")
             assert b"seccomp=${if seccomp then "on" else "off"}" in arguments, arguments
+            has_initrd = any(arg.startswith(b"initrd=") for arg in arguments)
+            assert has_initrd == ${if directBoot then "False" else "True"}, arguments
+            assert machine.succeed("test ! -e /etc/initrd-release && readlink /proc/1/exe").strip().endswith("/lib/systemd/systemd")
   ''
   + pkgs.lib.optionalString blockRoot ''
     with subtest("block roots and shared store"):
         for machine in [client, server]:
             assert machine.succeed("findmnt -n -o FSTYPE /").strip() == "ext4"
             assert machine.succeed("findmnt -n -o SOURCE /").strip() == "/dev/vda"
+            assert machine.succeed("stat -c '%u:%g:%a' /uml-init /uml-busybox").splitlines() == ["0:0:755", "0:0:755"]
             store_types = machine.succeed("findmnt -n -o FSTYPE -T /nix/store").splitlines()
             assert set(store_types) == {"hostfs"}, repr(store_types)
             assert machine.succeed("cat /sys/block/vda/queue/write_cache").strip() == "write back"
             journal = machine.succeed("journalctl -b -o cat --no-pager")
-            assert journal.index("Finished Configure UML root disk flushes.") < journal.index("Starting File System Check on /dev/vda")
+            if ${if directBoot then "True" else "False"}:
+                console = machine.get_console_log()
+                assert console.index("uml-boot: root-writeback") < console.index("uml-boot: root-fsck-done") < console.index("uml-boot: stage2-start")
+                assert "Starting Switch Root" not in console
+            else:
+                assert journal.index("Finished Configure UML root disk flushes.") < journal.index("Starting File System Check on /dev/vda")
             machine.succeed("echo persisted > /var/lib/uml-root-marker")
         client.copy_from_host("${pkgs.writeText "uml-block-copy" "block-root transfer"}", "/root/copied")
         assert client.succeed("cat /root/copied") == "block-root transfer"

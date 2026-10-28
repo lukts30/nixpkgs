@@ -5,6 +5,7 @@
 ```sh
 nix-build -A user-mode-linux.benchmarks.nixos -o result-uml-nixos-benchmark
 ./result-uml-nixos-benchmark/bin/uml-nixos-benchmark \
+  --cases tmpfs-ptrace,tmpfs-seccomp,block-ptrace,block-seccomp \
   --trials 3 --cpus 0,1,2,3,4,5,6,7 /tmp/uml-nixos-seccomp-results
 ```
 
@@ -62,9 +63,9 @@ block backend. Full console logs remain in the output directory shown above.
   tmpfs. The Nix store remains hostfs. This avoids measuring a disk-backed UML RAM
   file; the block-root results are not SSD benchmarks.
 
-**Boot path:** the NixOS UML runner has always supplied an initrd, for both root
-types: kernel → systemd initrd/stage 1 → switch_root → NixOS stage 2/systemd.
-Seccomp changes the execution mechanism, not that sequence. The standalone
+**Boot path in these measurements:** both root types used an initrd: kernel → systemd initrd/stage 1 → NixOS stage-2 activation → switch_root → systemd.
+Seccomp changes the execution mechanism, not that sequence. The later
+[direct-boot comparison](UML-BOOT-BENCHMARK.md) covers the optional initrd-free path. The standalone
 BusyBox block-root tests are separate and boot directly without an initrd.
 The existing nspawn test backend shares the host kernel, prepares a root
 directory and mounts, then directly executes `${system.build.toplevel}/init`.

@@ -1,0 +1,480 @@
+{"case": "block-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "start", "host_seconds": 9.697199857328087e-05, "message": null}
+{"case": "block-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "kernel-exec", "host_seconds": 0.10547614799725125, "message": null}
+{"case": "block-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "kernel-init", "host_seconds": 0.3721255089985789, "message": "Run /init as init process"}
+{"case": "block-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "stage2-activation-done", "host_seconds": 8.270716077000543, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "switch-root", "host_seconds": 8.29908786699525, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "systemd-ready", "host_seconds": 20.729424764002033, "message": "systemd[1]: Startup finished in 245ms (kernel) + 8.183s (initrd) + 12.151s (userspace) = 20.580s."}
+{"case": "block-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "start", "host_seconds": 4.405099753057584e-05, "message": null}
+{"case": "block-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10572548300115159, "message": null}
+{"case": "block-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "kernel-init", "host_seconds": 0.3553268140021828, "message": "Run /init as init process"}
+{"case": "block-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "stage2-activation-done", "host_seconds": 8.02263909100293, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "switch-root", "host_seconds": 8.052557158000127, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "systemd-ready", "host_seconds": 18.613255689000653, "message": "systemd[1]: Startup finished in 235ms (kernel) + 7.957s (initrd) + 10.277s (userspace) = 18.470s."}
+{"case": "block-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "start", "host_seconds": 8.525299926986918e-05, "message": null}
+{"case": "block-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "kernel-exec", "host_seconds": 0.1060763429995859, "message": null}
+{"case": "block-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "kernel-init", "host_seconds": 0.3765235040045809, "message": "Run /init as init process"}
+{"case": "block-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "stage2-activation-done", "host_seconds": 8.090262912999606, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "switch-root", "host_seconds": 8.119034991999797, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "systemd-ready", "host_seconds": 20.689107259000593, "message": "systemd[1]: Startup finished in 249ms (kernel) + 8.009s (initrd) + 12.281s (userspace) = 20.540s."}
+{"case": "block-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "start", "host_seconds": 4.8340996727347374e-05, "message": null}
+{"case": "block-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10694451200106414, "message": null}
+{"case": "block-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "kernel-init", "host_seconds": 0.34676780799782136, "message": "Run /init as init process"}
+{"case": "block-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "stage2-activation-done", "host_seconds": 7.420362115997705, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "switch-root", "host_seconds": 7.445657561998814, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "systemd-ready", "host_seconds": 18.204777895996813, "message": "systemd[1]: Startup finished in 218ms (kernel) + 7.354s (initrd) + 10.487s (userspace) = 18.060s."}
+{"case": "block-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "start", "host_seconds": 9.22719991649501e-05, "message": null}
+{"case": "block-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "kernel-exec", "host_seconds": 0.10630508699978236, "message": null}
+{"case": "block-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "kernel-init", "host_seconds": 0.36949758200353244, "message": "Run /init as init process"}
+{"case": "block-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "stage2-activation-done", "host_seconds": 7.884732666003401, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "switch-root", "host_seconds": 7.909659773002204, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "systemd-ready", "host_seconds": 18.219348514998273, "message": "systemd[1]: Startup finished in 231ms (kernel) + 7.762s (initrd) + 10.076s (userspace) = 18.070s."}
+{"case": "block-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "start", "host_seconds": 4.442100180312991e-05, "message": null}
+{"case": "block-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10638793800171698, "message": null}
+{"case": "block-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "kernel-init", "host_seconds": 0.3610237269967911, "message": "Run /init as init process"}
+{"case": "block-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "stage2-activation-done", "host_seconds": 6.363770629002829, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "switch-root", "host_seconds": 6.388965881997137, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "systemd-ready", "host_seconds": 14.868395985999086, "message": "systemd[1]: Startup finished in 224ms (kernel) + 6.238s (initrd) + 8.257s (userspace) = 14.720s."}
+{"case": "block-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "start", "host_seconds": 0.00010389299859525636, "message": null}
+{"case": "block-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "kernel-exec", "host_seconds": 0.10558922000200255, "message": null}
+{"case": "block-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "kernel-init", "host_seconds": 0.3662064129966893, "message": "Run /init as init process"}
+{"case": "block-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "stage2-activation-done", "host_seconds": 7.918394242995419, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "switch-root", "host_seconds": 7.943619886995293, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "systemd-ready", "host_seconds": 18.3148313519996, "message": "systemd[1]: Startup finished in 225ms (kernel) + 7.803s (initrd) + 10.131s (userspace) = 18.160s."}
+{"case": "block-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "start", "host_seconds": 4.9722002586349845e-05, "message": null}
+{"case": "block-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10693146200355841, "message": null}
+{"case": "block-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "kernel-init", "host_seconds": 0.35653792900120607, "message": "Run /init as init process"}
+{"case": "block-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "stage2-activation-done", "host_seconds": 6.279248061000544, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "switch-root", "host_seconds": 6.298862861003727, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "systemd-ready", "host_seconds": 14.375197913002921, "message": "systemd[1]: Startup finished in 221ms (kernel) + 6.127s (initrd) + 7.873s (userspace) = 14.222s."}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "start", "host_seconds": 9.44519997574389e-05, "message": null}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "kernel-exec", "host_seconds": 0.10594976699940162, "message": null}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "kernel-init", "host_seconds": 0.23826582499896176, "message": "Run /uml-init as init process"}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "bootstrap-start", "host_seconds": 0.26576567399752093, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "root-writeback", "host_seconds": 0.26638930899935076, "message": "uml-boot: root-writeback"}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "root-fsck-done", "host_seconds": 0.2838058760025888, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "stage2-start", "host_seconds": 0.5899945679993834, "message": "uml-boot: stage2-start"}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "stage2-activation-done", "host_seconds": 1.6343774979977752, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "systemd-ready", "host_seconds": 13.66030185999989, "message": "systemd[1]: Startup finished in 1.535s (kernel) + 11.994s (userspace) = 13.530s."}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "start", "host_seconds": 5.940100527368486e-05, "message": null}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10797714500222355, "message": null}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "kernel-init", "host_seconds": 0.24044819700066, "message": "Run /uml-init as init process"}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "bootstrap-start", "host_seconds": 0.27453879300446715, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "root-writeback", "host_seconds": 0.27526185999886366, "message": "uml-boot: root-writeback"}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "root-fsck-done", "host_seconds": 0.2952654500040808, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "stage2-start", "host_seconds": 0.6370669140014797, "message": "uml-boot: stage2-start"}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "stage2-activation-done", "host_seconds": 1.8896451350010466, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "systemd-ready", "host_seconds": 13.87013233500329, "message": "systemd[1]: Startup finished in 1.774s (kernel) + 11.945s (userspace) = 13.720s."}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "start", "host_seconds": 6.749200110789388e-05, "message": null}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "kernel-exec", "host_seconds": 0.10530971200205386, "message": null}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "kernel-init", "host_seconds": 0.2386849960021209, "message": "Run /uml-init as init process"}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "bootstrap-start", "host_seconds": 0.26851371000520885, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "root-writeback", "host_seconds": 0.2691876160024549, "message": "uml-boot: root-writeback"}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "root-fsck-done", "host_seconds": 0.2851504990030662, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "stage2-start", "host_seconds": 0.5956120530026965, "message": "uml-boot: stage2-start"}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "stage2-activation-done", "host_seconds": 1.6362770140040084, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "systemd-ready", "host_seconds": 13.742939689000195, "message": "systemd[1]: Startup finished in 1.537s (kernel) + 12.074s (userspace) = 13.612s."}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "start", "host_seconds": 4.81409952044487e-05, "message": null}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10588256499613635, "message": null}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "kernel-init", "host_seconds": 0.19664214799558977, "message": "Run /uml-init as init process"}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "bootstrap-start", "host_seconds": 0.2285125109992805, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "root-writeback", "host_seconds": 0.22921809800027404, "message": "uml-boot: root-writeback"}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "root-fsck-done", "host_seconds": 0.24847066899383208, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "stage2-start", "host_seconds": 0.5690298039990012, "message": "uml-boot: stage2-start"}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "stage2-activation-done", "host_seconds": 1.6581339490003302, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-ptrace", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "systemd-ready", "host_seconds": 12.167043585999636, "message": "systemd[1]: Startup finished in 1.560s (kernel) + 10.479s (userspace) = 12.040s."}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "start", "host_seconds": 0.00010969300637952983, "message": null}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "kernel-exec", "host_seconds": 0.1068877190045896, "message": null}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "kernel-init", "host_seconds": 0.20055706200218992, "message": "Run /uml-init as init process"}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "bootstrap-start", "host_seconds": 0.22328862600261346, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "root-writeback", "host_seconds": 0.22380085900658742, "message": "uml-boot: root-writeback"}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "root-fsck-done", "host_seconds": 0.23705240600247635, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "stage2-start", "host_seconds": 0.44990533100644825, "message": "uml-boot: stage2-start"}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "stage2-activation-done", "host_seconds": 1.2326994510003715, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 1, "event": "systemd-ready", "host_seconds": 10.249914958003501, "message": "systemd[1]: Startup finished in 1.126s (kernel) + 8.993s (userspace) = 10.120s."}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "start", "host_seconds": 4.029100091429427e-05, "message": null}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10611300999880768, "message": null}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "kernel-init", "host_seconds": 0.1959422700019786, "message": "Run /uml-init as init process"}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "bootstrap-start", "host_seconds": 0.2190332730024238, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "root-writeback", "host_seconds": 0.2195574650031631, "message": "uml-boot: root-writeback"}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "root-fsck-done", "host_seconds": 0.2310426100011682, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "stage2-start", "host_seconds": 0.4253681519985548, "message": "uml-boot: stage2-start"}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "stage2-activation-done", "host_seconds": 1.2139736300014192, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "client", "boot": 2, "event": "systemd-ready", "host_seconds": 9.337736032000976, "message": "systemd[1]: Startup finished in 1.108s (kernel) + 8.101s (userspace) = 9.210s."}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "start", "host_seconds": 9.074300032807514e-05, "message": null}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "kernel-exec", "host_seconds": 0.10545084499608492, "message": null}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "kernel-init", "host_seconds": 0.20058046199847013, "message": "Run /uml-init as init process"}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "bootstrap-start", "host_seconds": 0.2230703109962633, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "root-writeback", "host_seconds": 0.22356660299556097, "message": "uml-boot: root-writeback"}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "root-fsck-done", "host_seconds": 0.23682926999754272, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "stage2-start", "host_seconds": 0.4527564890013309, "message": "uml-boot: stage2-start"}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "stage2-activation-done", "host_seconds": 1.2372976810002, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 1, "event": "systemd-ready", "host_seconds": 10.582762236001145, "message": "systemd[1]: Startup finished in 1.130s (kernel) + 9.319s (userspace) = 10.450s."}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "start", "host_seconds": 4.985200212104246e-05, "message": null}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10582575399894267, "message": null}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "kernel-init", "host_seconds": 0.24590540600183886, "message": "Run /uml-init as init process"}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "bootstrap-start", "host_seconds": 0.26676582600339316, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "root-writeback", "host_seconds": 0.26729030800197506, "message": "uml-boot: root-writeback"}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "root-fsck-done", "host_seconds": 0.2783930439982214, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "stage2-start", "host_seconds": 0.4812125590033247, "message": "uml-boot: stage2-start"}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "stage2-activation-done", "host_seconds": 1.2502038859965978, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-seccomp", "trial": 0, "warmup": true, "machine": "server", "boot": 2, "event": "systemd-ready", "host_seconds": 9.031136833000346, "message": "systemd[1]: Startup finished in 1.144s (kernel) + 7.759s (userspace) = 8.903s."}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "start", "host_seconds": 8.99419974302873e-05, "message": null}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "kernel-exec", "host_seconds": 0.10532005099958042, "message": null}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "kernel-init", "host_seconds": 0.1960894139992888, "message": "Run /uml-init as init process"}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "bootstrap-start", "host_seconds": 0.21994668499974068, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "root-writeback", "host_seconds": 0.2205542199953925, "message": "uml-boot: root-writeback"}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "root-fsck-done", "host_seconds": 0.23265191899554338, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "stage2-start", "host_seconds": 0.43352619699726347, "message": "uml-boot: stage2-start"}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "stage2-activation-done", "host_seconds": 1.21638261499902, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "systemd-ready", "host_seconds": 10.317725934000919, "message": "systemd[1]: Startup finished in 1.112s (kernel) + 9.078s (userspace) = 10.190s."}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "start", "host_seconds": 4.17909977841191e-05, "message": null}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10584894299972802, "message": null}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "kernel-init", "host_seconds": 0.18598481099616038, "message": "Run /uml-init as init process"}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "bootstrap-start", "host_seconds": 0.2087547459959751, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "root-writeback", "host_seconds": 0.20938537099573296, "message": "uml-boot: root-writeback"}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "root-fsck-done", "host_seconds": 0.22127965599793242, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "stage2-start", "host_seconds": 0.423601617992972, "message": "uml-boot: stage2-start"}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "stage2-activation-done", "host_seconds": 1.2344512249983381, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "systemd-ready", "host_seconds": 9.097190253996814, "message": "systemd[1]: Startup finished in 1.129s (kernel) + 7.840s (userspace) = 8.970s."}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "start", "host_seconds": 8.330200216732919e-05, "message": null}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "kernel-exec", "host_seconds": 0.10575246100052027, "message": null}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "kernel-init", "host_seconds": 0.21660252400033642, "message": "Run /uml-init as init process"}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "bootstrap-start", "host_seconds": 0.23811608899995917, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "root-writeback", "host_seconds": 0.2385891800004174, "message": "uml-boot: root-writeback"}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "root-fsck-done", "host_seconds": 0.24983545900613535, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "stage2-start", "host_seconds": 0.45078887900308473, "message": "uml-boot: stage2-start"}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "stage2-activation-done", "host_seconds": 1.2400478300041868, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "systemd-ready", "host_seconds": 10.3475405470017, "message": "systemd[1]: Startup finished in 1.133s (kernel) + 9.086s (userspace) = 10.220s."}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "start", "host_seconds": 4.641099803848192e-05, "message": null}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10609796999779064, "message": null}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "kernel-init", "host_seconds": 0.2194461519975448, "message": "Run /uml-init as init process"}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "bootstrap-start", "host_seconds": 0.24410760200407822, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "root-writeback", "host_seconds": 0.24465854500158457, "message": "uml-boot: root-writeback"}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "root-fsck-done", "host_seconds": 0.25872084200091194, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "stage2-start", "host_seconds": 0.4776180109984125, "message": "uml-boot: stage2-start"}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "stage2-activation-done", "host_seconds": 1.2978672910030582, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "systemd-ready", "host_seconds": 9.109330644998408, "message": "systemd[1]: Startup finished in 1.191s (kernel) + 7.785s (userspace) = 8.977s."}
+{"case": "block-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "start", "host_seconds": 9.629299893276766e-05, "message": null}
+{"case": "block-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "kernel-exec", "host_seconds": 0.10644937799952459, "message": null}
+{"case": "block-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "kernel-init", "host_seconds": 0.5121484470000723, "message": "Run /init as init process"}
+{"case": "block-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "stage2-activation-done", "host_seconds": 6.003881988996, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "switch-root", "host_seconds": 6.028264772001421, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "systemd-ready", "host_seconds": 15.28721494099591, "message": "systemd[1]: Startup finished in 374ms (kernel) + 5.744s (initrd) + 9.010s (userspace) = 15.130s."}
+{"case": "block-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "start", "host_seconds": 4.435099981492385e-05, "message": null}
+{"case": "block-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10592957400513114, "message": null}
+{"case": "block-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "kernel-init", "host_seconds": 0.3501851390028605, "message": "Run /init as init process"}
+{"case": "block-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "stage2-activation-done", "host_seconds": 5.724585562005814, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "switch-root", "host_seconds": 5.744090029002109, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-seccomp", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "systemd-ready", "host_seconds": 13.893263675003254, "message": "systemd[1]: Startup finished in 219ms (kernel) + 5.581s (initrd) + 7.949s (userspace) = 13.750s."}
+{"case": "block-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "start", "host_seconds": 8.543200237909332e-05, "message": null}
+{"case": "block-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "kernel-exec", "host_seconds": 0.10573883000324713, "message": null}
+{"case": "block-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "kernel-init", "host_seconds": 0.3337495770028909, "message": "Run /init as init process"}
+{"case": "block-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "stage2-activation-done", "host_seconds": 5.7840571380002075, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "switch-root", "host_seconds": 5.804197919998842, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "systemd-ready", "host_seconds": 15.163075730000855, "message": "systemd[1]: Startup finished in 200ms (kernel) + 5.677s (initrd) + 9.131s (userspace) = 15.010s."}
+{"case": "block-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "start", "host_seconds": 4.850099503528327e-05, "message": null}
+{"case": "block-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10600415599765256, "message": null}
+{"case": "block-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "kernel-init", "host_seconds": 0.35551891700015403, "message": "Run /init as init process"}
+{"case": "block-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "stage2-activation-done", "host_seconds": 6.073986235001939, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "switch-root", "host_seconds": 6.097726782994869, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-seccomp", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "systemd-ready", "host_seconds": 14.627374170995608, "message": "systemd[1]: Startup finished in 220ms (kernel) + 5.949s (initrd) + 8.310s (userspace) = 14.480s."}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "start", "host_seconds": 6.779099931009114e-05, "message": null}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "kernel-exec", "host_seconds": 0.10527053900295869, "message": null}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "kernel-init", "host_seconds": 0.25025732700305525, "message": "Run /uml-init as init process"}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "bootstrap-start", "host_seconds": 0.28181866300292313, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "root-writeback", "host_seconds": 0.28271934400254395, "message": "uml-boot: root-writeback"}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "root-fsck-done", "host_seconds": 0.30084597800305346, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "stage2-start", "host_seconds": 0.6032830940021086, "message": "uml-boot: stage2-start"}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "stage2-activation-done", "host_seconds": 1.719627484002558, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "systemd-ready", "host_seconds": 13.529218215000583, "message": "systemd[1]: Startup finished in 1.623s (kernel) + 11.777s (userspace) = 13.400s."}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "start", "host_seconds": 4.191100015304983e-05, "message": null}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10572263899666723, "message": null}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "kernel-init", "host_seconds": 0.19633733699447475, "message": "Run /uml-init as init process"}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "bootstrap-start", "host_seconds": 0.22639857600006508, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "root-writeback", "host_seconds": 0.22719040499941912, "message": "uml-boot: root-writeback"}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "root-fsck-done", "host_seconds": 0.24308290599583415, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "stage2-start", "host_seconds": 0.5164329449980869, "message": "uml-boot: stage2-start"}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "stage2-activation-done", "host_seconds": 1.5474332009980571, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "systemd-ready", "host_seconds": 11.607240500001353, "message": "systemd[1]: Startup finished in 1.452s (kernel) + 10.028s (userspace) = 11.480s."}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "start", "host_seconds": 7.655099761905149e-05, "message": null}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "kernel-exec", "host_seconds": 0.10558059599861735, "message": null}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "kernel-init", "host_seconds": 0.27943369599961443, "message": "Run /uml-init as init process"}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "bootstrap-start", "host_seconds": 0.31042330699710874, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "root-writeback", "host_seconds": 0.31133232900174335, "message": "uml-boot: root-writeback"}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "root-fsck-done", "host_seconds": 0.33207768500142265, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "stage2-start", "host_seconds": 0.6310627889979514, "message": "uml-boot: stage2-start"}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "stage2-activation-done", "host_seconds": 1.7361467189984978, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "systemd-ready", "host_seconds": 13.542611436001607, "message": "systemd[1]: Startup finished in 1.638s (kernel) + 11.771s (userspace) = 13.410s."}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "start", "host_seconds": 4.7490997530985624e-05, "message": null}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10630878299707547, "message": null}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "kernel-init", "host_seconds": 0.19972315799532225, "message": "Run /uml-init as init process"}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "bootstrap-start", "host_seconds": 0.22948576999624493, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "root-writeback", "host_seconds": 0.2301913470000727, "message": "uml-boot: root-writeback"}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "root-fsck-done", "host_seconds": 0.2457561689952854, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "stage2-start", "host_seconds": 0.5317297509973287, "message": "uml-boot: stage2-start"}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "stage2-activation-done", "host_seconds": 1.588561132994073, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "systemd-ready", "host_seconds": 11.920582983999338, "message": "systemd[1]: Startup finished in 1.488s (kernel) + 10.301s (userspace) = 11.790s."}
+{"case": "block-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "start", "host_seconds": 0.00011796299804700539, "message": null}
+{"case": "block-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "kernel-exec", "host_seconds": 0.10543481200147653, "message": null}
+{"case": "block-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "kernel-init", "host_seconds": 0.35245980200124905, "message": "Run /init as init process"}
+{"case": "block-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "stage2-activation-done", "host_seconds": 7.406154338001215, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "switch-root", "host_seconds": 7.439522445994953, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "systemd-ready", "host_seconds": 19.618490230001044, "message": "systemd[1]: Startup finished in 221ms (kernel) + 7.350s (initrd) + 11.897s (userspace) = 19.470s."}
+{"case": "block-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "start", "host_seconds": 4.267099575372413e-05, "message": null}
+{"case": "block-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10578076999809127, "message": null}
+{"case": "block-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "kernel-init", "host_seconds": 0.3350904550025007, "message": "Run /init as init process"}
+{"case": "block-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "stage2-activation-done", "host_seconds": 7.5651461759989616, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "switch-root", "host_seconds": 7.59345822299656, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "systemd-ready", "host_seconds": 18.273725585000648, "message": "systemd[1]: Startup finished in 210ms (kernel) + 7.496s (initrd) + 10.423s (userspace) = 18.130s."}
+{"case": "block-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "start", "host_seconds": 0.00010440199548611417, "message": null}
+{"case": "block-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "kernel-exec", "host_seconds": 0.10587638300057733, "message": null}
+{"case": "block-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "kernel-init", "host_seconds": 0.34933934699802194, "message": "Run /init as init process"}
+{"case": "block-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "stage2-activation-done", "host_seconds": 7.3891931920006755, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "switch-root", "host_seconds": 7.417208021994156, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "systemd-ready", "host_seconds": 19.63555790799728, "message": "systemd[1]: Startup finished in 220ms (kernel) + 7.325s (initrd) + 11.943s (userspace) = 19.490s."}
+{"case": "block-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "start", "host_seconds": 4.64510012534447e-05, "message": null}
+{"case": "block-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10597109400259797, "message": null}
+{"case": "block-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "kernel-init", "host_seconds": 0.3459634540049592, "message": "Run /init as init process"}
+{"case": "block-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "stage2-activation-done", "host_seconds": 7.351620698005718, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "switch-root", "host_seconds": 7.3870112740041804, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "systemd-ready", "host_seconds": 17.9971904060003, "message": "systemd[1]: Startup finished in 217ms (kernel) + 7.304s (initrd) + 10.328s (userspace) = 17.850s."}
+{"case": "block-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "start", "host_seconds": 9.63019992923364e-05, "message": null}
+{"case": "block-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "kernel-exec", "host_seconds": 0.10623564099660143, "message": null}
+{"case": "block-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "kernel-init", "host_seconds": 0.36089049199654255, "message": "Run /init as init process"}
+{"case": "block-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "stage2-activation-done", "host_seconds": 5.906965315996786, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "switch-root", "host_seconds": 5.927688602001581, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "systemd-ready", "host_seconds": 15.138116461996105, "message": "systemd[1]: Startup finished in 225ms (kernel) + 5.761s (initrd) + 8.994s (userspace) = 14.981s."}
+{"case": "block-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "start", "host_seconds": 4.467099643079564e-05, "message": null}
+{"case": "block-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10648730699904263, "message": null}
+{"case": "block-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "kernel-init", "host_seconds": 0.3568935259972932, "message": "Run /init as init process"}
+{"case": "block-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "stage2-activation-done", "host_seconds": 6.341210113998386, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "switch-root", "host_seconds": 6.364389227994252, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "systemd-ready", "host_seconds": 14.362831130994891, "message": "systemd[1]: Startup finished in 226ms (kernel) + 6.202s (initrd) + 7.791s (userspace) = 14.220s."}
+{"case": "block-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "start", "host_seconds": 8.46920011099428e-05, "message": null}
+{"case": "block-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "kernel-exec", "host_seconds": 0.1057191080035409, "message": null}
+{"case": "block-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "kernel-init", "host_seconds": 0.40830756499781273, "message": "Run /init as init process"}
+{"case": "block-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "stage2-activation-done", "host_seconds": 5.9033234489979804, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "switch-root", "host_seconds": 5.920912159999716, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "systemd-ready", "host_seconds": 15.189439729001606, "message": "systemd[1]: Startup finished in 275ms (kernel) + 5.715s (initrd) + 9.049s (userspace) = 15.040s."}
+{"case": "block-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "start", "host_seconds": 5.101099668536335e-05, "message": null}
+{"case": "block-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10562549499445595, "message": null}
+{"case": "block-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "kernel-init", "host_seconds": 0.3434299629952875, "message": "Run /init as init process"}
+{"case": "block-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "stage2-activation-done", "host_seconds": 5.8780133799955365, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "switch-root", "host_seconds": 5.904237496994028, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "systemd-ready", "host_seconds": 14.043790507996164, "message": "systemd[1]: Startup finished in 211ms (kernel) + 5.776s (initrd) + 7.912s (userspace) = 13.900s."}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "start", "host_seconds": 0.00010913300502579659, "message": null}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "kernel-exec", "host_seconds": 0.10671867200289853, "message": null}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "kernel-init", "host_seconds": 0.1935056770016672, "message": "Run /uml-init as init process"}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "bootstrap-start", "host_seconds": 0.22443207700416679, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "root-writeback", "host_seconds": 0.22511625300103333, "message": "uml-boot: root-writeback"}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "root-fsck-done", "host_seconds": 0.24205642800370697, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "stage2-start", "host_seconds": 0.5276484380010515, "message": "uml-boot: stage2-start"}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "stage2-activation-done", "host_seconds": 1.5947671570029343, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "systemd-ready", "host_seconds": 13.802511094007059, "message": "systemd[1]: Startup finished in 1.493s (kernel) + 12.176s (userspace) = 13.670s."}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "start", "host_seconds": 4.240099951857701e-05, "message": null}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10563370699674124, "message": null}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "kernel-init", "host_seconds": 0.1963579059956828, "message": "Run /uml-init as init process"}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "bootstrap-start", "host_seconds": 0.22749005999503424, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "root-writeback", "host_seconds": 0.22811699499288807, "message": "uml-boot: root-writeback"}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "root-fsck-done", "host_seconds": 0.24445081599697005, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "stage2-start", "host_seconds": 0.5180858289968455, "message": "uml-boot: stage2-start"}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "stage2-activation-done", "host_seconds": 1.5714410569999018, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "systemd-ready", "host_seconds": 12.05895715499355, "message": "systemd[1]: Startup finished in 1.472s (kernel) + 10.457s (userspace) = 11.930s."}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "start", "host_seconds": 9.054200199898332e-05, "message": null}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "kernel-exec", "host_seconds": 0.1061253280058736, "message": null}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "kernel-init", "host_seconds": 0.2495291070008534, "message": "Run /uml-init as init process"}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "bootstrap-start", "host_seconds": 0.27895512000395684, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "root-writeback", "host_seconds": 0.2796001260066987, "message": "uml-boot: root-writeback"}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "root-fsck-done", "host_seconds": 0.29644386900326936, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "stage2-start", "host_seconds": 0.581628529005684, "message": "uml-boot: stage2-start"}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "stage2-activation-done", "host_seconds": 1.6408651390011073, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "systemd-ready", "host_seconds": 13.582281217000855, "message": "systemd[1]: Startup finished in 1.539s (kernel) + 11.911s (userspace) = 13.450s."}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "start", "host_seconds": 5.9400997997727245e-05, "message": null}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10616794799716445, "message": null}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "kernel-init", "host_seconds": 0.19673123399843462, "message": "Run /uml-init as init process"}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "bootstrap-start", "host_seconds": 0.2246232909965329, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "root-writeback", "host_seconds": 0.22528157599299448, "message": "uml-boot: root-writeback"}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "root-fsck-done", "host_seconds": 0.24077634699642658, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "stage2-start", "host_seconds": 0.5343910079973284, "message": "uml-boot: stage2-start"}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "stage2-activation-done", "host_seconds": 1.6056371329977992, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "systemd-ready", "host_seconds": 11.887813768997148, "message": "systemd[1]: Startup finished in 1.517s (kernel) + 10.243s (userspace) = 11.760s."}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "start", "host_seconds": 9.840200073085725e-05, "message": null}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "kernel-exec", "host_seconds": 0.10545590000401717, "message": null}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "kernel-init", "host_seconds": 0.3467030510000768, "message": "Run /uml-init as init process"}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "bootstrap-start", "host_seconds": 0.3690953850018559, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "root-writeback", "host_seconds": 0.3695863270040718, "message": "uml-boot: root-writeback"}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "root-fsck-done", "host_seconds": 0.38214981100463774, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "stage2-start", "host_seconds": 0.5882235380049678, "message": "uml-boot: stage2-start"}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "stage2-activation-done", "host_seconds": 1.377694071001315, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "systemd-ready", "host_seconds": 10.33845506200305, "message": "systemd[1]: Startup finished in 1.271s (kernel) + 8.938s (userspace) = 10.210s."}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "start", "host_seconds": 3.945099888369441e-05, "message": null}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10614811800041934, "message": null}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "kernel-init", "host_seconds": 0.19505246100015938, "message": "Run /uml-init as init process"}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "bootstrap-start", "host_seconds": 0.2178850659984164, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "root-writeback", "host_seconds": 0.21841736900387332, "message": "uml-boot: root-writeback"}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "root-fsck-done", "host_seconds": 0.22964829300326528, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "stage2-start", "host_seconds": 0.42550200300320284, "message": "uml-boot: stage2-start"}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "stage2-activation-done", "host_seconds": 1.2152359440005966, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "systemd-ready", "host_seconds": 8.786944275001588, "message": "systemd[1]: Startup finished in 1.109s (kernel) + 7.550s (userspace) = 8.660s."}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "start", "host_seconds": 8.771200373303145e-05, "message": null}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "kernel-exec", "host_seconds": 0.10584352000296349, "message": null}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "kernel-init", "host_seconds": 0.19678497999848332, "message": "Run /uml-init as init process"}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "bootstrap-start", "host_seconds": 0.21852114899957087, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "root-writeback", "host_seconds": 0.21908932200312847, "message": "uml-boot: root-writeback"}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "root-fsck-done", "host_seconds": 0.2305520610025269, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "stage2-start", "host_seconds": 0.4304452529977425, "message": "uml-boot: stage2-start"}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "stage2-activation-done", "host_seconds": 1.2319599969996489, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "systemd-ready", "host_seconds": 10.579330196997034, "message": "systemd[1]: Startup finished in 1.126s (kernel) + 9.323s (userspace) = 10.450s."}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "start", "host_seconds": 4.899099440081045e-05, "message": null}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10599515599460574, "message": null}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "kernel-init", "host_seconds": 0.2491408819987555, "message": "Run /uml-init as init process"}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "bootstrap-start", "host_seconds": 0.2730182819941547, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "root-writeback", "host_seconds": 0.27360344599583186, "message": "uml-boot: root-writeback"}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "root-fsck-done", "host_seconds": 0.2865465189970564, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "stage2-start", "host_seconds": 0.4825920259972918, "message": "uml-boot: stage2-start"}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "stage2-activation-done", "host_seconds": 1.2656626679963665, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-seccomp", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "systemd-ready", "host_seconds": 9.46061719499994, "message": "systemd[1]: Startup finished in 1.158s (kernel) + 8.171s (userspace) = 9.330s."}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "start", "host_seconds": 9.53619965002872e-05, "message": null}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "kernel-exec", "host_seconds": 0.10589896399324061, "message": null}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "kernel-init", "host_seconds": 0.2602019339974504, "message": "Run /uml-init as init process"}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "bootstrap-start", "host_seconds": 0.2815713049931219, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "root-writeback", "host_seconds": 0.2820011159928981, "message": "uml-boot: root-writeback"}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "root-fsck-done", "host_seconds": 0.2946321219933452, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "stage2-start", "host_seconds": 0.49305461699987063, "message": "uml-boot: stage2-start"}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "stage2-activation-done", "host_seconds": 1.2728003189986339, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "systemd-ready", "host_seconds": 10.479141400996014, "message": "systemd[1]: Startup finished in 1.166s (kernel) + 9.183s (userspace) = 10.350s."}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "start", "host_seconds": 4.334100231062621e-05, "message": null}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10606739999639103, "message": null}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "kernel-init", "host_seconds": 0.19594713900005445, "message": "Run /uml-init as init process"}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "bootstrap-start", "host_seconds": 0.21805319799750578, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "root-writeback", "host_seconds": 0.21865584199986188, "message": "uml-boot: root-writeback"}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "root-fsck-done", "host_seconds": 0.23104134300228907, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "stage2-start", "host_seconds": 0.4307718409982044, "message": "uml-boot: stage2-start"}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "stage2-activation-done", "host_seconds": 1.1977672459979658, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "systemd-ready", "host_seconds": 9.047343405996799, "message": "systemd[1]: Startup finished in 1.092s (kernel) + 7.827s (userspace) = 8.920s."}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "start", "host_seconds": 0.00016869399405550212, "message": null}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "kernel-exec", "host_seconds": 0.10566676899907179, "message": null}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "kernel-init", "host_seconds": 0.19723561700084247, "message": "Run /uml-init as init process"}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "bootstrap-start", "host_seconds": 0.22331197899620747, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "root-writeback", "host_seconds": 0.22394739399896935, "message": "uml-boot: root-writeback"}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "root-fsck-done", "host_seconds": 0.24204549799469532, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "stage2-start", "host_seconds": 0.44348798399732914, "message": "uml-boot: stage2-start"}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "stage2-activation-done", "host_seconds": 1.2301011479939916, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "systemd-ready", "host_seconds": 10.179635292995954, "message": "systemd[1]: Startup finished in 1.125s (kernel) + 8.924s (userspace) = 10.050s."}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "start", "host_seconds": 4.628200258594006e-05, "message": null}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10641983000095934, "message": null}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "kernel-init", "host_seconds": 0.44865635599853704, "message": "Run /uml-init as init process"}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "bootstrap-start", "host_seconds": 0.47664261300087674, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "root-writeback", "host_seconds": 0.47717247500258964, "message": "uml-boot: root-writeback"}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "root-fsck-done", "host_seconds": 0.4914478799983044, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "stage2-start", "host_seconds": 0.7317404830027954, "message": "uml-boot: stage2-start"}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "stage2-activation-done", "host_seconds": 1.602343596998253, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "systemd-ready", "host_seconds": 9.958226767004817, "message": "systemd[1]: Startup finished in 1.499s (kernel) + 8.330s (userspace) = 9.830s."}
+{"case": "block-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "start", "host_seconds": 0.00010178199590882286, "message": null}
+{"case": "block-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "kernel-exec", "host_seconds": 0.10577923499658937, "message": null}
+{"case": "block-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "kernel-init", "host_seconds": 0.4147176030019182, "message": "Run /init as init process"}
+{"case": "block-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "stage2-activation-done", "host_seconds": 8.149093781001284, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "switch-root", "host_seconds": 8.18232948199875, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 1, "event": "systemd-ready", "host_seconds": 20.913867032999406, "message": "systemd[1]: Startup finished in 281ms (kernel) + 8.026s (initrd) + 12.451s (userspace) = 20.760s."}
+{"case": "block-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "start", "host_seconds": 5.30319957761094e-05, "message": null}
+{"case": "block-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10577422799542546, "message": null}
+{"case": "block-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "kernel-init", "host_seconds": 0.347352687997045, "message": "Run /init as init process"}
+{"case": "block-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "stage2-activation-done", "host_seconds": 7.7466703959944425, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "switch-root", "host_seconds": 7.774520961000235, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-ptrace", "trial": 2, "warmup": false, "machine": "client", "boot": 2, "event": "systemd-ready", "host_seconds": 18.683716296996863, "message": "systemd[1]: Startup finished in 220ms (kernel) + 7.682s (initrd) + 10.636s (userspace) = 18.540s."}
+{"case": "block-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "start", "host_seconds": 8.459200034849346e-05, "message": null}
+{"case": "block-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "kernel-exec", "host_seconds": 0.10623744500480825, "message": null}
+{"case": "block-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "kernel-init", "host_seconds": 0.43511524100176757, "message": "Run /init as init process"}
+{"case": "block-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "stage2-activation-done", "host_seconds": 8.156845511999563, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "switch-root", "host_seconds": 8.189546000998234, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 1, "event": "systemd-ready", "host_seconds": 20.838988203002373, "message": "systemd[1]: Startup finished in 304ms (kernel) + 8.031s (initrd) + 12.354s (userspace) = 20.690s."}
+{"case": "block-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "start", "host_seconds": 4.681100108427927e-05, "message": null}
+{"case": "block-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10601035400031833, "message": null}
+{"case": "block-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "kernel-init", "host_seconds": 0.34507057800510665, "message": "Run /init as init process"}
+{"case": "block-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "stage2-activation-done", "host_seconds": 7.410593623004388, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "switch-root", "host_seconds": 7.43605466200097, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-ptrace", "trial": 2, "warmup": false, "machine": "server", "boot": 2, "event": "systemd-ready", "host_seconds": 18.035400870001467, "message": "systemd[1]: Startup finished in 218ms (kernel) + 7.334s (initrd) + 10.337s (userspace) = 17.890s."}
+{"case": "block-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "start", "host_seconds": 0.0001407129966537468, "message": null}
+{"case": "block-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "kernel-exec", "host_seconds": 0.10565033699822379, "message": null}
+{"case": "block-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "kernel-init", "host_seconds": 0.38328375299897743, "message": "Run /init as init process"}
+{"case": "block-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "stage2-activation-done", "host_seconds": 8.051525530994695, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "switch-root", "host_seconds": 8.081395623994467, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "systemd-ready", "host_seconds": 20.42241271599778, "message": "systemd[1]: Startup finished in 249ms (kernel) + 7.985s (initrd) + 12.034s (userspace) = 20.270s."}
+{"case": "block-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "start", "host_seconds": 3.861099685309455e-05, "message": null}
+{"case": "block-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10614587099553319, "message": null}
+{"case": "block-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "kernel-init", "host_seconds": 0.36463176099641714, "message": "Run /init as init process"}
+{"case": "block-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "stage2-activation-done", "host_seconds": 10.066884961997857, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "switch-root", "host_seconds": 10.113093250998645, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-ptrace", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "systemd-ready", "host_seconds": 23.959972586999356, "message": "systemd[1]: Startup finished in 232ms (kernel) + 10.101s (initrd) + 13.475s (userspace) = 23.810s."}
+{"case": "block-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "start", "host_seconds": 8.161200094036758e-05, "message": null}
+{"case": "block-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "kernel-exec", "host_seconds": 0.10614735900162486, "message": null}
+{"case": "block-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "kernel-init", "host_seconds": 0.37481933399976697, "message": "Run /init as init process"}
+{"case": "block-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "stage2-activation-done", "host_seconds": 7.926834775003954, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "switch-root", "host_seconds": 7.953735367998888, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "systemd-ready", "host_seconds": 20.32722991400078, "message": "systemd[1]: Startup finished in 240ms (kernel) + 7.856s (initrd) + 12.073s (userspace) = 20.170s."}
+{"case": "block-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "start", "host_seconds": 4.837199958274141e-05, "message": null}
+{"case": "block-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10630221600149525, "message": null}
+{"case": "block-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "kernel-init", "host_seconds": 0.5288541580011952, "message": "Run /init as init process"}
+{"case": "block-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "stage2-activation-done", "host_seconds": 8.348009783003363, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "switch-root", "host_seconds": 8.381208386002982, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-ptrace", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "systemd-ready", "host_seconds": 22.293916367001657, "message": "systemd[1]: Startup finished in 399ms (kernel) + 8.137s (initrd) + 13.580s (userspace) = 22.117s."}
+{"case": "block-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "start", "host_seconds": 9.348199819214642e-05, "message": null}
+{"case": "block-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "kernel-exec", "host_seconds": 0.11449765099678189, "message": null}
+{"case": "block-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "kernel-init", "host_seconds": 0.7487376639983268, "message": "Run /init as init process"}
+{"case": "block-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "stage2-activation-done", "host_seconds": 18.223696557994117, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "switch-root", "host_seconds": 18.344461027998477, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 1, "event": "systemd-ready", "host_seconds": 53.875441195996245, "message": "systemd[1]: Startup finished in 570ms (kernel) + 17.981s (initrd) + 35.097s (userspace) = 53.650s."}
+{"case": "block-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "start", "host_seconds": 4.4530999730341136e-05, "message": null}
+{"case": "block-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "kernel-exec", "host_seconds": 0.1071682330002659, "message": null}
+{"case": "block-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "kernel-init", "host_seconds": 0.3579281880010967, "message": "Run /init as init process"}
+{"case": "block-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "stage2-activation-done", "host_seconds": 7.62823469399882, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "switch-root", "host_seconds": 7.659725889003312, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-seccomp", "trial": 1, "warmup": false, "machine": "client", "boot": 2, "event": "systemd-ready", "host_seconds": 18.039062627998646, "message": "systemd[1]: Startup finished in 219ms (kernel) + 7.568s (initrd) + 10.101s (userspace) = 17.890s."}
+{"case": "block-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "start", "host_seconds": 0.00011758300388464704, "message": null}
+{"case": "block-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "kernel-exec", "host_seconds": 0.11717311400570907, "message": null}
+{"case": "block-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "kernel-init", "host_seconds": 0.6544459390061093, "message": "Run /init as init process"}
+{"case": "block-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "stage2-activation-done", "host_seconds": 16.252834256003553, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "switch-root", "host_seconds": 16.34958856000594, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 1, "event": "systemd-ready", "host_seconds": 54.162809592002304, "message": "systemd[1]: Startup finished in 454ms (kernel) + 16.170s (initrd) + 37.252s (userspace) = 53.877s."}
+{"case": "block-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "start", "host_seconds": 4.997100040782243e-05, "message": null}
+{"case": "block-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "kernel-exec", "host_seconds": 0.15821353999490384, "message": null}
+{"case": "block-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "kernel-init", "host_seconds": 0.44541587799903937, "message": "Run /init as init process"}
+{"case": "block-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "stage2-activation-done", "host_seconds": 8.748174205000396, "message": "uml-boot: stage2-activation-done"}
+{"case": "block-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "switch-root", "host_seconds": 8.771739031995821, "message": "systemd[1]: Starting Switch Root..."}
+{"case": "block-seccomp", "trial": 1, "warmup": false, "machine": "server", "boot": 2, "event": "systemd-ready", "host_seconds": 17.111947068995505, "message": "systemd[1]: Startup finished in 268ms (kernel) + 8.521s (initrd) + 8.120s (userspace) = 16.910s."}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "start", "host_seconds": 0.00010117200145032257, "message": null}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "kernel-exec", "host_seconds": 0.10667818200454349, "message": null}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "kernel-init", "host_seconds": 0.18101120999926934, "message": "Run /uml-init as init process"}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "bootstrap-start", "host_seconds": 0.2126199680060381, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "root-writeback", "host_seconds": 0.21330954400036717, "message": "uml-boot: root-writeback"}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "root-fsck-done", "host_seconds": 0.23171567900135415, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "stage2-start", "host_seconds": 0.5451634109995211, "message": "uml-boot: stage2-start"}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "stage2-activation-done", "host_seconds": 1.7098936820038944, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 1, "event": "systemd-ready", "host_seconds": 14.170768963005685, "message": "systemd[1]: Startup finished in 1.614s (kernel) + 12.426s (userspace) = 14.040s."}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "start", "host_seconds": 4.731099761556834e-05, "message": null}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10611259999859612, "message": null}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "kernel-init", "host_seconds": 0.19727796700317413, "message": "Run /uml-init as init process"}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "bootstrap-start", "host_seconds": 0.22583500199834816, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "root-writeback", "host_seconds": 0.22655829900031677, "message": "uml-boot: root-writeback"}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "root-fsck-done", "host_seconds": 0.244210586999543, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "stage2-start", "host_seconds": 0.5688052659970708, "message": "uml-boot: stage2-start"}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "stage2-activation-done", "host_seconds": 1.7970902209999622, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "client", "boot": 2, "event": "systemd-ready", "host_seconds": 13.568230203003623, "message": "systemd[1]: Startup finished in 1.705s (kernel) + 11.734s (userspace) = 13.440s."}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "start", "host_seconds": 8.677300502313301e-05, "message": null}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "kernel-exec", "host_seconds": 0.1059111050053616, "message": null}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "kernel-init", "host_seconds": 0.19916740000189748, "message": "Run /uml-init as init process"}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "bootstrap-start", "host_seconds": 0.22817646600014996, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "root-writeback", "host_seconds": 0.22888240300380858, "message": "uml-boot: root-writeback"}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "root-fsck-done", "host_seconds": 0.2457157110038679, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "stage2-start", "host_seconds": 0.5542677770063165, "message": "uml-boot: stage2-start"}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "stage2-activation-done", "host_seconds": 1.6958627810017788, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 1, "event": "systemd-ready", "host_seconds": 14.802814222006418, "message": "systemd[1]: Startup finished in 1.601s (kernel) + 13.068s (userspace) = 14.670s."}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "start", "host_seconds": 4.509100108407438e-05, "message": null}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "kernel-exec", "host_seconds": 0.10763718600355787, "message": null}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "kernel-init", "host_seconds": 0.20124539099924732, "message": "Run /uml-init as init process"}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "bootstrap-start", "host_seconds": 0.23489066799811553, "message": "uml-boot: bootstrap-start"}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "root-writeback", "host_seconds": 0.23559168400242925, "message": "uml-boot: root-writeback"}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "root-fsck-done", "host_seconds": 0.2551271960037411, "message": "uml-boot: root-fsck-done"}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "stage2-start", "host_seconds": 0.6435456570034148, "message": "uml-boot: stage2-start"}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "stage2-activation-done", "host_seconds": 1.9954051550012082, "message": "uml-boot: stage2-activation-done"}
+{"case": "direct-ptrace", "trial": 3, "warmup": false, "machine": "server", "boot": 2, "event": "systemd-ready", "host_seconds": 16.87253142800182, "message": "systemd[1]: Startup finished in 1.902s (kernel) + 14.837s (userspace) = 16.740s."}

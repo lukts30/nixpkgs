@@ -7,6 +7,8 @@
 }:
 let
   cfg = config.virtualisation.uml;
+  directBoot = cfg.bootMode == "direct";
+  directInit = import ./uml-direct-init.nix { inherit config pkgs; };
   interfaces = lib.attrValues config.virtualisation.allInterfaces;
   interface = lib.head interfaces;
   address = config.networking.primaryIPAddress;
@@ -54,6 +56,20 @@ in
       default = 1024;
       description = "Memory available to the UML guest, in MiB.";
     };
+    uml.bootMode = lib.mkOption {
+      type = lib.types.enum [
+        "initrd"
+        "direct"
+      ];
+      default = "initrd";
+      description = ''
+        Boot through the NixOS initrd, or mount the ext4 root directly in the
+        kernel and enter NixOS stage 2 through a small on-disk bootstrap.
+        Direct boot enables rootDisk by default and requires it. The bootstrap
+        mounts the shared Nix store, configures disk flushes, checks the read-only
+        root, and prepares early mounts before executing stage 2.
+      '';
+    };
     uml.seccomp.enable = lib.mkEnableOption ''
       UML's seccomp-based userspace execution instead of ptrace. Passes
       `seccomp=on`, which fails boot if the host cannot support it, rather
@@ -79,7 +95,12 @@ in
   };
 
   config = {
+    virtualisation.uml.rootDisk.enable = lib.mkIf directBoot (lib.mkDefault true);
     assertions = [
+      {
+        assertion = !directBoot || cfg.rootDisk.enable;
+        message = "Direct UML boot requires virtualisation.uml.rootDisk.enable.";
+      }
       {
         assertion = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
         message = "The NixOS UML runner currently supports x86_64-linux hosts.";
@@ -98,6 +119,7 @@ in
       }
     ];
     boot.kernelPackages = lib.mkDefault (pkgs.linuxPackagesFor pkgs.user-mode-linux);
+    boot.initrd.enable = !directBoot;
     boot.initrd.includeDefaultModules = false;
     boot.initrd.kernelModules = [ ];
     boot.initrd.availableKernelModules.efivarfs = lib.mkForce false;
@@ -139,6 +161,9 @@ in
         test "$mode" = 'write back'
       '';
     };
+    boot.postBootCommands = ''
+      echo 'uml-boot: stage2-activation-done' > /dev/kmsg
+    '';
     networking.useDHCP = lib.mkDefault false;
     networking.firewall.enable = lib.mkDefault false;
     networking.enableIPv6 = lib.mkIf cfg.networking.enable (lib.mkDefault false);
@@ -218,26 +243,39 @@ in
       export TMPDIR
       exec ${lib.getExe config.boot.kernelPackages.kernel} \
         mem=${toString cfg.memorySize}M \
-        initrd=${config.system.build.initialRamdisk}/initrd \
-        init=${config.system.build.toplevel}/init \
+        ${
+          if directBoot then
+            "root=/dev/vda rootfstype=ext4 rootwait ro init=/uml-init "
+            + "uml_bootstrap=${directInit.bootstrap} uml_stage2=${config.system.build.toplevel}/init"
+          else
+            "initrd=${config.system.build.initialRamdisk}/initrd init=${config.system.build.toplevel}/init"
+        } \
         ${lib.escapeShellArgs config.boot.kernelParams} \
         con=null con0=fd:0,fd:1 ssl=null uml_dir="$TMPDIR" \
         "uml_shared=''${UML_SHARED_DIR:-$TMPDIR}" "$@"
     '';
 
-    # The driver copies this empty filesystem into its writable machine state.
-    # No system closure is embedded: /nix/store is shared just as in tmpfs mode.
+    # Both boot modes use the same seed. Only the tiny direct-boot bootstrap is
+    # embedded; the system closure still comes from the shared host Nix store.
     system.build.umlRootDisk = lib.mkIf cfg.rootDisk.enable (
       pkgs.runCommand "uml-root-${toString cfg.rootDisk.size}M.qcow2"
         {
           nativeBuildInputs = [
             pkgs.e2fsprogs
+            pkgs.fakeroot
             pkgs.qemu-utils
           ];
         }
         ''
+          mkdir -p root/{dev,proc,sys,nix/store}
+          cp ${pkgs.pkgsStatic.busybox}/bin/busybox root/uml-busybox
+          cp ${directInit.init} root/uml-init
+          chmod 755 root/uml-{busybox,init}
           truncate -s ${toString cfg.rootDisk.size}M root.raw
-          mkfs.ext4 -q -F -L uml-root -E lazy_itable_init=0,lazy_journal_init=0 root.raw
+          fakeroot -- sh -eu -c '
+            chown -R 0:0 root
+            mkfs.ext4 -q -F -L uml-root -d root -E lazy_itable_init=0,lazy_journal_init=0 root.raw
+          '
           qemu-img convert -f raw -O qcow2 root.raw "$out"
         ''
     );

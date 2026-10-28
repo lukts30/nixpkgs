@@ -263,6 +263,20 @@ For an ext4 root on a qcow2 image, enable:
 }
 ```
 
+Both root types use a NixOS initrd by default. Set
+`umlDefaults.virtualisation.uml.bootMode = "direct"` to boot without one. This
+enables the block-image root by default and requires it. The kernel mounts ext4
+read-only; a small bootstrap on the image mounts the Nix store, configures disk
+flushes, checks the root filesystem, and prepares early mounts before executing
+NixOS stage 2. No system closure is embedded in the root image. Unlike nspawn,
+this path still boots a separate guest kernel. Use initrd mode for tmpfs roots
+or tests that need stage-1 customization.
+
+The driver saves `<machine>-boot.jsonl` with host monotonic timestamps relative
+to each start, including backend setup, kernel init, stage-2 activation completion
+and systemd startup completion. Each restart has its own boot number. These are
+console-observation times; systemd readiness is not application readiness.
+
 The driver exports one image per guest using QEMU `-machine none -nodefaults`
 and vhost-user-blk, without running guest CPUs in QEMU. The Nix store and
 file-transfer directory still use hostfs. Root images survive guest restarts

@@ -1,0 +1,882 @@
+[
+  {
+    "case": "block-ptrace",
+    "trial": 0,
+    "warmup": true,
+    "wall_seconds": 81.10133103500266,
+    "user_cpu_seconds": 24.740774,
+    "system_cpu_seconds": 60.375384,
+    "cpu_seconds": 85.116158,
+    "host_busy_cores": 1.0495038356801392,
+    "context_switches": 9417627,
+    "boots": [
+      {
+        "machine": "client",
+        "boot": 1,
+        "kernel-exec": 0.10547614799725125,
+        "kernel-init": 0.3721255089985789,
+        "stage2-activation-done": 8.270716077000543,
+        "systemd-ready": 20.729424764002033
+      },
+      {
+        "machine": "client",
+        "boot": 2,
+        "kernel-exec": 0.10572548300115159,
+        "kernel-init": 0.3553268140021828,
+        "stage2-activation-done": 8.02263909100293,
+        "systemd-ready": 18.613255689000653
+      },
+      {
+        "machine": "server",
+        "boot": 1,
+        "kernel-exec": 0.1060763429995859,
+        "kernel-init": 0.3765235040045809,
+        "stage2-activation-done": 8.090262912999606,
+        "systemd-ready": 20.689107259000593
+      },
+      {
+        "machine": "server",
+        "boot": 2,
+        "kernel-exec": 0.10694451200106414,
+        "kernel-init": 0.34676780799782136,
+        "stage2-activation-done": 7.420362115997705,
+        "systemd-ready": 18.204777895996813
+      }
+    ],
+    "initial_boot_seconds": 20.709266011501313,
+    "initial_activation_seconds": 8.180489495000074,
+    "initial_kernel_init_seconds": 0.3743245065015799,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/0z1d3alzgkmkl5c7bkyx2idzq61qzlh5-nixos-test-driver-user-mode-linux-gitdaemon-block-root/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-boot-results/00-block-ptrace-trial0"
+    ]
+  },
+  {
+    "case": "block-seccomp",
+    "trial": 0,
+    "warmup": true,
+    "wall_seconds": 66.25807260199508,
+    "user_cpu_seconds": 23.843433,
+    "system_cpu_seconds": 42.682596,
+    "cpu_seconds": 66.526029,
+    "host_busy_cores": 1.004044132095639,
+    "context_switches": 6288291,
+    "boots": [
+      {
+        "machine": "client",
+        "boot": 1,
+        "kernel-exec": 0.10630508699978236,
+        "kernel-init": 0.36949758200353244,
+        "stage2-activation-done": 7.884732666003401,
+        "systemd-ready": 18.219348514998273
+      },
+      {
+        "machine": "client",
+        "boot": 2,
+        "kernel-exec": 0.10638793800171698,
+        "kernel-init": 0.3610237269967911,
+        "stage2-activation-done": 6.363770629002829,
+        "systemd-ready": 14.868395985999086
+      },
+      {
+        "machine": "server",
+        "boot": 1,
+        "kernel-exec": 0.10558922000200255,
+        "kernel-init": 0.3662064129966893,
+        "stage2-activation-done": 7.918394242995419,
+        "systemd-ready": 18.3148313519996
+      },
+      {
+        "machine": "server",
+        "boot": 2,
+        "kernel-exec": 0.10693146200355841,
+        "kernel-init": 0.35653792900120607,
+        "stage2-activation-done": 6.279248061000544,
+        "systemd-ready": 14.375197913002921
+      }
+    ],
+    "initial_boot_seconds": 18.267089933498937,
+    "initial_activation_seconds": 7.90156345449941,
+    "initial_kernel_init_seconds": 0.3678519975001109,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/9a1j76j62q3cw71ikyxx76hj8svp07ys-nixos-test-driver-user-mode-linux-gitdaemon-block-root-seccomp/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-boot-results/01-block-seccomp-trial0"
+    ]
+  },
+  {
+    "case": "direct-ptrace",
+    "trial": 0,
+    "warmup": true,
+    "wall_seconds": 62.32285633099673,
+    "user_cpu_seconds": 18.508615,
+    "system_cpu_seconds": 46.655371,
+    "cpu_seconds": 65.163986,
+    "host_busy_cores": 1.0455872826802741,
+    "context_switches": 6823072,
+    "boots": [
+      {
+        "machine": "client",
+        "boot": 1,
+        "kernel-exec": 0.10594976699940162,
+        "kernel-init": 0.23826582499896176,
+        "stage2-activation-done": 1.6343774979977752,
+        "systemd-ready": 13.66030185999989
+      },
+      {
+        "machine": "client",
+        "boot": 2,
+        "kernel-exec": 0.10797714500222355,
+        "kernel-init": 0.24044819700066,
+        "stage2-activation-done": 1.8896451350010466,
+        "systemd-ready": 13.87013233500329
+      },
+      {
+        "machine": "server",
+        "boot": 1,
+        "kernel-exec": 0.10530971200205386,
+        "kernel-init": 0.2386849960021209,
+        "stage2-activation-done": 1.6362770140040084,
+        "systemd-ready": 13.742939689000195
+      },
+      {
+        "machine": "server",
+        "boot": 2,
+        "kernel-exec": 0.10588256499613635,
+        "kernel-init": 0.19664214799558977,
+        "stage2-activation-done": 1.6581339490003302,
+        "systemd-ready": 12.167043585999636
+      }
+    ],
+    "initial_boot_seconds": 13.701620774500043,
+    "initial_activation_seconds": 1.6353272560008918,
+    "initial_kernel_init_seconds": 0.23847541050054133,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/2fivh1dr3d0xpd519mpf2dhk1k1zycdh-nixos-test-driver-user-mode-linux-gitdaemon-block-root-direct/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-boot-results/02-direct-ptrace-trial0"
+    ]
+  },
+  {
+    "case": "direct-seccomp",
+    "trial": 0,
+    "warmup": true,
+    "wall_seconds": 47.05963715800317,
+    "user_cpu_seconds": 16.658522000000005,
+    "system_cpu_seconds": 31.757600999999994,
+    "cpu_seconds": 48.416123,
+    "host_busy_cores": 1.0288248257725068,
+    "context_switches": 4302384,
+    "boots": [
+      {
+        "machine": "client",
+        "boot": 1,
+        "kernel-exec": 0.1068877190045896,
+        "kernel-init": 0.20055706200218992,
+        "stage2-activation-done": 1.2326994510003715,
+        "systemd-ready": 10.249914958003501
+      },
+      {
+        "machine": "client",
+        "boot": 2,
+        "kernel-exec": 0.10611300999880768,
+        "kernel-init": 0.1959422700019786,
+        "stage2-activation-done": 1.2139736300014192,
+        "systemd-ready": 9.337736032000976
+      },
+      {
+        "machine": "server",
+        "boot": 1,
+        "kernel-exec": 0.10545084499608492,
+        "kernel-init": 0.20058046199847013,
+        "stage2-activation-done": 1.2372976810002,
+        "systemd-ready": 10.582762236001145
+      },
+      {
+        "machine": "server",
+        "boot": 2,
+        "kernel-exec": 0.10582575399894267,
+        "kernel-init": 0.24590540600183886,
+        "stage2-activation-done": 1.2502038859965978,
+        "systemd-ready": 9.031136833000346
+      }
+    ],
+    "initial_boot_seconds": 10.416338597002323,
+    "initial_activation_seconds": 1.2349985660002858,
+    "initial_kernel_init_seconds": 0.20056876200033003,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/776qlgi26mmsbc2il84jgw79lgf01kgq-nixos-test-driver-user-mode-linux-gitdaemon-block-root-seccomp-direct/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-boot-results/03-direct-seccomp-trial0"
+    ]
+  },
+  {
+    "case": "direct-seccomp",
+    "trial": 2,
+    "warmup": false,
+    "wall_seconds": 46.732623844000045,
+    "user_cpu_seconds": 16.39240699999999,
+    "system_cpu_seconds": 31.666607,
+    "cpu_seconds": 48.05901399999999,
+    "host_busy_cores": 1.0283825312361579,
+    "context_switches": 4308853,
+    "boots": [
+      {
+        "machine": "client",
+        "boot": 1,
+        "kernel-exec": 0.10532005099958042,
+        "kernel-init": 0.1960894139992888,
+        "stage2-activation-done": 1.21638261499902,
+        "systemd-ready": 10.317725934000919
+      },
+      {
+        "machine": "client",
+        "boot": 2,
+        "kernel-exec": 0.10584894299972802,
+        "kernel-init": 0.18598481099616038,
+        "stage2-activation-done": 1.2344512249983381,
+        "systemd-ready": 9.097190253996814
+      },
+      {
+        "machine": "server",
+        "boot": 1,
+        "kernel-exec": 0.10575246100052027,
+        "kernel-init": 0.21660252400033642,
+        "stage2-activation-done": 1.2400478300041868,
+        "systemd-ready": 10.3475405470017
+      },
+      {
+        "machine": "server",
+        "boot": 2,
+        "kernel-exec": 0.10609796999779064,
+        "kernel-init": 0.2194461519975448,
+        "stage2-activation-done": 1.2978672910030582,
+        "systemd-ready": 9.109330644998408
+      }
+    ],
+    "initial_boot_seconds": 10.332633240501309,
+    "initial_activation_seconds": 1.2282152225016034,
+    "initial_kernel_init_seconds": 0.2063459689998126,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/776qlgi26mmsbc2il84jgw79lgf01kgq-nixos-test-driver-user-mode-linux-gitdaemon-block-root-seccomp-direct/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-boot-results/04-direct-seccomp-trial2"
+    ]
+  },
+  {
+    "case": "block-seccomp",
+    "trial": 2,
+    "warmup": false,
+    "wall_seconds": 61.79487204599718,
+    "user_cpu_seconds": 22.706393000000006,
+    "system_cpu_seconds": 41.120463,
+    "cpu_seconds": 63.82685600000001,
+    "host_busy_cores": 1.0328827277527222,
+    "context_switches": 6263927,
+    "boots": [
+      {
+        "machine": "client",
+        "boot": 1,
+        "kernel-exec": 0.10644937799952459,
+        "kernel-init": 0.5121484470000723,
+        "stage2-activation-done": 6.003881988996,
+        "systemd-ready": 15.28721494099591
+      },
+      {
+        "machine": "client",
+        "boot": 2,
+        "kernel-exec": 0.10592957400513114,
+        "kernel-init": 0.3501851390028605,
+        "stage2-activation-done": 5.724585562005814,
+        "systemd-ready": 13.893263675003254
+      },
+      {
+        "machine": "server",
+        "boot": 1,
+        "kernel-exec": 0.10573883000324713,
+        "kernel-init": 0.3337495770028909,
+        "stage2-activation-done": 5.7840571380002075,
+        "systemd-ready": 15.163075730000855
+      },
+      {
+        "machine": "server",
+        "boot": 2,
+        "kernel-exec": 0.10600415599765256,
+        "kernel-init": 0.35551891700015403,
+        "stage2-activation-done": 6.073986235001939,
+        "systemd-ready": 14.627374170995608
+      }
+    ],
+    "initial_boot_seconds": 15.225145335498382,
+    "initial_activation_seconds": 5.8939695634981035,
+    "initial_kernel_init_seconds": 0.4229490120014816,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/9a1j76j62q3cw71ikyxx76hj8svp07ys-nixos-test-driver-user-mode-linux-gitdaemon-block-root-seccomp/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-boot-results/05-block-seccomp-trial2"
+    ]
+  },
+  {
+    "case": "direct-ptrace",
+    "trial": 1,
+    "warmup": false,
+    "wall_seconds": 58.40580998200312,
+    "user_cpu_seconds": 17.550049,
+    "system_cpu_seconds": 43.734099000000015,
+    "cpu_seconds": 61.284148000000016,
+    "host_busy_cores": 1.0492817070576337,
+    "context_switches": 6821266,
+    "boots": [
+      {
+        "machine": "client",
+        "boot": 1,
+        "kernel-exec": 0.10527053900295869,
+        "kernel-init": 0.25025732700305525,
+        "stage2-activation-done": 1.719627484002558,
+        "systemd-ready": 13.529218215000583
+      },
+      {
+        "machine": "client",
+        "boot": 2,
+        "kernel-exec": 0.10572263899666723,
+        "kernel-init": 0.19633733699447475,
+        "stage2-activation-done": 1.5474332009980571,
+        "systemd-ready": 11.607240500001353
+      },
+      {
+        "machine": "server",
+        "boot": 1,
+        "kernel-exec": 0.10558059599861735,
+        "kernel-init": 0.27943369599961443,
+        "stage2-activation-done": 1.7361467189984978,
+        "systemd-ready": 13.542611436001607
+      },
+      {
+        "machine": "server",
+        "boot": 2,
+        "kernel-exec": 0.10630878299707547,
+        "kernel-init": 0.19972315799532225,
+        "stage2-activation-done": 1.588561132994073,
+        "systemd-ready": 11.920582983999338
+      }
+    ],
+    "initial_boot_seconds": 13.535914825501095,
+    "initial_activation_seconds": 1.727887101500528,
+    "initial_kernel_init_seconds": 0.26484551150133484,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/2fivh1dr3d0xpd519mpf2dhk1k1zycdh-nixos-test-driver-user-mode-linux-gitdaemon-block-root-direct/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-boot-results/06-direct-ptrace-trial1"
+    ]
+  },
+  {
+    "case": "block-ptrace",
+    "trial": 3,
+    "warmup": false,
+    "wall_seconds": 77.62210758799483,
+    "user_cpu_seconds": 23.764546999999993,
+    "system_cpu_seconds": 57.634217999999976,
+    "cpu_seconds": 81.39876499999997,
+    "host_busy_cores": 1.0486544043876134,
+    "context_switches": 9374063,
+    "boots": [
+      {
+        "machine": "client",
+        "boot": 1,
+        "kernel-exec": 0.10543481200147653,
+        "kernel-init": 0.35245980200124905,
+        "stage2-activation-done": 7.406154338001215,
+        "systemd-ready": 19.618490230001044
+      },
+      {
+        "machine": "client",
+        "boot": 2,
+        "kernel-exec": 0.10578076999809127,
+        "kernel-init": 0.3350904550025007,
+        "stage2-activation-done": 7.5651461759989616,
+        "systemd-ready": 18.273725585000648
+      },
+      {
+        "machine": "server",
+        "boot": 1,
+        "kernel-exec": 0.10587638300057733,
+        "kernel-init": 0.34933934699802194,
+        "stage2-activation-done": 7.3891931920006755,
+        "systemd-ready": 19.63555790799728
+      },
+      {
+        "machine": "server",
+        "boot": 2,
+        "kernel-exec": 0.10597109400259797,
+        "kernel-init": 0.3459634540049592,
+        "stage2-activation-done": 7.351620698005718,
+        "systemd-ready": 17.9971904060003
+      }
+    ],
+    "initial_boot_seconds": 19.627024068999162,
+    "initial_activation_seconds": 7.397673765000945,
+    "initial_kernel_init_seconds": 0.3508995744996355,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/0z1d3alzgkmkl5c7bkyx2idzq61qzlh5-nixos-test-driver-user-mode-linux-gitdaemon-block-root/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-boot-results/07-block-ptrace-trial3"
+    ]
+  },
+  {
+    "case": "block-seccomp",
+    "trial": 3,
+    "warmup": false,
+    "wall_seconds": 61.2793591869995,
+    "user_cpu_seconds": 22.323059999999998,
+    "system_cpu_seconds": 40.71977000000004,
+    "cpu_seconds": 63.04283000000004,
+    "host_busy_cores": 1.0287775661559897,
+    "context_switches": 6261545,
+    "boots": [
+      {
+        "machine": "client",
+        "boot": 1,
+        "kernel-exec": 0.10623564099660143,
+        "kernel-init": 0.36089049199654255,
+        "stage2-activation-done": 5.906965315996786,
+        "systemd-ready": 15.138116461996105
+      },
+      {
+        "machine": "client",
+        "boot": 2,
+        "kernel-exec": 0.10648730699904263,
+        "kernel-init": 0.3568935259972932,
+        "stage2-activation-done": 6.341210113998386,
+        "systemd-ready": 14.362831130994891
+      },
+      {
+        "machine": "server",
+        "boot": 1,
+        "kernel-exec": 0.1057191080035409,
+        "kernel-init": 0.40830756499781273,
+        "stage2-activation-done": 5.9033234489979804,
+        "systemd-ready": 15.189439729001606
+      },
+      {
+        "machine": "server",
+        "boot": 2,
+        "kernel-exec": 0.10562549499445595,
+        "kernel-init": 0.3434299629952875,
+        "stage2-activation-done": 5.8780133799955365,
+        "systemd-ready": 14.043790507996164
+      }
+    ],
+    "initial_boot_seconds": 15.163778095498856,
+    "initial_activation_seconds": 5.905144382497383,
+    "initial_kernel_init_seconds": 0.38459902849717764,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/9a1j76j62q3cw71ikyxx76hj8svp07ys-nixos-test-driver-user-mode-linux-gitdaemon-block-root-seccomp/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-boot-results/08-block-seccomp-trial3"
+    ]
+  },
+  {
+    "case": "direct-ptrace",
+    "trial": 2,
+    "warmup": false,
+    "wall_seconds": 59.32170182099799,
+    "user_cpu_seconds": 17.67184900000001,
+    "system_cpu_seconds": 44.97337399999998,
+    "cpu_seconds": 62.64522299999999,
+    "host_busy_cores": 1.0560253849262562,
+    "context_switches": 6828793,
+    "boots": [
+      {
+        "machine": "client",
+        "boot": 1,
+        "kernel-exec": 0.10671867200289853,
+        "kernel-init": 0.1935056770016672,
+        "stage2-activation-done": 1.5947671570029343,
+        "systemd-ready": 13.802511094007059
+      },
+      {
+        "machine": "client",
+        "boot": 2,
+        "kernel-exec": 0.10563370699674124,
+        "kernel-init": 0.1963579059956828,
+        "stage2-activation-done": 1.5714410569999018,
+        "systemd-ready": 12.05895715499355
+      },
+      {
+        "machine": "server",
+        "boot": 1,
+        "kernel-exec": 0.1061253280058736,
+        "kernel-init": 0.2495291070008534,
+        "stage2-activation-done": 1.6408651390011073,
+        "systemd-ready": 13.582281217000855
+      },
+      {
+        "machine": "server",
+        "boot": 2,
+        "kernel-exec": 0.10616794799716445,
+        "kernel-init": 0.19673123399843462,
+        "stage2-activation-done": 1.6056371329977992,
+        "systemd-ready": 11.887813768997148
+      }
+    ],
+    "initial_boot_seconds": 13.692396155503957,
+    "initial_activation_seconds": 1.6178161480020208,
+    "initial_kernel_init_seconds": 0.2215173920012603,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/2fivh1dr3d0xpd519mpf2dhk1k1zycdh-nixos-test-driver-user-mode-linux-gitdaemon-block-root-direct/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-boot-results/09-direct-ptrace-trial2"
+    ]
+  },
+  {
+    "case": "direct-seccomp",
+    "trial": 3,
+    "warmup": false,
+    "wall_seconds": 46.64145989900135,
+    "user_cpu_seconds": 16.531337000000008,
+    "system_cpu_seconds": 31.696718999999973,
+    "cpu_seconds": 48.22805599999998,
+    "host_busy_cores": 1.0340168619171504,
+    "context_switches": 4304996,
+    "boots": [
+      {
+        "machine": "client",
+        "boot": 1,
+        "kernel-exec": 0.10545590000401717,
+        "kernel-init": 0.3467030510000768,
+        "stage2-activation-done": 1.377694071001315,
+        "systemd-ready": 10.33845506200305
+      },
+      {
+        "machine": "client",
+        "boot": 2,
+        "kernel-exec": 0.10614811800041934,
+        "kernel-init": 0.19505246100015938,
+        "stage2-activation-done": 1.2152359440005966,
+        "systemd-ready": 8.786944275001588
+      },
+      {
+        "machine": "server",
+        "boot": 1,
+        "kernel-exec": 0.10584352000296349,
+        "kernel-init": 0.19678497999848332,
+        "stage2-activation-done": 1.2319599969996489,
+        "systemd-ready": 10.579330196997034
+      },
+      {
+        "machine": "server",
+        "boot": 2,
+        "kernel-exec": 0.10599515599460574,
+        "kernel-init": 0.2491408819987555,
+        "stage2-activation-done": 1.2656626679963665,
+        "systemd-ready": 9.46061719499994
+      }
+    ],
+    "initial_boot_seconds": 10.458892629500042,
+    "initial_activation_seconds": 1.304827034000482,
+    "initial_kernel_init_seconds": 0.27174401549928007,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/776qlgi26mmsbc2il84jgw79lgf01kgq-nixos-test-driver-user-mode-linux-gitdaemon-block-root-seccomp-direct/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-boot-results/10-direct-seccomp-trial3"
+    ]
+  },
+  {
+    "case": "direct-seccomp",
+    "trial": 1,
+    "warmup": false,
+    "wall_seconds": 46.856616233999375,
+    "user_cpu_seconds": 16.460589999999996,
+    "system_cpu_seconds": 31.93019000000004,
+    "cpu_seconds": 48.390780000000035,
+    "host_busy_cores": 1.0327416678647714,
+    "context_switches": 4287370,
+    "boots": [
+      {
+        "machine": "client",
+        "boot": 1,
+        "kernel-exec": 0.10589896399324061,
+        "kernel-init": 0.2602019339974504,
+        "stage2-activation-done": 1.2728003189986339,
+        "systemd-ready": 10.479141400996014
+      },
+      {
+        "machine": "client",
+        "boot": 2,
+        "kernel-exec": 0.10606739999639103,
+        "kernel-init": 0.19594713900005445,
+        "stage2-activation-done": 1.1977672459979658,
+        "systemd-ready": 9.047343405996799
+      },
+      {
+        "machine": "server",
+        "boot": 1,
+        "kernel-exec": 0.10566676899907179,
+        "kernel-init": 0.19723561700084247,
+        "stage2-activation-done": 1.2301011479939916,
+        "systemd-ready": 10.179635292995954
+      },
+      {
+        "machine": "server",
+        "boot": 2,
+        "kernel-exec": 0.10641983000095934,
+        "kernel-init": 0.44865635599853704,
+        "stage2-activation-done": 1.602343596998253,
+        "systemd-ready": 9.958226767004817
+      }
+    ],
+    "initial_boot_seconds": 10.329388346995984,
+    "initial_activation_seconds": 1.2514507334963128,
+    "initial_kernel_init_seconds": 0.22871877549914643,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/776qlgi26mmsbc2il84jgw79lgf01kgq-nixos-test-driver-user-mode-linux-gitdaemon-block-root-seccomp-direct/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-boot-results/11-direct-seccomp-trial1"
+    ]
+  },
+  {
+    "case": "block-ptrace",
+    "trial": 2,
+    "warmup": false,
+    "wall_seconds": 79.21812873300223,
+    "user_cpu_seconds": 24.987678999999986,
+    "system_cpu_seconds": 59.15166900000003,
+    "cpu_seconds": 84.13934800000001,
+    "host_busy_cores": 1.062122387207407,
+    "context_switches": 9418160,
+    "boots": [
+      {
+        "machine": "client",
+        "boot": 1,
+        "kernel-exec": 0.10577923499658937,
+        "kernel-init": 0.4147176030019182,
+        "stage2-activation-done": 8.149093781001284,
+        "systemd-ready": 20.913867032999406
+      },
+      {
+        "machine": "client",
+        "boot": 2,
+        "kernel-exec": 0.10577422799542546,
+        "kernel-init": 0.347352687997045,
+        "stage2-activation-done": 7.7466703959944425,
+        "systemd-ready": 18.683716296996863
+      },
+      {
+        "machine": "server",
+        "boot": 1,
+        "kernel-exec": 0.10623744500480825,
+        "kernel-init": 0.43511524100176757,
+        "stage2-activation-done": 8.156845511999563,
+        "systemd-ready": 20.838988203002373
+      },
+      {
+        "machine": "server",
+        "boot": 2,
+        "kernel-exec": 0.10601035400031833,
+        "kernel-init": 0.34507057800510665,
+        "stage2-activation-done": 7.410593623004388,
+        "systemd-ready": 18.035400870001467
+      }
+    ],
+    "initial_boot_seconds": 20.87642761800089,
+    "initial_activation_seconds": 8.152969646500424,
+    "initial_kernel_init_seconds": 0.4249164220018429,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/0z1d3alzgkmkl5c7bkyx2idzq61qzlh5-nixos-test-driver-user-mode-linux-gitdaemon-block-root/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-boot-results/12-block-ptrace-trial2"
+    ]
+  },
+  {
+    "case": "block-ptrace",
+    "trial": 1,
+    "warmup": false,
+    "wall_seconds": 95.26395952000166,
+    "user_cpu_seconds": 26.904832999999996,
+    "system_cpu_seconds": 63.45660699999996,
+    "cpu_seconds": 90.36143999999996,
+    "host_busy_cores": 0.9485375209606696,
+    "context_switches": 9464132,
+    "boots": [
+      {
+        "machine": "client",
+        "boot": 1,
+        "kernel-exec": 0.10565033699822379,
+        "kernel-init": 0.38328375299897743,
+        "stage2-activation-done": 8.051525530994695,
+        "systemd-ready": 20.42241271599778
+      },
+      {
+        "machine": "client",
+        "boot": 2,
+        "kernel-exec": 0.10614587099553319,
+        "kernel-init": 0.36463176099641714,
+        "stage2-activation-done": 10.066884961997857,
+        "systemd-ready": 23.959972586999356
+      },
+      {
+        "machine": "server",
+        "boot": 1,
+        "kernel-exec": 0.10614735900162486,
+        "kernel-init": 0.37481933399976697,
+        "stage2-activation-done": 7.926834775003954,
+        "systemd-ready": 20.32722991400078
+      },
+      {
+        "machine": "server",
+        "boot": 2,
+        "kernel-exec": 0.10630221600149525,
+        "kernel-init": 0.5288541580011952,
+        "stage2-activation-done": 8.348009783003363,
+        "systemd-ready": 22.293916367001657
+      }
+    ],
+    "initial_boot_seconds": 20.37482131499928,
+    "initial_activation_seconds": 7.9891801529993245,
+    "initial_kernel_init_seconds": 0.3790515434993722,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/0z1d3alzgkmkl5c7bkyx2idzq61qzlh5-nixos-test-driver-user-mode-linux-gitdaemon-block-root/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-boot-results/13-block-ptrace-trial1"
+    ]
+  },
+  {
+    "case": "block-seccomp",
+    "trial": 1,
+    "warmup": false,
+    "wall_seconds": 129.40711084099894,
+    "user_cpu_seconds": 34.54839300000003,
+    "system_cpu_seconds": 60.50343499999997,
+    "cpu_seconds": 95.051828,
+    "host_busy_cores": 0.7345178126786952,
+    "context_switches": 6719249,
+    "boots": [
+      {
+        "machine": "client",
+        "boot": 1,
+        "kernel-exec": 0.11449765099678189,
+        "kernel-init": 0.7487376639983268,
+        "stage2-activation-done": 18.223696557994117,
+        "systemd-ready": 53.875441195996245
+      },
+      {
+        "machine": "client",
+        "boot": 2,
+        "kernel-exec": 0.1071682330002659,
+        "kernel-init": 0.3579281880010967,
+        "stage2-activation-done": 7.62823469399882,
+        "systemd-ready": 18.039062627998646
+      },
+      {
+        "machine": "server",
+        "boot": 1,
+        "kernel-exec": 0.11717311400570907,
+        "kernel-init": 0.6544459390061093,
+        "stage2-activation-done": 16.252834256003553,
+        "systemd-ready": 54.162809592002304
+      },
+      {
+        "machine": "server",
+        "boot": 2,
+        "kernel-exec": 0.15821353999490384,
+        "kernel-init": 0.44541587799903937,
+        "stage2-activation-done": 8.748174205000396,
+        "systemd-ready": 17.111947068995505
+      }
+    ],
+    "initial_boot_seconds": 54.019125393999275,
+    "initial_activation_seconds": 17.238265406998835,
+    "initial_kernel_init_seconds": 0.701591801502218,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/9a1j76j62q3cw71ikyxx76hj8svp07ys-nixos-test-driver-user-mode-linux-gitdaemon-block-root-seccomp/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-boot-results/14-block-seccomp-trial1"
+    ]
+  },
+  {
+    "case": "direct-ptrace",
+    "trial": 3,
+    "warmup": false,
+    "wall_seconds": 69.91924285799905,
+    "user_cpu_seconds": 19.752184,
+    "system_cpu_seconds": 49.193400999999994,
+    "cpu_seconds": 68.945585,
+    "host_busy_cores": 0.9860745365910714,
+    "context_switches": 6884334,
+    "boots": [
+      {
+        "machine": "client",
+        "boot": 1,
+        "kernel-exec": 0.10667818200454349,
+        "kernel-init": 0.18101120999926934,
+        "stage2-activation-done": 1.7098936820038944,
+        "systemd-ready": 14.170768963005685
+      },
+      {
+        "machine": "client",
+        "boot": 2,
+        "kernel-exec": 0.10611259999859612,
+        "kernel-init": 0.19727796700317413,
+        "stage2-activation-done": 1.7970902209999622,
+        "systemd-ready": 13.568230203003623
+      },
+      {
+        "machine": "server",
+        "boot": 1,
+        "kernel-exec": 0.1059111050053616,
+        "kernel-init": 0.19916740000189748,
+        "stage2-activation-done": 1.6958627810017788,
+        "systemd-ready": 14.802814222006418
+      },
+      {
+        "machine": "server",
+        "boot": 2,
+        "kernel-exec": 0.10763718600355787,
+        "kernel-init": 0.20124539099924732,
+        "stage2-activation-done": 1.9954051550012082,
+        "systemd-ready": 16.87253142800182
+      }
+    ],
+    "initial_boot_seconds": 14.486791592506052,
+    "initial_activation_seconds": 1.7028782315028366,
+    "initial_kernel_init_seconds": 0.1900893050005834,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/2fivh1dr3d0xpd519mpf2dhk1k1zycdh-nixos-test-driver-user-mode-linux-gitdaemon-block-root-direct/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-boot-results/15-direct-ptrace-trial3"
+    ]
+  }
+]

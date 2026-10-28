@@ -1,6 +1,7 @@
 """User Mode Linux machines with a serial backdoor and hostfs exchange directory."""
 
 import datetime as dt
+import json
 import os
 import socket
 import subprocess
@@ -42,6 +43,23 @@ class UmlMachine(SerialMachine):
         self.serial_thread: threading.Thread | None = None
         self.connected = False
         self.full_console_log: list[str] = []
+        self.boot_number = 0
+        self.boot_started = 0.0
+        self.boot_trace = out_dir / f"{name}-boot.jsonl"
+
+    def trace_boot(self, event: str, message: str | None = None) -> None:
+        with self.boot_trace.open("a") as trace:
+            trace.write(
+                json.dumps(
+                    {
+                        "boot": self.boot_number,
+                        "event": event,
+                        "host_seconds": time.monotonic() - self.boot_started,
+                        "message": message,
+                    }
+                )
+                + "\n"
+            )
 
     def is_up(self) -> bool:
         return self.process is not None and self.process.poll() is None
@@ -50,6 +68,9 @@ class UmlMachine(SerialMachine):
         if self.is_up():
             return
         self.release()
+        self.boot_number += 1
+        self.boot_started = time.monotonic()
+        self.trace_boot("start")
         self.log("starting User Mode Linux")
         self.shell, guest = socket.socketpair()
         self.connected = False
@@ -75,6 +96,7 @@ class UmlMachine(SerialMachine):
                         raise TimeoutError(f"{self.name}: waiting for passt socket")
                     time.sleep(0.05)
                 device_args.append(f"virtio_uml.device={transport}:1")
+            self.trace_boot("kernel-exec")
             self.process = subprocess.Popen(
                 [
                     str(self.start_command),
@@ -104,6 +126,14 @@ class UmlMachine(SerialMachine):
                 line = raw_line.decode(errors="replace").rstrip()
                 self.full_console_log.append(line)
                 self.log_serial(line)
+                if "Run /" in line and " as init process" in line:
+                    self.trace_boot("kernel-init", line)
+                elif "uml-boot: " in line:
+                    self.trace_boot(line.split("uml-boot: ", 1)[1].strip(), line)
+                elif "Starting Switch Root..." in line:
+                    self.trace_boot("switch-root", line)
+                elif "Startup finished in " in line:
+                    self.trace_boot("systemd-ready", line)
 
         self.serial_thread = threading.Thread(target=read_console, daemon=True)
         self.serial_thread.start()

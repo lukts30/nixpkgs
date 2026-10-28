@@ -14,6 +14,39 @@ import tempfile
 import time
 
 
+def boot_timings(output):
+    boots = []
+    for path in sorted(output.glob("*-boot.jsonl")):
+        grouped = {}
+        for line in path.read_text().splitlines():
+            event = json.loads(line)
+            grouped.setdefault(event["boot"], []).append(event)
+        for number, events in sorted(grouped.items()):
+            timings = {}
+            for name in (
+                "kernel-exec",
+                "kernel-init",
+                "stage2-activation-done",
+                "systemd-ready",
+            ):
+                matches = [event for event in events if event["event"] == name]
+                if len(matches) != 1:
+                    raise RuntimeError(
+                        f"{path}, boot {number}: expected one {name}: {matches}"
+                    )
+                timings[name] = matches[0]["host_seconds"]
+            boots.append(
+                {
+                    "machine": path.name.removesuffix("-boot.jsonl"),
+                    "boot": number,
+                    **timings,
+                }
+            )
+    if not boots:
+        raise RuntimeError("driver produced no UML boot traces")
+    return boots
+
+
 def run(args, drivers, case, trial, index):
     output = args.output / f"{index:02d}-{case}-trial{trial}"
     output.mkdir()
@@ -42,6 +75,8 @@ def run(args, drivers, case, trial, index):
         after = resource.getrusage(resource.RUSAGE_CHILDREN)
         user = after.ru_utime - before.ru_utime
         system = after.ru_stime - before.ru_stime
+        boots = boot_timings(output)
+        initial = [boot for boot in boots if boot["boot"] == 1]
         row = {
             "case": case,
             "trial": trial,
@@ -53,6 +88,16 @@ def run(args, drivers, case, trial, index):
             "host_busy_cores": (user + system) / elapsed,
             "context_switches": (after.ru_nvcsw + after.ru_nivcsw)
             - (before.ru_nvcsw + before.ru_nivcsw),
+            "boots": boots,
+            "initial_boot_seconds": statistics.mean(
+                boot["systemd-ready"] for boot in initial
+            ),
+            "initial_activation_seconds": statistics.mean(
+                boot["stage2-activation-done"] for boot in initial
+            ),
+            "initial_kernel_init_seconds": statistics.mean(
+                boot["kernel-init"] for boot in initial
+            ),
             "exit_code": 0,
             "command": command,
         }
@@ -103,12 +148,17 @@ def main(args):
                 **{
                     key: statistics.median(r[key] for r in selected)
                     for key in (
+                        "initial_boot_seconds",
+                        "initial_activation_seconds",
+                        "initial_kernel_init_seconds",
                         "wall_seconds",
                         "cpu_seconds",
                         "host_busy_cores",
                         "context_switches",
                     )
                 },
+                "initial_boot_min": min(r["initial_boot_seconds"] for r in selected),
+                "initial_boot_max": max(r["initial_boot_seconds"] for r in selected),
                 "wall_min": min(r["wall_seconds"] for r in selected),
                 "wall_max": max(r["wall_seconds"] for r in selected),
             }

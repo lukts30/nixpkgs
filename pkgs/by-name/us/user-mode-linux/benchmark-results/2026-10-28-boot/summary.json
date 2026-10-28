@@ -1,0 +1,62 @@
+[
+  {
+    "case": "block-ptrace",
+    "trials": 3,
+    "initial_boot_seconds": 20.37482131499928,
+    "initial_activation_seconds": 7.9891801529993245,
+    "initial_kernel_init_seconds": 0.3790515434993722,
+    "wall_seconds": 79.21812873300223,
+    "cpu_seconds": 84.13934800000001,
+    "host_busy_cores": 1.0486544043876134,
+    "context_switches": 9418160,
+    "initial_boot_min": 19.627024068999162,
+    "initial_boot_max": 20.87642761800089,
+    "wall_min": 77.62210758799483,
+    "wall_max": 95.26395952000166
+  },
+  {
+    "case": "block-seccomp",
+    "trials": 3,
+    "initial_boot_seconds": 15.225145335498382,
+    "initial_activation_seconds": 5.905144382497383,
+    "initial_kernel_init_seconds": 0.4229490120014816,
+    "wall_seconds": 61.79487204599718,
+    "cpu_seconds": 63.82685600000001,
+    "host_busy_cores": 1.0287775661559897,
+    "context_switches": 6263927,
+    "initial_boot_min": 15.163778095498856,
+    "initial_boot_max": 54.019125393999275,
+    "wall_min": 61.2793591869995,
+    "wall_max": 129.40711084099894
+  },
+  {
+    "case": "direct-ptrace",
+    "trials": 3,
+    "initial_boot_seconds": 13.692396155503957,
+    "initial_activation_seconds": 1.7028782315028366,
+    "initial_kernel_init_seconds": 0.2215173920012603,
+    "wall_seconds": 59.32170182099799,
+    "cpu_seconds": 62.64522299999999,
+    "host_busy_cores": 1.0492817070576337,
+    "context_switches": 6828793,
+    "initial_boot_min": 13.535914825501095,
+    "initial_boot_max": 14.486791592506052,
+    "wall_min": 58.40580998200312,
+    "wall_max": 69.91924285799905
+  },
+  {
+    "case": "direct-seccomp",
+    "trials": 3,
+    "initial_boot_seconds": 10.332633240501309,
+    "initial_activation_seconds": 1.2514507334963128,
+    "initial_kernel_init_seconds": 0.22871877549914643,
+    "wall_seconds": 46.732623844000045,
+    "cpu_seconds": 48.22805599999998,
+    "host_busy_cores": 1.0327416678647714,
+    "context_switches": 4304996,
+    "initial_boot_min": 10.329388346995984,
+    "initial_boot_max": 10.458892629500042,
+    "wall_min": 46.64145989900135,
+    "wall_max": 46.856616233999375
+  }
+]

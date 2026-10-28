@@ -19,6 +19,8 @@ let
       --driver tmpfs-seccomp=${lib.getExe tests.gitdaemon-seccomp.driver} \
       --driver block-ptrace=${lib.getExe tests.gitdaemon-block-root.driver} \
       --driver block-seccomp=${lib.getExe tests.gitdaemon-block-root-seccomp.driver} \
+      --driver direct-ptrace=${lib.getExe tests.gitdaemon-direct.driver} \
+      --driver direct-seccomp=${lib.getExe tests.gitdaemon-direct-seccomp.driver} \
       --runtime "$runtime" "$@"
   '';
 in

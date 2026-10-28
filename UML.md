@@ -102,6 +102,7 @@ nix-build -A nixosTests.user-mode-linux.gitdaemon-seccomp.driverInteractive -o r
 # Repeat the prebuilt drivers sequentially, excluding Nix evaluation/build time.
 nix-build -A user-mode-linux.benchmarks.nixos -o result-uml-nixos-benchmark
 ./result-uml-nixos-benchmark/bin/uml-nixos-benchmark \
+  --cases tmpfs-ptrace,tmpfs-seccomp,block-ptrace,block-seccomp \
   --trials 3 --cpus 0,1,2,3,4,5,6,7 /tmp/uml-nixos-seccomp-results
 ```
 
@@ -125,12 +126,24 @@ By default, the NixOS runner uses a fresh **tmpfs root**, read-only
 **hostfs `/nix/store`**, and writable **hostfs `/tmp/shared`** for file transfers.
 The separate virtio test mounts a real guest block device, `/dev/vda`.
 
-Both NixOS UML root modes boot through **systemd initrd/stage 1**, then switch
-to the real root and run NixOS stage 2. This has been the runner's boot path
-from the start. By contrast, the nspawn test backend shares the host kernel
-and directly starts NixOS stage 2 inside its prepared root directory, without
-a guest initrd. Only the standalone BusyBox block-root tests below skip the
-initrd while booting their own UML kernel.
+The default boot mode uses **systemd initrd/stage 1** for either root type.
+Select `umlDefaults.virtualisation.uml.bootMode = "direct"` to skip the initrd;
+this enables the block-image root by default. The kernel mounts ext4 read-only,
+runs a small on-disk bootstrap (store mount, disk flush setup, fsck and early
+mounts), then enters the ordinary NixOS stage 2. Stage 2 activates the system and
+executes systemd as PID 1. This still boots a separate UML kernel. The nspawn
+backend shares the host kernel and starts stage 2 inside a prepared directory.
+
+```sh
+nix-build -A nixosTests.user-mode-linux.gitdaemon-direct -o result-uml-direct
+nix-build -A nixosTests.user-mode-linux.gitdaemon-direct-seccomp -o result-uml-direct-seccomp
+```
+
+Both variants reuse the existing Git daemon test with passt networking, file
+transfers and persistence across client/server restarts. See
+[the boot comparison](UML-BOOT-BENCHMARK.md) for traces, timings and rerun commands.
+Direct boot currently requires the ext4 block root and built-in root drivers;
+use initrd mode for a tmpfs root or custom stage-1 setup.
 
 ### NixOS tests with a block-image root
 
@@ -143,13 +156,12 @@ umlDefaults.virtualisation.uml.rootDisk = {
 };
 ```
 
-The driver copies a blank qcow2 seed into each machine's `root.qcow2` state file
+The driver copies a qcow2 seed containing only the direct-boot bootstrap into each machine's `root.qcow2` state file
 and starts **QEMU `-machine none -nodefaults`** to export it over vhost-user-blk.
-QMP checks that QEMU has no guest CPUs. NixOS still boots through its initrd and
-uses hostfs for `/nix/store` and `/tmp/shared`; the image contains the writable
-root, not a self-contained NixOS installation. The initrd enables writeback in
-the virtio disk configuration before mounting ext4, so guest flushes reach the
-buffered QEMU backend.
+QMP checks that QEMU has no guest CPUs. Both boot modes use hostfs for `/nix/store` and `/tmp/shared`; the image contains the writable
+root, not a self-contained NixOS installation. Initrd mode enables writeback
+before fsck and mounting ext4. Direct mode does so before fsck and remounting the
+root writable. This makes guest flushes reach the buffered QEMU backend.
 
 ```sh
 # Existing two-machine Git daemon test, now with block roots and passt.

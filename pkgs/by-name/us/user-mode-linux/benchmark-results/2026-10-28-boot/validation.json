@@ -1,0 +1,178 @@
+[
+  {
+    "case": "block-ptrace",
+    "trial": 0,
+    "warmup": true,
+    "exit_code": 0,
+    "mode_probe": "Checking that ptrace can change system call numbers...OK",
+    "successful_boots": 4,
+    "root_bootstrap_owner": "0:0",
+    "root_bootstrap_mode": "0755",
+    "zero_cpu_block_exports": 4
+  },
+  {
+    "case": "block-seccomp",
+    "trial": 0,
+    "warmup": true,
+    "exit_code": 0,
+    "mode_probe": "Checking that seccomp filters can be installed...OK",
+    "successful_boots": 4,
+    "root_bootstrap_owner": "0:0",
+    "root_bootstrap_mode": "0755",
+    "zero_cpu_block_exports": 4
+  },
+  {
+    "case": "direct-ptrace",
+    "trial": 0,
+    "warmup": true,
+    "exit_code": 0,
+    "mode_probe": "Checking that ptrace can change system call numbers...OK",
+    "successful_boots": 4,
+    "root_bootstrap_owner": "0:0",
+    "root_bootstrap_mode": "0755",
+    "zero_cpu_block_exports": 4
+  },
+  {
+    "case": "direct-seccomp",
+    "trial": 0,
+    "warmup": true,
+    "exit_code": 0,
+    "mode_probe": "Checking that seccomp filters can be installed...OK",
+    "successful_boots": 4,
+    "root_bootstrap_owner": "0:0",
+    "root_bootstrap_mode": "0755",
+    "zero_cpu_block_exports": 4
+  },
+  {
+    "case": "direct-seccomp",
+    "trial": 2,
+    "warmup": false,
+    "exit_code": 0,
+    "mode_probe": "Checking that seccomp filters can be installed...OK",
+    "successful_boots": 4,
+    "root_bootstrap_owner": "0:0",
+    "root_bootstrap_mode": "0755",
+    "zero_cpu_block_exports": 4
+  },
+  {
+    "case": "block-seccomp",
+    "trial": 2,
+    "warmup": false,
+    "exit_code": 0,
+    "mode_probe": "Checking that seccomp filters can be installed...OK",
+    "successful_boots": 4,
+    "root_bootstrap_owner": "0:0",
+    "root_bootstrap_mode": "0755",
+    "zero_cpu_block_exports": 4
+  },
+  {
+    "case": "direct-ptrace",
+    "trial": 1,
+    "warmup": false,
+    "exit_code": 0,
+    "mode_probe": "Checking that ptrace can change system call numbers...OK",
+    "successful_boots": 4,
+    "root_bootstrap_owner": "0:0",
+    "root_bootstrap_mode": "0755",
+    "zero_cpu_block_exports": 4
+  },
+  {
+    "case": "block-ptrace",
+    "trial": 3,
+    "warmup": false,
+    "exit_code": 0,
+    "mode_probe": "Checking that ptrace can change system call numbers...OK",
+    "successful_boots": 4,
+    "root_bootstrap_owner": "0:0",
+    "root_bootstrap_mode": "0755",
+    "zero_cpu_block_exports": 4
+  },
+  {
+    "case": "block-seccomp",
+    "trial": 3,
+    "warmup": false,
+    "exit_code": 0,
+    "mode_probe": "Checking that seccomp filters can be installed...OK",
+    "successful_boots": 4,
+    "root_bootstrap_owner": "0:0",
+    "root_bootstrap_mode": "0755",
+    "zero_cpu_block_exports": 4
+  },
+  {
+    "case": "direct-ptrace",
+    "trial": 2,
+    "warmup": false,
+    "exit_code": 0,
+    "mode_probe": "Checking that ptrace can change system call numbers...OK",
+    "successful_boots": 4,
+    "root_bootstrap_owner": "0:0",
+    "root_bootstrap_mode": "0755",
+    "zero_cpu_block_exports": 4
+  },
+  {
+    "case": "direct-seccomp",
+    "trial": 3,
+    "warmup": false,
+    "exit_code": 0,
+    "mode_probe": "Checking that seccomp filters can be installed...OK",
+    "successful_boots": 4,
+    "root_bootstrap_owner": "0:0",
+    "root_bootstrap_mode": "0755",
+    "zero_cpu_block_exports": 4
+  },
+  {
+    "case": "direct-seccomp",
+    "trial": 1,
+    "warmup": false,
+    "exit_code": 0,
+    "mode_probe": "Checking that seccomp filters can be installed...OK",
+    "successful_boots": 4,
+    "root_bootstrap_owner": "0:0",
+    "root_bootstrap_mode": "0755",
+    "zero_cpu_block_exports": 4
+  },
+  {
+    "case": "block-ptrace",
+    "trial": 2,
+    "warmup": false,
+    "exit_code": 0,
+    "mode_probe": "Checking that ptrace can change system call numbers...OK",
+    "successful_boots": 4,
+    "root_bootstrap_owner": "0:0",
+    "root_bootstrap_mode": "0755",
+    "zero_cpu_block_exports": 4
+  },
+  {
+    "case": "block-ptrace",
+    "trial": 1,
+    "warmup": false,
+    "exit_code": 0,
+    "mode_probe": "Checking that ptrace can change system call numbers...OK",
+    "successful_boots": 4,
+    "root_bootstrap_owner": "0:0",
+    "root_bootstrap_mode": "0755",
+    "zero_cpu_block_exports": 4
+  },
+  {
+    "case": "block-seccomp",
+    "trial": 1,
+    "warmup": false,
+    "exit_code": 0,
+    "mode_probe": "Checking that seccomp filters can be installed...OK",
+    "successful_boots": 4,
+    "root_bootstrap_owner": "0:0",
+    "root_bootstrap_mode": "0755",
+    "zero_cpu_block_exports": 4
+  },
+  {
+    "case": "direct-ptrace",
+    "trial": 3,
+    "warmup": false,
+    "exit_code": 0,
+    "mode_probe": "Checking that ptrace can change system call numbers...OK",
+    "successful_boots": 4,
+    "root_bootstrap_owner": "0:0",
+    "root_bootstrap_mode": "0755",
+    "zero_cpu_block_exports": 4
+  }
+]
