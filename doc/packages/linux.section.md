@@ -106,6 +106,85 @@ $ make -C $dev/lib/modules/*/build M=$(pwd)/drivers/net/ethernet/mellanox module
 
 :::
 
+## User Mode Linux {#sec-user-mode-linux}
+
+`pkgs.user-mode-linux` builds the upstream Linux kernel as a Linux userspace
+executable. It follows the source version of `pkgs.linux` and runs without root
+or KVM on x86-64 and i686 Linux hosts.
+
+From a Nixpkgs checkout, build the kernel and run the included BusyBox guest:
+
+```ShellSession
+$ nix-build -A user-mode-linux -o result-uml
+$ nix-build -A user-mode-linux.demo -o result-uml-demo
+$ ./result-uml-demo/bin/uml-demo
+```
+
+The demo boots an initramfs, checks module loading, and opens a shell. Exit the
+shell to power off. Guest changes are ephemeral. To run the automated boot,
+module, virtual disk, hostfs, and management console test:
+
+```ShellSession
+$ nix-build -A user-mode-linux.tests.boot -o result-uml-test
+$ cat result-uml-test/boot.log
+```
+
+For an existing raw ext4 root filesystem with a compatible guest userspace:
+
+```ShellSession
+$ ./result-uml/bin/linux mem=512M ubd0=rootfs.ext4 root=/dev/ubda rw con=null con0=fd:0,fd:1 ssl=null umid=my-guest
+```
+
+The root image must contain an init system. UML is not an ISA emulator: an
+x86-64 UML kernel needs an x86-64 guest userspace. The package enables UML block
+devices, hostfs, initramfs, ext4, IPv6, and vector network transports. See the
+[upstream UML guide](https://docs.kernel.org/virt/uml/user_mode_linux_howto_v2.html)
+for transport configuration and console options. `TMPDIR` must refer to a
+writable filesystem that permits executable mappings; set it explicitly if
+the host mounts `/tmp` with `noexec`.
+
+`pkgs.uml-utilities` provides `uml_mconsole`, `uml_moo`, `uml_mkcow`, `tunctl`,
+`uml_switch`, `uml_net`, and console helpers. For example, with the guest above
+running:
+
+```ShellSession
+$ nix-shell -I nixpkgs=. -p uml-utilities --run 'uml_mconsole my-guest version'
+```
+
+For port or xterm consoles, set `UML_PORT_HELPER` to
+`${pkgs.uml-utilities}/lib/uml/port-helper` in the host environment. The package
+does not install setuid helpers; network transports requiring host privileges
+need a separately configured host interface or appropriate permissions.
+
+### Architecture and modules {#sec-user-mode-linux-modules}
+
+The compiler's host platform describes the instruction set and ABI. Kbuild's
+`ARCH`, selected by `kernelArch`, describes the kernel port. Native x86-64 Linux
+normally uses `kernelArch = "x86_64"`; UML uses `kernelArch = "um"` with
+`SUBARCH=x86_64` or `SUBARCH=i386`, while keeping the corresponding host compiler.
+The architecture is passed through configuration, kernel compilation, and
+`kernel.commonMakeFlags`. `linuxPackagesFor` derives `kernelModuleMakeFlags`
+from those same flags.
+
+UML has the usual three kernel outputs:
+
+| Output | Contents |
+| --- | --- |
+| `user-mode-linux` | `bin/linux` and `System.map` |
+| `user-mode-linux.modules` | Modules under `lib/modules/<version>-uml` |
+| `user-mode-linux.dev` | Configured source/build trees and `vmlinux` for development |
+
+Copy the module output's `lib/modules` into the guest filesystem to use these
+modules in your own image. Host kernel modules cannot be loaded into UML, even
+when both kernels have the same upstream version and CPU architecture. Build
+external modules against `pkgs.linuxPackagesFor pkgs.user-mode-linux`, using its
+`kernelModuleMakeFlags` and the kernel's `moduleBuildDependencies`. The package's
+boot test builds a small external module against the installed `dev` output,
+then loads and unloads it inside the guest.
+
+This package provides a standalone UML kernel and a minimal demonstration
+guest. It does not provide a complete NixOS UML system configuration.
+
 ## Maintainer information {#sec-linux-kernel-maintainer-information}
 
 ### Updating kernels {#sec-linux-updates}

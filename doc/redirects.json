@@ -4842,6 +4842,12 @@
   "sec-linux-kernel": [
     "index.html#sec-linux-kernel"
   ],
+  "sec-user-mode-linux": [
+    "index.html#sec-user-mode-linux"
+  ],
+  "sec-user-mode-linux-modules": [
+    "index.html#sec-user-mode-linux-modules"
+  ],
   "sec-linux-kernel-maintainer-information": [
     "index.html#sec-linux-kernel-maintainer-information"
   ],
