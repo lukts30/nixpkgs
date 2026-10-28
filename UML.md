@@ -69,6 +69,7 @@ host-update and read-only mount checks.
 | | hostfs | virtio-fs |
 | --- | --- | --- |
 | Host setup | Direct host syscalls | `virtiofsd` plus Unix socket |
+| Shared guest RAM with a daemon | No daemon; host reads/writes fill UML's page cache | Yes; FD passing and `MAP_SHARED` for queues and I/O buffers |
 | Ownership in this test | Host UID/GID visible | Guest root mapped to the host user |
 | `user.*` xattrs | Unsupported | Supported with `--xattr` |
 | Read-only export | Guest read-only mount | Daemon `--readonly` also tested |
@@ -87,3 +88,18 @@ The test uses temporary directories, `--cache=auto`, UID/GID translation and
 `--sandbox=none`; root and user namespaces are unnecessary. Ordinary mmap works,
 but this UML transport has no virtio-fs DAX window. Performance and host/guest
 lock coordination have not been compared.
+
+**Shared RAM works independently of DAX.** A traced test confirmed that UML
+passes its RAM backing FD to virtiofsd using `VHOST_USER_SET_MEM_TABLE` and
+`SCM_RIGHTS`; virtiofsd mapped about 503 MiB of a 512 MiB guest with `MAP_SHARED`.
+The Unix socket carries setup and file descriptors; requests and data use shared
+memory. DAX would additionally map exported host file pages into a guest window.
+Hostfs instead uses host `pread`/`pwrite` calls and the guest page cache, including
+for ordinary guest `mmap`; it provides no equivalent DAX mapping.
+
+This Linux 6.18 UML backs guest RAM with an **anonymous temporary file under
+`TMPDIR`** (`O_TMPFILE`, with a create-and-unlink fallback). It prefers tmpfs when
+choosing a directory itself; a selected directory must permit executable mappings.
+`memfd_create()` is a modern alternative for anonymous shared RAM, with optional
+sealing and no directory dependency. It would be a reasonable choice for a new
+implementation, but is not required by vhost-user and is not used for RAM here.

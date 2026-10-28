@@ -207,6 +207,22 @@ extended attributes and read-only operation. Hostfs exposes host ownership
 and lacks xattr support; virtiofsd can translate IDs and forward `user.*`
 xattrs. Ordinary mmap works, but UML's transport provides no DAX window.
 
+The shared guest-memory transport does work: UML sends its RAM backing file
+descriptor with `VHOST_USER_SET_MEM_TABLE` over the Unix socket, and virtiofsd
+maps it with `MAP_SHARED` for virtqueues and I/O buffers. This is separate from
+DAX, which would map exported file pages into a dedicated guest window. Hostfs
+has no separate backend process or memory-sharing protocol: host `pread` and
+`pwrite` calls transfer data through UML's page cache. Guest applications can
+use ordinary `mmap` with either filesystem.
+
+Linux 6.18 UML backs RAM with an anonymous temporary file under `TMPDIR`, using
+`O_TMPFILE` or a create-and-unlink fallback. Without an environment override it
+prefers a tmpfs directory; the directory must allow executable mappings.
+`memfd_create()` is another way to supply anonymous shared-memory file
+descriptors, with optional seals and no directory dependency. It is a reasonable
+alternative for a new Linux implementation, but vhost-user does not require it
+and this UML RAM allocator does not use it.
+
 ```ShellSession
 $ nix-build -A user-mode-linux.tests.virtiofs -o result-uml-fs
 $ cat result-uml-fs/comparison.txt
