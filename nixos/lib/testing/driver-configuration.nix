@@ -36,7 +36,13 @@ in
       type = types.submodule {
         options = {
           vms = nodeConfigurationAttrs { };
-          umls = nodeConfigurationAttrs { };
+          umls = nodeConfigurationAttrs {
+            passt_start_script = lib.mkOption {
+              internal = true;
+              type = types.nullOr types.path;
+              default = null;
+            };
+          };
           containers = nodeConfigurationAttrs {
             vnc = lib.mkOption {
               internal = true;
@@ -87,6 +93,8 @@ in
       umls = lib.mapAttrs (name: value: {
         inherit name;
         start_script = lib.getExe value.system.build.uml;
+        passt_start_script =
+          if value.virtualisation.uml.networking.enable then lib.getExe value.system.build.umlPasst else null;
       }) config.umls;
       vms = lib.mapAttrs (name: value: {
         inherit name;

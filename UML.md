@@ -41,6 +41,36 @@ To adapt another service test, put its NixOS machine configurations under `umls`
 instead of `nodes` or `containers`, and reuse its `testScript`. See
 [the lighttpd wrapper](nixos/tests/user-mode-linux.nix).
 
+## Multi-machine tests with passt
+
+```sh
+# Reuse the existing two-machine Git daemon test over TCP; also check UDP
+# both ways and clone again after restarting the client and its passt process.
+nix-build -A nixosTests.user-mode-linux.gitdaemon -o result-uml-gitdaemon
+nix-build --check -A nixosTests.user-mode-linux.gitdaemon --no-out-link
+
+# Interactive driver, in the same isolated network setup.
+nix-build -A nixosTests.user-mode-linux.gitdaemon.driverInteractive -o result-uml-git-driver
+./result-uml-git-driver/bin/nixos-test-driver
+```
+
+Enable `umlDefaults.virtualisation.uml.networking.enable = true` when adapting
+a test. The runner starts one passt vhost-user backend per guest. Guests keep
+their usual test names and `192.168.<vlan>.<node>` addresses. Allowed TCP/UDP
+firewall ports and ranges are forwarded; add otherwise undeclared listeners via
+`virtualisation.uml.networking.extraTCPPorts` / `extraUDPPorts` on that guest.
+The wrapper's [source](nixos/tests/user-mode-linux-gitdaemon.nix) is an example.
+
+This needs **unprivileged user and network namespaces**, without root or KVM.
+Each invocation has a private network namespace containing its guest-address
+aliases and passt listeners. It has no external network route. Passt logs are
+saved as `<machine>-passt.log` in the test output directory.
+
+Supported scope: UML-only tests, one automatically addressed IPv4 interface per
+guest, all on one test VLAN. This is TCP/UDP forwarding, not an Ethernet switch:
+do not use it to validate ping, broadcast, DHCP, routing, VLAN isolation or
+arbitrary IP protocols. Networking stays opt-in; other UML tests use loopback.
+
 ## Storage and modules
 
 ```sh
@@ -54,7 +84,7 @@ The NixOS runner uses a fresh **tmpfs root**, read-only **hostfs `/nix/store`**,
 and writable **hostfs `/tmp/shared`** for file transfers. It needs no root disk
 image. The separate virtio test mounts a real guest block device, `/dev/vda`.
 
-Current runner limits: loopback networking only; no test VLANs, graphical input,
+Current runner limits: the networking scope above; no graphical input,
 QEMU monitor or SSH backdoor. The reused Grafana suite leaves Grafana using
 SQLite, even in its PostgreSQL/MariaDB cases.
 
@@ -126,8 +156,7 @@ nix-build -A user-mode-linux.tests.slirp.runner -o result-uml-backend-runner
 Start slirp4netns with `--target-type=bess`, or passt with `--vhost-user` and
 `--socket=/path/to/socket`. The tests configure `10.0.2.100/24`, gateway
 `10.0.2.2`, and only contact local test servers. Internet access and DNS are not
-covered. This enables standalone networking; the NixOS `umls` runner still has
-its existing loopback-only setup.
+covered. The NixOS `umls` runner can now opt into passt as described above.
 
 **QEMU without guest CPU execution:** the Xen term is *device model*
 (`xenpvh`/`-xen-attach`); it requires Xen interfaces. For UML, use standalone

@@ -23,6 +23,27 @@ let
     enableNspawn = config.containers != { };
   };
 
+  networkedUmls = lib.filter (node: node.virtualisation.uml.networking.enable) (
+    lib.attrValues config.umls
+  );
+  umlVlans = lib.unique (
+    lib.concatMap (
+      node: map (interface: interface.vlan) (lib.attrValues node.virtualisation.allInterfaces)
+    ) networkedUmls
+  );
+  # All host-side IPs and listeners live inside this test's private namespace.
+  # Namespace root is mapped to the invoking user; host privileges are unnecessary.
+  umlNetworkDriver = hostPkgs.writeShellScript "uml-network-driver" ''
+    exec ${hostPkgs.util-linux}/bin/unshare --user --map-root-user --net ${hostPkgs.writeShellScript "uml-network-namespace" ''
+      set -eu
+      ${hostPkgs.iproute2}/bin/ip link set lo up
+      ${lib.concatMapStringsSep "\n" (node: ''
+        ${hostPkgs.iproute2}/bin/ip address add ${lib.escapeShellArg "${node.networking.primaryIPAddress}/32"} dev lo
+      '') networkedUmls}
+      exec ${testDriver}/bin/nixos-test-driver "$@"
+    ''} "$@"
+  '';
+
   typeHints =
     let
       pythonizeName =
@@ -62,6 +83,10 @@ let
   withChecks = lib.warnIf config.skipLint "Linting is disabled";
 
   driver =
+    assert lib.assertMsg (
+      networkedUmls == [ ]
+      || (config.nodes == { } && config.containers == { } && lib.length umlVlans == 1)
+    ) "UML passt networking supports UML-only tests on a single VLAN.";
     hostPkgs.runCommand "nixos-test-driver-${config.name}"
       {
         # inherit testName; TODO (roberth): need this?
@@ -109,7 +134,9 @@ let
 
         cp "${config.driverConfiguration.test_script}" $out/test-script
 
-        ln -s ${testDriver}/bin/nixos-test-driver $out/bin/nixos-test-driver
+        ln -s ${
+          if networkedUmls == [ ] then "${testDriver}/bin/nixos-test-driver" else umlNetworkDriver
+        } $out/bin/nixos-test-driver
 
         wrapProgram $out/bin/nixos-test-driver \
           --add-flags "--config ${config.driverConfigurationFile}" \

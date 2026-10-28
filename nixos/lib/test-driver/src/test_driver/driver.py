@@ -42,10 +42,14 @@ class NodeConfiguration(BaseModel):
     vnc: NspawnVncConfiguration | None = None
 
 
+class UmlConfiguration(NodeConfiguration):
+    passt_start_script: Path | None = None
+
+
 class DriverConfiguration(BaseModel):
     vms: dict[str, NodeConfiguration]
     containers: dict[str, NodeConfiguration]
-    umls: dict[str, NodeConfiguration] = Field(default_factory=dict)
+    umls: dict[str, UmlConfiguration] = Field(default_factory=dict)
     vlans: list[int]
     global_timeout: dt.timedelta
     enable_ssh_backdoor: bool
@@ -235,6 +239,7 @@ class Driver:
             UmlMachine(
                 name=name,
                 start_command=uml_config.start_script,
+                passt_command=uml_config.passt_start_script,
                 keep_machine_state=self.keep_machine_state,
                 tmp_dir=tmp_dir,
                 callbacks=[self.check_polling_conditions],

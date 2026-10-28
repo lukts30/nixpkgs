@@ -1033,6 +1033,7 @@ in
   lightdm = runTest ./lightdm.nix;
   lighttpd = runTest ./lighttpd.nix;
   user-mode-linux = {
+    gitdaemon = runTestOn [ "x86_64-linux" ] ./user-mode-linux-gitdaemon.nix;
     lighttpd = runTestOn [ "x86_64-linux" ] ./user-mode-linux.nix;
     grafana = runTestOn [ "x86_64-linux" ] ./user-mode-linux-grafana.nix;
   };

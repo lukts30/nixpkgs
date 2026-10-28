@@ -5,6 +5,7 @@ import os
 import socket
 import subprocess
 import threading
+import time
 from collections.abc import Callable
 from pathlib import Path
 
@@ -23,9 +24,12 @@ class UmlMachine(SerialMachine):
         callbacks: list[Callable] | None,
         keep_machine_state: bool,
         start_command: Path,
+        passt_command: Path | None = None,
     ) -> None:
         super().__init__(out_dir, name, logger, tmp_dir, callbacks, keep_machine_state)
         self.start_command = start_command
+        self.passt_command = passt_command
+        self.passt_process: subprocess.Popen | None = None
         self.process: subprocess.Popen | None = None
         self.shell: socket.socket | None = None
         self.serial_thread: threading.Thread | None = None
@@ -44,10 +48,29 @@ class UmlMachine(SerialMachine):
         self.connected = False
         self.full_console_log = []
         try:
+            network_args = []
+            if self.passt_command is not None:
+                transport = self.state_dir / "passt.sock"
+                transport.unlink(missing_ok=True)
+                with (self.out_dir / f"{self.name}-passt.log").open("a") as log:
+                    self.passt_process = subprocess.Popen(
+                        [str(self.passt_command), str(transport)],
+                        stdout=log,
+                        stderr=subprocess.STDOUT,
+                    )
+                deadline = time.monotonic() + 10
+                while not transport.exists():
+                    if self.passt_process.poll() is not None:
+                        raise RuntimeError(f"{self.name}: passt exited; see passt log")
+                    if time.monotonic() > deadline:
+                        raise TimeoutError(f"{self.name}: waiting for passt socket")
+                    time.sleep(0.05)
+                network_args = [f"virtio_uml.device={transport}:1"]
             self.process = subprocess.Popen(
                 [
                     str(self.start_command),
                     f"ssl0=fd:{guest.fileno()},fd:{guest.fileno()}",
+                    *network_args,
                 ],
                 env=os.environ
                 | {
@@ -60,6 +83,9 @@ class UmlMachine(SerialMachine):
                 pass_fds=(guest.fileno(),),
                 start_new_session=True,
             )
+        except BaseException:
+            self.release()
+            raise
         finally:
             guest.close()
 
@@ -104,6 +130,15 @@ class UmlMachine(SerialMachine):
             if self.process.stdout:
                 self.process.stdout.close()
             self.process = None
+        if self.passt_process is not None:
+            if self.passt_process.poll() is None:
+                self.passt_process.terminate()
+            try:
+                self.passt_process.wait(timeout=10)
+            except subprocess.TimeoutExpired:
+                self.passt_process.kill()
+                self.passt_process.wait()
+            self.passt_process = None
         if self.shell is not None:
             self.shell.close()
             self.shell = None
