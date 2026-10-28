@@ -23,13 +23,14 @@ let
     makeFlags = (linuxPackagesFor kernel).kernelModuleMakeFlags;
     buildPhase = ''
       cp ${./test-module.c} uml_test.c
-      echo 'obj-m := uml_test.o' > Makefile
+      cp ${./test-module.rs} uml_rust_test.rs
+      echo 'obj-m := uml_test.o uml_rust_test.o' > Makefile
       make -C ${kernel.dev}/lib/modules/${kernel.modDirVersion}/build \
         M="$PWD" "''${makeFlags[@]}" modules
     '';
     installPhase = ''
       mkdir -p "$out"
-      cp uml_test.ko "$out/"
+      cp uml_test.ko uml_rust_test.ko "$out/"
     '';
     stripDebugList = [ "." ];
   };
@@ -52,6 +53,11 @@ let
     dmesg | grep -q 'UML external module loaded'
     rmmod uml_test
     dmesg | grep -q 'UML external module unloaded'
+
+    insmod ${testModule}/uml_rust_test.ko
+    dmesg | grep -Fq 'UML Rust module loaded: [42, 108]'
+    rmmod uml_rust_test
+    dmesg | grep -Fq 'UML Rust module unloaded: [42, 108]'
 
     if grep -q 'uml_test_block' /proc/cmdline; then
       mkdir -p /mnt/block /mnt/host
@@ -123,7 +129,9 @@ in
         mkfs.ext4 -q -d disk-data disk.img
 
         export TMPDIR="$PWD/runtime"
-        timeout 90 ${lib.getExe kernel} mem=256M initrd=${initrd}/initrd \
+        # With 512 MiB, UML modules can be placed above the signed 32-bit
+        # address range, exercising Rust's large code model on x86-64.
+        timeout 90 ${lib.getExe kernel} mem=512M initrd=${initrd}/initrd \
           con=null con0=fd:0,fd:1 ssl=null uml_dir="$PWD/runtime" umid=test \
           ubd0="$PWD/disk.img" uml_test_block uml_test_host="$PWD/host-data" \
           uml_test_mconsole > "$out/boot.log" 2>&1 &

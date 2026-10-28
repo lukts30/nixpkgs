@@ -20,12 +20,16 @@
     efiBootStub = false;
     ia32Emulation = false;
     netfilterRPFilter = false;
+    rust = true;
   };
 
   # Unlike a native kernel, UML links against the host C library.
   extraMakeFlags = [
     "CC=${lib.getExe' stdenv.cc "${stdenv.cc.targetPrefix}cc"}"
     "SUBARCH=${stdenv.hostPlatform.linuxArch}"
+    # The upstream bindgen target table only handles SUBARCH=x86, not the
+    # explicit x86_64/i386 values used to select the correct UML defconfig.
+    "BINDGEN_TARGET=${stdenv.hostPlatform.config}"
   ];
 
   modDirVersion = "${linux.modDirVersion}-uml";
@@ -39,6 +43,7 @@
     MODULE_SIG = yes;
     MODULE_SIG_ALL = yes;
     MODULE_SIG_KEY = freeform "";
+    RUST = yes;
     BLK_DEV_INITRD = yes;
     DEVTMPFS = yes;
     DEVTMPFS_MOUNT = yes;
@@ -61,6 +66,11 @@
 }).overrideAttrs
   (
     final: old: {
+      patches =
+        old.patches
+        ++ [ ./rust-uml-code-model.patch ]
+        ++ lib.optional (lib.versionOlder linux.version "6.19") ./rust-debugfs-32bit.patch;
+
       # glibc loads libgcc_s for pthread_cancel during UML shutdown.
       # Only link it into the dynamic kernel executable, not the freestanding
       # syscall stub which is also linked using CC.

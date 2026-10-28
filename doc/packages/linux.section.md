@@ -179,8 +179,19 @@ modules in your own image. Host kernel modules cannot be loaded into UML, even
 when both kernels have the same upstream version and CPU architecture. Build
 external modules against `pkgs.linuxPackagesFor pkgs.user-mode-linux`, using its
 `kernelModuleMakeFlags` and the kernel's `moduleBuildDependencies`. The package's
-boot test builds a small external module against the installed `dev` output,
-then loads and unloads it inside the guest.
+boot test builds external C and Rust modules against the installed `dev`
+output, then loads and unloads them inside the guest. The Rust test also
+exercises allocation through the kernel's Rust API.
+
+Rust support (`CONFIG_RUST=y`) is enabled on both x86-64 and i686 UML. External
+Rust modules use Kbuild, just like C modules: for a source file named
+`my_module.rs`, add `obj-m := my_module.o` to its Makefile. Use the Rust compiler
+from `kernel.moduleBuildDependencies` so that it matches the compiler used for
+the kernel and its Rust crate metadata. The kernel's `dev` output supplies
+those crates and procedural macros. Build the module with the flags described
+above, then load the resulting `my_module.ko` inside the guest. The
+[upstream Rust documentation](https://docs.kernel.org/rust/index.html) describes
+the kernel Rust APIs and development workflow.
 
 This package provides a standalone UML kernel and a minimal demonstration
 guest. It does not provide a complete NixOS UML system configuration.

@@ -1,0 +1,39 @@
+Linux 6.18's debugfs Rust bindings unconditionally use 64-bit atomics,
+which are unavailable on the 32-bit UML Rust target. Only implement the
+corresponding readers when the target provides those atomic types.
+
+Linux 6.19 replaces these native Rust atomics with kernel atomics in
+f74cf399e02e24c544b0bd4b1fe8fa2c5ae30b18, so this workaround is only
+needed for the older implementation.
+
+--- a/rust/kernel/debugfs/traits.rs
++++ b/rust/kernel/debugfs/traits.rs
+@@ -9,9 +9,10 @@
+ use core::fmt::{self, Debug, Formatter};
+ use core::str::FromStr;
+ use core::sync::atomic::{
+-    AtomicI16, AtomicI32, AtomicI64, AtomicI8, AtomicIsize, AtomicU16, AtomicU32, AtomicU64,
+-    AtomicU8, AtomicUsize, Ordering,
++    AtomicI16, AtomicI32, AtomicI8, AtomicIsize, AtomicU16, AtomicU32, AtomicU8, AtomicUsize, Ordering,
+ };
++#[cfg(target_has_atomic = "64")]
++use core::sync::atomic::{AtomicI64, AtomicU64};
+ 
+ /// A trait for types that can be written into a string.
+ ///
+@@ -91,12 +92,13 @@
+ impl_reader_for_atomic!(
+     (AtomicI16, i16),
+     (AtomicI32, i32),
+-    (AtomicI64, i64),
+     (AtomicI8, i8),
+     (AtomicIsize, isize),
+     (AtomicU16, u16),
+     (AtomicU32, u32),
+-    (AtomicU64, u64),
+     (AtomicU8, u8),
+     (AtomicUsize, usize)
+ );
++
++#[cfg(target_has_atomic = "64")]
++impl_reader_for_atomic!((AtomicI64, i64), (AtomicU64, u64));

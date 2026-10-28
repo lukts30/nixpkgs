@@ -1,0 +1,28 @@
+Rust modules must use relocations supported by UML's module loader. Match
+the C compiler's static relocation model and, on x86-64, large code model
+so that modules also load when mem=512M places them above 2 GiB. Keep the
+existing built-in Rust code settings; changing those as well triggers a
+kallsyms consistency failure when linking the UML executable.
+
+Related upstream fix proposal:
+https://www.mail-archive.com/linux-um@lists.infradead.org/msg09938.html
+
+--- a/arch/um/Makefile
++++ b/arch/um/Makefile
+@@ -32,6 +32,7 @@
+ 
+ ifdef CONFIG_64BIT
+ 	KBUILD_CFLAGS += -mcmodel=large
++	KBUILD_RUSTFLAGS_MODULE += -Ccode-model=large
+ endif
+ 
+ HOST_DIR := arch/$(HEADER_ARCH)
+@@ -62,7 +63,7 @@
+ 	-Din6addr_any=kernel_in6addr_any -Dstrrchr=kernel_strrchr \
+ 	-D__close_range=kernel__close_range
+ 
+-KBUILD_RUSTFLAGS += -Crelocation-model=pie
++KBUILD_RUSTFLAGS_KERNEL += -Crelocation-model=pie
+ 
+ KBUILD_AFLAGS += $(ARCH_INCLUDE)
+ 
