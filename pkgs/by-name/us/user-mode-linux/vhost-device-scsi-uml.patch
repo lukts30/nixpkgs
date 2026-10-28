@@ -1,0 +1,65 @@
+Subject: [PATCH] vhost-device-scsi: support UML queue and config setup
+
+UML's vhost-user transport uses 256 descriptors per queue. The backend's
+128-entry limit rejects SET_VRING_NUM before the Linux SCSI driver can probe.
+The queue implementation supports 256 entries; increasing the upper bound
+also continues to accept QEMU's default 128-entry queues.
+
+UML also forwards guest config writes directly, whereas QEMU handles them
+itself. Accept writes that preserve the fixed configuration (Linux writes
+the default sense and CDB sizes during probe), and reject changes without
+panicking. This does not add support for reconfiguring those sizes.
+
+diff --git a/vhost-device-scsi/src/vhu_scsi.rs b/vhost-device-scsi/src/vhu_scsi.rs
+--- a/vhost-device-scsi/src/vhu_scsi.rs
++++ b/vhost-device-scsi/src/vhu_scsi.rs
+@@ -209,7 +209,7 @@
+     }
+ 
+     fn max_queue_size(&self) -> usize {
+-        128 // qemu assumes this by default
++        256 // Accept UML's queues as well as QEMU's default of 128.
+     }
+ 
+     fn features(&self) -> u64 {
+@@ -311,9 +311,15 @@
+             .collect()
+     }
+ 
+-    fn set_config(&mut self, _offset: u32, _buf: &[u8]) -> std::result::Result<(), std::io::Error> {
+-        // QEMU handles config space itself
+-        panic!("Access to configuration space is not supported.");
++    fn set_config(&mut self, offset: u32, buf: &[u8]) -> std::result::Result<(), std::io::Error> {
++        if self.get_config(offset, buf.len() as u32) == buf {
++            Ok(())
++        } else {
++            Err(io::Error::new(
++                ErrorKind::Unsupported,
++                "changing the fixed SCSI configuration is not supported",
++            ))
++        }
+     }
+ 
+     fn exit_event(&self, _thread_index: usize) -> Option<EventFd> {
+@@ -615,6 +621,21 @@
+     }
+ 
+     #[test]
++    fn test_writing_fixed_config() {
++        let mut backend = VhostUserScsiBackend::new();
++        for offset in [20, 24] {
++            let value = backend.get_config(offset, 4);
++            backend.set_config(offset, &value).unwrap();
++            assert_eq!(backend.get_config(offset, 4), value);
++            assert_eq!(
++                backend.set_config(offset, &[0; 4]).unwrap_err().kind(),
++                io::ErrorKind::Unsupported
++            );
++        }
++        assert!(backend.set_config(1000, &[0]).is_err());
++    }
++
++    #[test]
+     fn test_reading_config() {
+         let backend = VhostUserScsiBackend::new();
+ 

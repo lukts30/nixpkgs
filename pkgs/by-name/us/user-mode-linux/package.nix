@@ -65,6 +65,11 @@
     VIRTIO_VSOCKETS = yes;
     FUSE_FS = yes;
     VIRTIO_FS = yes;
+    HW_RANDOM_VIRTIO = yes;
+    VIRTIO_CONSOLE = yes;
+    SCSI = yes;
+    BLK_DEV_SD = yes;
+    SCSI_VIRTIO = yes;
 
     # Run systemd services with their usual namespace and cgroup isolation.
     PID_NS = yes;
@@ -135,6 +140,7 @@
         tests = old.passthru.tests // {
           inherit (callPackage ./tests.nix { kernel = final.finalPackage; }) boot virtio;
           virtiofs = callPackage ./virtiofs-test.nix { kernel = final.finalPackage; };
+          devices = callPackage ./device-tests.nix { kernel = final.finalPackage; };
           qemuNetwork = callPackage ./qemu-bridge-test.nix { kernel = final.finalPackage; };
           inherit (callPackage ./block-root-test.nix { kernel = final.finalPackage; })
             blockRoot

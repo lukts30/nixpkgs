@@ -1,0 +1,164 @@
+Subject: [PATCH] vhost-device-console: retain unused receive descriptors
+
+Bulk input over UML stalls after a few bytes: the backend removes every
+available descriptor even when it has no data for it, and posts one used
+entry per byte instead of per descriptor. Process only the descriptors
+needed for pending data, complete each once, and keep notifications enabled
+without spinning on available buffers when the input FIFO is empty.
+Apply the same buffer retention to the control receive queue. Use an
+unbuffered duplicate of stdin so read-ahead cannot hide bytes from epoll.
+
+diff --git a/vhost-device-console/src/vhu_console.rs b/vhost-device-console/src/vhu_console.rs
+--- a/vhost-device-console/src/vhu_console.rs
++++ b/vhost-device-console/src/vhu_console.rs
+@@ -6,9 +6,10 @@
+ // SPDX-License-Identifier: Apache-2.0 or BSD-3-Clause
+ 
+ use std::{
++    fs::File,
+     io::{self, Read, Result as IoResult, Write},
+     net::TcpListener,
+-    os::fd::{AsRawFd, RawFd},
++    os::fd::{AsFd, AsRawFd, RawFd},
+     slice::from_raw_parts,
+     sync::{Arc, RwLock},
+ };
+@@ -67,6 +68,8 @@
+     EpollRemove,
+     #[error("Error creating epoll")]
+     EpollFdCreate,
++    #[error("Failed to duplicate console input")]
++    StdinClone,
+ }
+ 
+ impl From<Error> for io::Error {
+@@ -178,8 +181,15 @@
+             // Enable raw mode for local terminal if backend is nested
+             enable_raw_mode().expect("Raw mode error");
+ 
+-            let stdin_fd = io::stdin().as_raw_fd();
+-            let stdin: Box<dyn Read + Send + Sync> = Box::new(io::stdin());
++            // Stdin is buffered: read-ahead can hide bytes from epoll.
++            let input = File::from(
++                io::stdin()
++                    .as_fd()
++                    .try_clone_to_owned()
++                    .map_err(|_| Error::StdinClone)?,
++            );
++            let stdin_fd = input.as_raw_fd();
++            let stdin: Box<dyn Read + Send + Sync> = Box::new(input);
+             self.stdin = Some(stdin);
+ 
+             Self::epoll_register(self.epoll_fd.as_raw_fd(), stdin_fd, epoll::Events::EPOLLIN)
+@@ -229,10 +239,11 @@
+                     .write_obj::<u8>(response)
+                     .map_err(|_| Error::DescriptorWriteFailed)?;
+ 
+-                vring
+-                    .add_used(desc_chain.head_index(), writer.bytes_written() as u32)
+-                    .map_err(|_| Error::AddUsedElemFailed(QueueEvents::RX_QUEUE))?;
+             }
++            // Complete the descriptor once, after all of its bytes are written.
++            vring
++                .add_used(desc_chain.head_index(), writer.bytes_written() as u32)
++                .map_err(|_| Error::AddUsedElemFailed(QueueEvents::RX_QUEUE))?;
+         }
+ 
+         Ok(true)
+@@ -425,15 +436,21 @@
+ 
+     /// Process the messages in the vring and dispatch replies
+     fn process_rx_queue(&mut self, vring: &VringRwLock) -> Result<()> {
+-        let requests: Vec<_> = vring
+-            .get_mut()
+-            .get_queue_mut()
+-            .iter(self.mem.as_ref().unwrap().memory())
+-            .map_err(|_| Error::DescriptorNotFound)?
+-            .collect();
+-
+-        if self.process_rx_requests(requests, vring)? {
+-            // Send notification once all the requests are processed
++        let mut used = false;
++        // Leave unused receive buffers available for the next input event.
++        while self.rx_data_fifo.size() != 0 {
++            let request = vring
++                .get_mut()
++                .get_queue_mut()
++                .iter(self.mem.as_ref().unwrap().memory())
++                .map_err(|_| Error::DescriptorNotFound)?
++                .next();
++            let Some(request) = request else {
++                break;
++            };
++            used |= self.process_rx_requests(vec![request], vring)?;
++        }
++        if used {
+             vring
+                 .signal_used_queue()
+                 .map_err(|_| Error::NotificationFailed)?;
+@@ -461,15 +478,21 @@
+ 
+     /// Process the messages in the vring and dispatch replies
+     fn process_ctrl_rx_queue(&mut self, vring: &VringRwLock) -> Result<()> {
+-        let requests: Vec<_> = vring
+-            .get_mut()
+-            .get_queue_mut()
+-            .iter(self.mem.as_ref().unwrap().memory())
+-            .map_err(|_| Error::DescriptorNotFound)?
+-            .collect();
+-
+-        if self.process_ctrl_rx_requests(requests, vring)? {
+-            // Send notification once all the requests are processed
++        let mut used = false;
++        // Leave unused receive buffers available for the next input event.
++        while self.rx_ctrl_fifo.size() != 0 {
++            let request = vring
++                .get_mut()
++                .get_queue_mut()
++                .iter(self.mem.as_ref().unwrap().memory())
++                .map_err(|_| Error::DescriptorNotFound)?
++                .next();
++            let Some(request) = request else {
++                break;
++            };
++            used |= self.process_ctrl_rx_requests(vec![request], vring)?;
++        }
++        if used {
+             vring
+                 .signal_used_queue()
+                 .map_err(|_| Error::NotificationFailed)?;
+@@ -798,6 +821,7 @@
+                         if self.rx_data_fifo.size() != 0 {
+                             self.process_rx_queue(vring)
+                         } else {
++                            vring.enable_notification().unwrap();
+                             break;
+                         }
+                     }
+@@ -809,6 +833,7 @@
+                         if self.ready && (self.rx_ctrl_fifo.size() != 0) {
+                             self.process_ctrl_rx_queue(vring)
+                         } else {
++                            vring.enable_notification().unwrap();
+                             break;
+                         }
+                     }
+@@ -823,7 +848,17 @@
+                     }
+                     other => Err(Error::HandleEventUnknown(other)),
+                 }?;
+-                if !vring.enable_notification().unwrap() {
++                let retry = vring.enable_notification().unwrap();
++                let pending = match device_event {
++                    QueueEvents::RX_QUEUE | QueueEvents::BACKEND_RX_EFD => {
++                        self.rx_data_fifo.size() != 0
++                    }
++                    QueueEvents::CTRL_RX_QUEUE | QueueEvents::BACKEND_CTRL_RX_EFD => {
++                        self.ready && self.rx_ctrl_fifo.size() != 0
++                    }
++                    _ => true,
++                };
++                if !retry || !pending {
+                     break;
+                 }
+             }

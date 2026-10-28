@@ -264,6 +264,63 @@ Start slirp4netns with `--target-type=bess`, or passt with `--vhost-user` and
 `10.0.2.2`, and only contact local test servers. Internet access and DNS are not
 covered. The NixOS `umls` runner can now opt into passt as described above.
 
+### Non-network vhost-user devices
+
+```sh
+nix-build -A user-mode-linux.tests.devices -o result-uml-devices
+cat result-uml-devices/result.json
+
+# Rerun directly, retaining logs outside the Nix build sandbox.
+nix-build -A user-mode-linux.tests.devices.runner -o result-uml-device-runner
+./result-uml-device-runner/bin/uml-device-test /tmp/uml-device-results
+```
+
+This test attaches three rust-vmm backends to one UML guest, without networking,
+root, KVM or host device passthrough. It uses a small BusyBox/Python initramfs,
+with hostfs only for test coordination and logs.
+
+| Backend | Virtio ID / guest device | Checks |
+| --- | --- | --- |
+| `vhost-device-rng` | `4`, `/dev/hwrng` | Select the virtio RNG; read 64 KiB of nonconstant data from host `/dev/urandom` |
+| `vhost-device-console` | `3`, `/dev/hvc0` | Compare 64 KiB of ASCII data in each direction through a host pseudo-terminal |
+| `vhost-device-scsi` | `8`, `/dev/sda` and `/dev/sdb` | Discover two 32 MiB LUNs, mount ext4, compare 256 KiB payload hashes, reject writable opens, verify host images unchanged |
+
+UML uses 256-entry virtqueues. Console needs `--max-queue-size=256`; SCSI
+needs the included [compatibility patch](pkgs/by-name/us/user-mode-linux/vhost-device-scsi-uml.patch)
+to raise its 128-entry limit and accept writes that preserve its fixed device
+configuration. Without these fixes, device probe fails; the SCSI backend also
+panics when UML forwards Linux's configuration writes. QEMU normally handles
+those writes itself. The test builds all three backends from the same pinned
+workspace as `vhost-device-vsock` (`vhost-device-vsock-v0.3.0`).
+
+Console also needs the included [receive-queue fix](pkgs/by-name/us/user-mode-linux/vhost-device-console-rx.patch):
+the pinned backend consumes unused receive descriptors and completes each
+descriptor once per byte. The unpatched bulk transfer stalled after 108 bytes.
+The patch retains unused buffers, completes each descriptor once and preserves
+event-index notifications for subsequent input. It also uses unbuffered stdin:
+Rust's buffered stdin could otherwise retain the final bytes without another
+epoll event. The full 64 KiB transfer in both directions passes with these fixes.
+Verified in the Nix sandbox and with the standalone runner as a normal user.
+All 76 backend unit tests, UML C/Rust module loading and the NixOS block-root
+Git daemon networking regression also pass.
+
+Limits: the SCSI backend supports **read-only raw images**, not qcow2 or writes;
+use the existing QEMU block backend for those. The nested console reserves
+Ctrl-C and this pinned version expects UTF-8 guest output, so this is a terminal
+test, not a binary serial-channel guarantee. The RNG check verifies delivery,
+not entropy quality. The new kernel enables `HW_RANDOM_VIRTIO`, `VIRTIO_CONSOLE`,
+`SCSI`, `BLK_DEV_SD` and `SCSI_VIRTIO`.
+
+Virtio-sound remains untested: Linux 6.18's `SOUND` requires `HAS_IOMEM` or
+`INDIRECT_IOMEM`, neither enabled in this UML configuration. QEMU's standalone
+`vhost-user-input` needs a host evdev source; no host keyboard or mouse is
+attached here. GPU, sound and input need separate tests rather than assuming
+that their vhost-user sockets alone make them usable.
+
+Backend references: [RNG](https://github.com/rust-vmm/vhost-device/tree/vhost-device-vsock-v0.3.0/vhost-device-rng),
+[console](https://github.com/rust-vmm/vhost-device/tree/vhost-device-vsock-v0.3.0/vhost-device-console),
+[SCSI](https://github.com/rust-vmm/vhost-device/tree/vhost-device-vsock-v0.3.0/vhost-device-scsi).
+
 ### QEMU networking without a guest CPU
 
 ```sh
@@ -291,9 +348,9 @@ Linux's virtio-net driver rejects. The patch removes the unsupported feature.
 (`xenpvh`/`-xen-attach`); it requires Xen interfaces. For UML, use standalone
 **vhost-user backends**, such as the already tested `qemu-storage-daemon`,
 virtiofsd, passt, and rust-vmm's vsock daemon. QEMU's `-device vhost-user-*`
-options are frontend consumers, not device exporters. Other rust-vmm/QEMU
-backends (RNG, console, sound, GPU, input, SCSI, etc.) need their guest drivers
-and protocol features checked individually; they have not all been tested here.
+options are frontend consumers, not device exporters. RNG, console and SCSI
+are covered above; other backends still need their guest drivers and protocol
+features checked individually.
 
 Arbitrary emulated PCI devices use a different interface: QEMU has experimental
 `x-remote`/`x-vfio-user-server` support. UML's `UML_PCI_OVER_VFIO` accesses host
@@ -311,7 +368,7 @@ connection to arbitrary QEMU PCI device models in this branch.
 | [Open vSwitch with DPDK](https://docs.openvswitch.org/en/latest/topics/dpdk/vhost-user/) | Network switching with vhost-user ports |
 | [rust-vmm vhost-device](https://github.com/rust-vmm/vhost-device) | Vsock, RNG, console, sound, GPU, input and other device daemons |
 
-Of these, only rust-vmm's vsock backend has been exercised with UML here.
+Of these, rust-vmm's vsock, RNG, console and SCSI backends are exercised here.
 Each additional backend needs matching guest drivers, compatible feature
 negotiation, and the correct socket role. UML connects as a socket client;
 Open vSwitch's preferred `dpdkvhostuserclient` mode also connects, so it cannot
