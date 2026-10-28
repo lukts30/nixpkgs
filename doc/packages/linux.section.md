@@ -185,6 +185,43 @@ $ cat result-uml-virtio/boot.log
 $ cat result-uml-virtio/qcow2-check.log
 ```
 
+The kernel also enables `CONFIG_FUSE_FS` and `CONFIG_VIRTIO_FS`. To share a
+directory with virtio-fs, start `virtiofsd` on the host. For a directory owned
+by your user, this unprivileged example maps guest root to your host UID/GID:
+
+```sh
+virtiofsd --socket-path=/tmp/uml-fs.sock --shared-dir="$PWD/share" \
+  --tag=uml-share --sandbox=none --inode-file-handles=never --xattr \
+  --translate-uid="map:0:$(id -u):1" --translate-gid="map:0:$(id -g):1"
+```
+
+Add `virtio_uml.device=/tmp/uml-fs.sock:26` to the UML command line, then run
+`mount -t virtiofs uml-share /mnt` in the guest. The device ID is `26` and
+`--tag` advertises the mount tag through vhost-user configuration. The daemon
+accesses the directory as your host user; this example disables its additional
+namespace/chroot sandbox. Add `--readonly` to enforce a read-only export.
+
+The filesystem test compares virtio-fs with hostfs: reads/writes, shared mmap,
+links, rename, permissions, guest-process locking, host updates, ownership,
+extended attributes and read-only operation. Hostfs exposes host ownership
+and lacks xattr support; virtiofsd can translate IDs and forward `user.*`
+xattrs. Ordinary mmap works, but UML's transport provides no DAX window.
+
+```ShellSession
+$ nix-build -A user-mode-linux.tests.virtiofs -o result-uml-fs
+$ cat result-uml-fs/comparison.txt
+```
+
+Nix's build sandbox blocks xattr syscalls, so the test records whether they
+are available on the host. To exercise xattrs as well, run it outside the Nix
+build sandbox on a filesystem supporting them:
+
+```ShellSession
+$ nix-build -A user-mode-linux.tests.virtiofs.runner -o result-uml-fs-runner
+$ ./result-uml-fs-runner/bin/uml-virtiofs-test /tmp/uml-fs-results
+$ cat /tmp/uml-fs-results/comparison.txt
+```
+
 ### Architecture and modules {#sec-user-mode-linux-modules}
 
 The compiler's host platform describes the instruction set and ABI. Kbuild's

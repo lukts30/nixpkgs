@@ -46,6 +46,8 @@ instead of `nodes` or `containers`, and reuse its `testScript`. See
 ```sh
 nix-build -A user-mode-linux.tests.boot    # Includes C and Rust module loading.
 nix-build -A user-mode-linux.tests.virtio  # Read/write qcow2 via a vhost-user Unix socket.
+nix-build -A user-mode-linux.tests.virtiofs -o result-uml-fs
+cat result-uml-fs/comparison.txt
 ```
 
 The NixOS runner uses a fresh **tmpfs root**, read-only **hostfs `/nix/store`**,
@@ -55,3 +57,33 @@ image. The separate virtio test mounts a real guest block device, `/dev/vda`.
 Current runner limits: loopback networking only; no test VLANs, graphical input,
 QEMU monitor or SSH backdoor. The reused Grafana suite leaves Grafana using
 SQLite, even in its PostgreSQL/MariaDB cases.
+
+## Virtio-fs versus hostfs
+
+Virtio-fs works over a vhost-user Unix socket: start `virtiofsd` with
+`--tag=uml-share`, add `virtio_uml.device=/path/to/socket:26` to UML, then run
+`mount -t virtiofs uml-share /mnt` in the guest. Both filesystems passed the
+same read/write, shared mmap, link, rename, chmod, guest-process locking,
+host-update and read-only mount checks.
+
+| | hostfs | virtio-fs |
+| --- | --- | --- |
+| Host setup | Direct host syscalls | `virtiofsd` plus Unix socket |
+| Ownership in this test | Host UID/GID visible | Guest root mapped to the host user |
+| `user.*` xattrs | Unsupported | Supported with `--xattr` |
+| Read-only export | Guest read-only mount | Daemon `--readonly` also tested |
+| NixOS UML runner | Used for store and file exchange | Available in kernel; runner still uses hostfs |
+
+Nix's build sandbox blocks xattrs. Run the same test as your normal user to
+exercise them on a host filesystem that supports them:
+
+```sh
+nix-build -A user-mode-linux.tests.virtiofs.runner -o result-uml-fs-runner
+./result-uml-fs-runner/bin/uml-virtiofs-test /tmp/uml-fs-results
+cat /tmp/uml-fs-results/comparison.txt
+```
+
+The test uses temporary directories, `--cache=auto`, UID/GID translation and
+`--sandbox=none`; root and user namespaces are unnecessary. Ordinary mmap works,
+but this UML transport has no virtio-fs DAX window. Performance and host/guest
+lock coordination have not been compared.

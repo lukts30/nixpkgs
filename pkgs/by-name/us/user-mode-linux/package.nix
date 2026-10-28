@@ -60,6 +60,8 @@
     # UML exposes virtio devices directly over vhost-user Unix sockets.
     VIRTIO_UML = yes;
     VIRTIO_BLK = yes;
+    FUSE_FS = yes;
+    VIRTIO_FS = yes;
 
     # Run systemd services with their usual namespace and cgroup isolation.
     PID_NS = yes;
@@ -127,6 +129,7 @@
       passthru = old.passthru // {
         tests = old.passthru.tests // {
           inherit (callPackage ./tests.nix { kernel = final.finalPackage; }) boot virtio;
+          virtiofs = callPackage ./virtiofs-test.nix { kernel = final.finalPackage; };
         };
         inherit (callPackage ./tests.nix { kernel = final.finalPackage; }) demo;
       };
