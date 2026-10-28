@@ -134,6 +134,33 @@ choosing a directory itself; a selected directory must permit executable mapping
 sealing and no directory dependency. It would be a reasonable choice for a new
 implementation, but is not required by vhost-user and is not used for RAM here.
 
+### Efficiency and double caching
+
+For ordinary buffered file I/O in this UML kernel:
+
+| Configuration | Guest file-data cache | Host file-data cache |
+| --- | --- | --- |
+| hostfs | Yes | Yes |
+| virtio-fs, `--cache=auto` or `always` | Yes | Yes |
+| virtio-fs, `--cache=never` or `metadata` | Bypassed for regular-file reads/writes | Yes |
+
+Hostfs fills guest cache pages through host `pread` and writes them back through
+`pwrite` (`fs/hostfs/hostfs_kern.c` and `hostfs_user.c`). Virtio-fs ordinarily
+fills guest FUSE cache pages through virtqueues and virtiofsd. Both paths can
+therefore cache the same file data twice. Mapping guest RAM into virtiofsd does
+not copy that RAM again, but it also does not merge the two filesystem caches.
+UML currently has no DAX window to share the exported file's host pages directly.
+
+Hostfs has the shorter path and no daemon/virtqueue overhead, so I expect it to
+be cheaper for many UML workloads; this is an architectural expectation, **not
+a measured performance result**. Virtio-fs provides more filesystem features and
+cache controls. Bypassing guest caching can save memory but makes repeated reads
+go through the daemon. `--cache=never --allow-mmap` needs special care: enabling
+mmap reintroduces guest-cached mappings and requires exclusive access according
+to virtiofsd. It is not a blanket solution to duplicate caching for executable
+files. See [virtiofsd cache policies](https://virtio-fs.gitlab.io/virtiofsd/doc/virtiofsd/passthrough/enum.CachePolicy.html)
+and its [mmap option](https://gitlab.com/virtio-fs/virtiofsd#usage).
+
 ## Network and device backends
 
 These standalone UML tests passed without root or KVM:
@@ -195,6 +222,23 @@ Arbitrary emulated PCI devices use a different interface: QEMU has experimental
 `/dev/vfio` devices; it is not a vfio-user socket client. UML also has experimental
 PCI-over-virtio with an unassigned device ID. Neither provides a ready-made
 connection to arbitrary QEMU PCI device models in this branch.
+
+### Other vhost-user projects
+
+| Project | Backend types |
+| --- | --- |
+| [crosvm](https://www.crosvm.dev/book/devices/vhost_user.html) | Standalone virtio backends via `crosvm devices`, including block and net |
+| [SPDK](https://spdk.io/doc/vhost.html) | Polling storage backends for virtio-blk and virtio-scsi |
+| [DPDK](https://doc.dpdk.org/guides/prog_guide/vhost_lib.html) | vhost library and network backend examples |
+| [Open vSwitch with DPDK](https://docs.openvswitch.org/en/latest/topics/dpdk/vhost-user/) | Network switching with vhost-user ports |
+| [rust-vmm vhost-device](https://github.com/rust-vmm/vhost-device) | Vsock, RNG, console, sound, GPU, input and other device daemons |
+
+Of these, only rust-vmm's vsock backend has been exercised with UML here.
+Each additional backend needs matching guest drivers, compatible feature
+negotiation, and the correct socket role. UML connects as a socket client;
+Open vSwitch's preferred `dpdkvhostuserclient` mode also connects, so it cannot
+be plugged directly into UML's current transport. SPDK's polling also trades
+host CPU time for latency/throughput. These are not interchangeable drop-ins.
 
 References: [slirp4netns BESS mode](https://github.com/rootless-containers/slirp4netns/blob/v1.3.6/slirp4netns.1.md#bess-mode-for-user-mode-linux),
 [rust-vmm devices](https://github.com/rust-vmm/vhost-device),
