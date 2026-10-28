@@ -4,7 +4,8 @@
   buildLinux,
   callPackage,
   linux,
-}:
+  ...
+}@args:
 
 (buildLinux {
   pname = "user-mode-linux";
@@ -12,6 +13,8 @@
   kernelArch = "um";
   target = "linux";
   buildDTBs = false;
+  kernelPatches = args.kernelPatches or [ ];
+  randstructSeed = args.randstructSeed or "";
 
   # UML has its own devices and defaults, independent of the host's ISA.
   enableCommonConfig = false;
@@ -21,7 +24,8 @@
     ia32Emulation = false;
     netfilterRPFilter = false;
     rust = true;
-  };
+  }
+  // (args.features or { });
 
   # Unlike a native kernel, UML links against the host C library.
   extraMakeFlags = [
@@ -56,6 +60,24 @@
     # UML exposes virtio devices directly over vhost-user Unix sockets.
     VIRTIO_UML = yes;
     VIRTIO_BLK = yes;
+
+    # Run systemd services with their usual namespace and cgroup isolation.
+    PID_NS = yes;
+    USER_NS = yes;
+    MEMCG = yes;
+    CGROUP_PIDS = yes;
+    BPF_SYSCALL = yes;
+    CGROUP_BPF = yes;
+    TMPFS_POSIX_ACL = yes;
+    EXT4_FS_POSIX_ACL = yes;
+    EXT4_FS_SECURITY = yes;
+    SECURITY = yes;
+    SECURITYFS = yes;
+    FANOTIFY = yes;
+    AUTOFS_FS = yes;
+    CRYPTO_USER_API_HASH = yes;
+    CRYPTO_HMAC = yes;
+    CRYPTO_SHA256 = yes;
   };
 
   extraMeta = {

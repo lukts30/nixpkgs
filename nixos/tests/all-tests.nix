@@ -1032,6 +1032,10 @@ in
   lidarr = runTest ./lidarr.nix;
   lightdm = runTest ./lightdm.nix;
   lighttpd = runTest ./lighttpd.nix;
+  user-mode-linux = {
+    lighttpd = runTestOn [ "x86_64-linux" ] ./user-mode-linux.nix;
+    grafana = runTestOn [ "x86_64-linux" ] ./user-mode-linux-grafana.nix;
+  };
   limesurvey = runTest ./limesurvey.nix;
   limine = import ./limine { inherit runTest; };
   linkding = runTest ./web-apps/linkding.nix;

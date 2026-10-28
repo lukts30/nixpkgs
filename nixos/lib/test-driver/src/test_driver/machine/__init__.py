@@ -1019,7 +1019,120 @@ class BaseMachine(ABC):
             self.succeed(make_command(["cp", "-r", vm_intermediate, vm_target]))
 
 
-class QemuMachine(BaseMachine):
+class SerialMachine(BaseMachine):
+    """Machines using the NixOS serial backdoor shell protocol."""
+
+    shell: socket.socket | None
+    connected: bool
+
+    def _next_newline_closed_block_from_shell(self) -> str:
+        assert self.shell
+        output_buffer = []
+        while True:
+            # This receives up to 4096 bytes from the socket
+            chunk = self.shell.recv(4096)
+            if not chunk:
+                # Probably a broken pipe, return the output we have
+                break
+
+            decoded = chunk.decode()
+            output_buffer += [decoded]
+            if decoded[-1] == "\n":
+                break
+        return "".join(output_buffer)
+
+    def _execute(
+        self,
+        command: str,
+        check_return: bool = True,
+        check_output: bool = True,
+        timeout: dt.timedelta | None = dt.timedelta(minutes=15),
+    ) -> tuple[int, str]:
+        self.connect()
+
+        # Always run command with shell opts
+        command = f"set -euo pipefail; {command}"
+
+        timeout_str = ""
+        if timeout is not None:
+            timeout_str = f"timeout {timeout.total_seconds()}"
+
+        # While sh is bash on NixOS, this is not the case for every distro.
+        # We explicitly call bash here to allow for the driver to boot other distros as well.
+        out_command = (
+            f"{timeout_str} bash -c {shlex.quote(command)} | (base64 -w 0; echo)\n"
+        )
+
+        assert self.shell
+        self.shell.send(out_command.encode())
+
+        if not check_output:
+            return (-2, "")
+
+        # Get the output
+        output = base64.b64decode(self._next_newline_closed_block_from_shell())
+
+        if not check_return:
+            return (-1, output.decode())
+
+        # Get the return code
+        self.shell.send(b"echo ${PIPESTATUS[0]}\n")
+        rc = int(self._next_newline_closed_block_from_shell().strip())
+
+        return (rc, output.decode(errors="replace"))
+
+    def connect(self) -> None:
+        """
+        Wait for a connection to the guest root shell
+        """
+
+        def shell_ready(timeout: dt.timedelta) -> bool:
+            """We sent some data from the backdoor service running on the guest
+            to indicate that the backdoor shell is ready.
+            As soon as we read some data from the socket here, we assume that
+            our root shell is operational.
+            """
+            assert self.shell
+            (ready, _, _) = select.select([self.shell], [], [], timeout.total_seconds())
+            return bool(ready)
+
+        if self.connected:
+            return
+
+        with self.nested("waiting for the VM to finish booting"):
+            self.start()
+
+            assert self.shell
+
+            tic = time.time()
+
+            for _ in range(10):
+                if shell_ready(timeout=dt.timedelta(seconds=30)):
+                    break
+                self.log("Guest root shell did not produce any data yet...")
+                self.log(
+                    "  To debug, enter the VM and run 'systemctl status backdoor.service'."
+                )
+            else:
+                raise RuntimeError("Shell did not start in time")
+
+            while True:
+                chunk = self.shell.recv(1024)
+                if len(chunk) == 0:
+                    raise RuntimeError("Shell disconnected")
+                self.log(f"Guest shell says: {chunk!r}")
+                # NOTE: for this to work, nothing must be printed after this line!
+                if b"Spawning backdoor root shell..." in chunk:
+                    break
+
+            toc = time.time()
+
+            self.log("connected to guest root shell")
+            self.log(f"(connecting took {toc - tic:.2f} seconds)")
+            self.connected = True
+
+
+class QemuMachine(SerialMachine):
     """A handle to the machine with this name, that also knows how to manage
     the machine lifecycle with the help of a start script / command."""
 
@@ -1128,22 +1241,6 @@ class QemuMachine(BaseMachine):
         self.monitor.send(message)
         return self.wait_for_monitor_prompt()
 
-    def _next_newline_closed_block_from_shell(self) -> str:
-        assert self.shell
-        output_buffer = []
-        while True:
-            # This receives up to 4096 bytes from the socket
-            chunk = self.shell.recv(4096)
-            if not chunk:
-                # Probably a broken pipe, return the output we have
-                break
-
-            decoded = chunk.decode()
-            output_buffer += [decoded]
-            if decoded[-1] == "\n":
-                break
-        return "".join(output_buffer)
-
     def get_tty_text(self, tty: str) -> str:
         """
         Get the output printed to a given TTY.
@@ -1177,46 +1274,6 @@ class QemuMachine(BaseMachine):
     def dump_tty_contents(self, tty: str) -> None:
         """Debugging: Dump the contents of the TTY<n>"""
         self.execute(f"fold -w 80 /dev/vcs{tty} | systemd-cat")
-
-    def _execute(
-        self,
-        command: str,
-        check_return: bool = True,
-        check_output: bool = True,
-        timeout: dt.timedelta | None = dt.timedelta(minutes=15),
-    ) -> tuple[int, str]:
-        self.connect()
-
-        # Always run command with shell opts
-        command = f"set -euo pipefail; {command}"
-
-        timeout_str = ""
-        if timeout is not None:
-            timeout_str = f"timeout {timeout.total_seconds()}"
-
-        # While sh is bash on NixOS, this is not the case for every distro.
-        # We explicitly call bash here to allow for the driver to boot other distros as well.
-        out_command = (
-            f"{timeout_str} bash -c {shlex.quote(command)} | (base64 -w 0; echo)\n"
-        )
-
-        assert self.shell
-        self.shell.send(out_command.encode())
-
-        if not check_output:
-            return (-2, "")
-
-        # Get the output
-        output = base64.b64decode(self._next_newline_closed_block_from_shell())
-
-        if not check_return:
-            return (-1, output.decode())
-
-        # Get the return code
-        self.shell.send(b"echo ${PIPESTATUS[0]}\n")
-        rc = int(self._next_newline_closed_block_from_shell().strip())
-
-        return (rc, output.decode(errors="replace"))
 
     @warnings.deprecated("Use the SSH backdoor instead")
     def shell_interact(self, address: str | None = None) -> None:
@@ -1329,56 +1386,6 @@ class QemuMachine(BaseMachine):
 
         with self.nested(f"waiting for file '{filename}'"):
             retry(check_file, as_timedelta(timeout))
-
-    def connect(self) -> None:
-        """
-        Wait for a connection to the guest root shell
-        """
-
-        def shell_ready(timeout: dt.timedelta) -> bool:
-            """We sent some data from the backdoor service running on the guest
-            to indicate that the backdoor shell is ready.
-            As soon as we read some data from the socket here, we assume that
-            our root shell is operational.
-            """
-            assert self.shell
-            (ready, _, _) = select.select([self.shell], [], [], timeout.total_seconds())
-            return bool(ready)
-
-        if self.connected:
-            return
-
-        with self.nested("waiting for the VM to finish booting"):
-            self.start()
-
-            assert self.shell
-
-            tic = time.time()
-
-            for _ in range(10):
-                if shell_ready(timeout=dt.timedelta(seconds=30)):
-                    break
-                self.log("Guest root shell did not produce any data yet...")
-                self.log(
-                    "  To debug, enter the VM and run 'systemctl status backdoor.service'."
-                )
-            else:
-                raise RuntimeError("Shell did not start in time")
-
-            while True:
-                chunk = self.shell.recv(1024)
-                if len(chunk) == 0:
-                    raise RuntimeError("Shell disconnected")
-                self.log(f"Guest shell says: {chunk!r}")
-                # NOTE: for this to work, nothing must be printed after this line!
-                if b"Spawning backdoor root shell..." in chunk:
-                    break
-
-            toc = time.time()
-
-            self.log("connected to guest root shell")
-            self.log(f"(connecting took {toc - tic:.2f} seconds)")
-            self.connected = True
 
     @contextmanager
     def _managed_screenshot(self) -> Generator[Path]:
@@ -2097,7 +2104,7 @@ class NspawnMachine(BaseMachine):
 
 
 class MachineDeprecationWrapper:
-    def __init__(self, msg: str, machine: QemuMachine | NspawnMachine):
+    def __init__(self, msg: str, machine: BaseMachine):
         self.msg = msg
         self.machine = machine
 

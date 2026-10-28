@@ -36,6 +36,7 @@ in
       type = types.submodule {
         options = {
           vms = nodeConfigurationAttrs { };
+          umls = nodeConfigurationAttrs { };
           containers = nodeConfigurationAttrs {
             vnc = lib.mkOption {
               internal = true;
@@ -83,6 +84,10 @@ in
 
   config = {
     driverConfiguration = {
+      umls = lib.mapAttrs (name: value: {
+        inherit name;
+        start_script = lib.getExe value.system.build.uml;
+      }) config.umls;
       vms = lib.mapAttrs (name: value: {
         inherit name;
         start_script = lib.getExe value.system.build.vm;

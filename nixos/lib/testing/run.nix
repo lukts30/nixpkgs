@@ -156,9 +156,11 @@ in
       {
         name =
           let
-            inherit (config.driverConfiguration) containers vms;
+            inherit (config.driverConfiguration) containers vms umls;
             kind = lib.concatStringsSep "-and-" (
-              (lib.optional (containers != { }) "container") ++ (lib.optional (vms != { }) "vm")
+              (lib.optional (containers != { }) "container")
+              ++ (lib.optional (vms != { }) "vm")
+              ++ (lib.optional (umls != { }) "uml")
             );
           in
           "${kind}-test-run-${config.name}";

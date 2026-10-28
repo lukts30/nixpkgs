@@ -17,7 +17,7 @@ from typing import Any
 from unittest import TestCase
 
 from colorama import Style
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from test_driver.debug import DebugAbstract, DebugNop
 from test_driver.duration import as_timedelta
@@ -31,6 +31,7 @@ from test_driver.machine import (
     retry,
 )
 from test_driver.machine.nspawn_display import NspawnVncConfiguration
+from test_driver.machine.uml import UmlMachine
 from test_driver.polling_condition import PollingCondition
 from test_driver.vlan import VLan
 
@@ -44,6 +45,7 @@ class NodeConfiguration(BaseModel):
 class DriverConfiguration(BaseModel):
     vms: dict[str, NodeConfiguration]
     containers: dict[str, NodeConfiguration]
+    umls: dict[str, NodeConfiguration] = Field(default_factory=dict)
     vlans: list[int]
     global_timeout: dt.timedelta
     enable_ssh_backdoor: bool
@@ -146,6 +148,7 @@ class Driver:
     vlans: list[VLan] = []
     machines_qemu: list[QemuMachine] = []
     machines_nspawn: list[NspawnMachine] = []
+    machines_uml: list[UmlMachine] = []
     polling_conditions: list[PollingCondition]
     race_timer: threading.Timer
     keep_machine_state: bool
@@ -228,6 +231,18 @@ class Driver:
             for name, container_config in self.config.containers.items()
         ]
 
+        self.machines_uml = [
+            UmlMachine(
+                name=name,
+                start_command=uml_config.start_script,
+                keep_machine_state=self.keep_machine_state,
+                tmp_dir=tmp_dir,
+                callbacks=[self.check_polling_conditions],
+                out_dir=self.out_dir,
+                logger=self.logger,
+            )
+            for name, uml_config in self.config.umls.items()
+        ]
         return self
 
     def _init_nspawn_environment(self) -> None:
@@ -279,8 +294,8 @@ class Driver:
             )  # set up /etc/machine-id
 
     @property
-    def machines(self) -> list[QemuMachine | NspawnMachine]:
-        machines = self.machines_qemu + self.machines_nspawn
+    def machines(self) -> list[QemuMachine | NspawnMachine | UmlMachine]:
+        machines = self.machines_qemu + self.machines_nspawn + self.machines_uml
         # Sort the machines by name for consistency with `nodesAndContainers` in <nixos/lib/testing/network.nix>.
         machines.sort(key=lambda machine: machine.name)
         return machines
@@ -328,6 +343,7 @@ class Driver:
             machines=self.machines,
             machines_qemu=self.machines_qemu,
             machines_nspawn=self.machines_nspawn,
+            machines_uml=self.machines_uml,
             vlans=self.vlans,
             driver=self,
             log=self.logger,
@@ -348,7 +364,7 @@ class Driver:
             dump_machine_ssh=self.dump_machine_ssh,
         )
         machine_symbols: dict[
-            str, QemuMachine | NspawnMachine | MachineDeprecationWrapper
+            str, QemuMachine | NspawnMachine | UmlMachine | MachineDeprecationWrapper
         ] = {pythonize_name(m.name): m for m in self.machines}
         # If there's exactly one machine, make it available under the name
         # "machine", even if it's not called that.
@@ -375,15 +391,14 @@ class Driver:
         if not self.config.enable_ssh_backdoor:
             return
 
-        if self.machines:
+        ssh_machines = self.machines_qemu + self.machines_nspawn
+        if ssh_machines:
             print("SSH backdoor enabled, the machines can be accessed like this:")
             print(
                 f"{Style.BRIGHT}Note:{Style.RESET_ALL} this requires {Style.BRIGHT}systemd-ssh-proxy(1){Style.RESET_ALL} to be enabled (default on NixOS 25.05 and newer)."
             )
-            longest_name = len(
-                max((machine.name for machine in self.machines), key=len)
-            )
-            for index, machine in enumerate(self.machines):
+            longest_name = len(max((machine.name for machine in ssh_machines), key=len))
+            for index, machine in enumerate(ssh_machines):
                 name = machine.name
                 spaces = " " * (longest_name - len(name) + 2)
                 print(

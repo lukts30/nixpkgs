@@ -222,8 +222,29 @@ above, then load the resulting `my_module.ko` inside the guest. The
 [upstream Rust documentation](https://docs.kernel.org/rust/index.html) describes
 the kernel Rust APIs and development workflow.
 
-This package provides a standalone UML kernel and a minimal demonstration
-guest. It does not provide a complete NixOS UML system configuration.
+### NixOS service tests {#sec-user-mode-linux-nixos-tests}
+
+The NixOS testing framework accepts UML guests in its `umls` attribute set on
+x86-64 Linux. These boot a full NixOS system with systemd, using the same Python
+service-test methods as QEMU and nspawn machines. No KVM device or root access
+is required. The guest root is a fresh tmpfs; `/nix/store` is shared read-only
+through hostfs, and `/tmp/shared` provides the driver's writable file exchange.
+No root disk image is required, and guest state is lost at shutdown.
+
+The included tests reuse the existing lighttpd test script and the complete
+five-machine Grafana basic test (plugins, SQLite, Unix-socket proxying,
+PostgreSQL and MariaDB):
+
+```ShellSession
+$ nix-build -A nixosTests.user-mode-linux.lighttpd
+$ nix-build -A nixosTests.user-mode-linux.grafana
+```
+
+This initial backend supports loopback networking. It rejects test VLANs and
+does not provide QEMU monitor commands, emulated keyboards, graphical tests,
+or an SSH backdoor. Use QEMU or nspawn for tests requiring those facilities.
+The standalone kernel's networking and virtio transports can be configured
+independently of this test runner.
 
 ## Maintainer information {#sec-linux-kernel-maintainer-information}
 

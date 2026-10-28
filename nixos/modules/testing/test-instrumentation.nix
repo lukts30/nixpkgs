@@ -16,14 +16,18 @@ let
 
   qemu-common = import ../../lib/qemu-common.nix { inherit (pkgs) lib stdenv; };
 
+  isUml = (config.boot.kernelPackages.kernel.kernelArch or "") == "um";
+  consoleDevice = if isUml then "tty0" else qemu-common.qemuSerialDevice;
+  backdoorDevice = if isUml then "ttyS0" else "hvc0";
+
   backdoorService = {
     requires = [
-      "dev-hvc0.device"
-      "dev-${qemu-common.qemuSerialDevice}.device"
+      "dev-${backdoorDevice}.device"
+      "dev-${consoleDevice}.device"
     ];
     after = [
-      "dev-hvc0.device"
-      "dev-${qemu-common.qemuSerialDevice}.device"
+      "dev-${backdoorDevice}.device"
+      "dev-${consoleDevice}.device"
     ];
     script = ''
       export USER=root
@@ -52,10 +56,10 @@ let
       export PAGER=
 
       cd /tmp
-      exec < /dev/hvc0 > /dev/hvc0
-      while ! exec 2> /dev/${qemu-common.qemuSerialDevice}; do sleep 0.1; done
+      exec < /dev/${backdoorDevice} > /dev/${backdoorDevice}
+      while ! exec 2> /dev/${consoleDevice}; do sleep 0.1; done
       echo "connecting to host..." >&2
-      stty -F /dev/hvc0 raw -echo # prevent nl -> cr/nl conversion
+      stty -F /dev/${backdoorDevice} raw -echo # prevent nl -> cr/nl conversion
       # The following line is essential since it signals to
       # the test driver that the shell is ready.
       # See: the connect method in the Machine class.
@@ -67,7 +71,7 @@ let
       # we can also run non-NixOS guests during tests. This, however, is
       # mostly futureproofing as the test instrumentation is still very
       # tightly coupled to NixOS.
-      PS1="" exec ${pkgs.bashNonInteractive}/bin/bash --norc /dev/hvc0
+      PS1="" exec ${pkgs.bashNonInteractive}/bin/bash --norc /dev/${backdoorDevice}
     '';
     serviceConfig.KillSignal = "SIGHUP";
   };
@@ -134,7 +138,7 @@ in
         contents."/etc/systemd/journald.conf".text = ''
           [Journal]
           ForwardToConsole=yes
-          TTYPath=/dev/${qemu-common.qemuSerialDevice}
+          TTYPath=/dev/${consoleDevice}
           MaxLevelConsole=debug
         '';
 
@@ -183,8 +187,8 @@ in
     # Prevent agetty from being instantiated on the serial device, since it
     # interferes with the backdoor (writes to it will randomly fail
     # with EIO).  Likewise for hvc0.
-    systemd.services."serial-getty@${qemu-common.qemuSerialDevice}".enable = false;
-    systemd.services."serial-getty@hvc0".enable = false;
+    systemd.services."serial-getty@${consoleDevice}".enable = false;
+    systemd.services."serial-getty@${backdoorDevice}".enable = false;
 
     # Only set these settings when the options exist. Some tests (e.g. those
     # that do not specify any nodes, or an empty attr set as nodes) will not
@@ -209,7 +213,7 @@ in
     };
 
     boot.kernelParams = [
-      "console=${qemu-common.qemuSerialDevice}"
+      "console=${consoleDevice}"
       "console=tty0"
       # Panic if an error occurs in stage 1 (rather than waiting for
       # user intervention).
@@ -238,7 +242,7 @@ in
     # Log everything to the serial console.
     services.journald.settings.Journal = {
       ForwardToConsole = true;
-      TTYPath = "/dev/${qemu-common.qemuSerialDevice}";
+      TTYPath = "/dev/${consoleDevice}";
       MaxLevelConsole = "debug";
     };
 
@@ -255,11 +259,13 @@ in
     networking.defaultGateway = mkOverride 150 null;
     networking.nameservers = mkOverride 150 [ ];
 
-    system.requiredKernelConfig = with config.lib.kernelConfig; [
-      (isYes "SERIAL_8250_CONSOLE")
-      (isYes "SERIAL_8250")
-      (isEnabled "VIRTIO_CONSOLE")
-    ];
+    system.requiredKernelConfig =
+      with config.lib.kernelConfig;
+      lib.optionals (!isUml) [
+        (isYes "SERIAL_8250_CONSOLE")
+        (isYes "SERIAL_8250")
+        (isEnabled "VIRTIO_CONSOLE")
+      ];
 
     networking.usePredictableInterfaceNames = false;
 

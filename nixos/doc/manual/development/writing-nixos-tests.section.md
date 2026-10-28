@@ -40,7 +40,8 @@ A NixOS test is a module that has the following structure:
 ```
 
 We refer to the whole test above as a test module, whereas the values
-in [`nodes.<name>`](#test-opt-nodes) and [`containers.<name>`](#test-opt-containers)
+in [`nodes.<name>`](#test-opt-nodes), [`containers.<name>`](#test-opt-containers)
+and [`umls.<name>`](#test-opt-umls)
 are NixOS modules themselves.
 
 The option [`testScript`](#test-opt-testScript) is a piece of Python code that executes the
@@ -214,6 +215,45 @@ Some options are specific to QEMU virtual machines:
 
 For more options, see the module
 [`qemu-vm.nix`](https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/virtualisation/qemu-vm.nix).
+
+#### Configuring User Mode Linux guests {#ssec-nixos-test-uml}
+
+Use [`umls`](#test-opt-umls) to boot full NixOS systems on User Mode Linux.
+This backend runs on x86-64 Linux without root or KVM and uses the usual
+Python shell and service-test methods:
+
+```nix
+{
+  name = "uml-web-server";
+  umls.server = {
+    services.nginx.enable = true;
+    services.nginx.virtualHosts.localhost.locations."/".return = "200 'hello UML'";
+    virtualisation.uml.memorySize = 1024;
+  };
+  testScript = ''
+    server.start()
+    server.wait_for_unit("nginx.service")
+    server.succeed("curl --fail http://localhost/")
+    server.shutdown()
+  '';
+}
+```
+
+Use [`umlDefaults`](#test-opt-umlDefaults) for configuration shared by all UML
+guests, or [`defaults`](#test-opt-defaults) for configuration shared by all
+machine types. Names must be unique across `nodes`, `containers` and `umls`.
+
+Each guest has an ephemeral tmpfs root. Hostfs shares `/nix/store` read-only
+and `/tmp/shared` read-write for `copy_from_host` and `copy_from_machine`.
+The runner uses no root disk image. Only loopback networking is currently
+supported; configuring test VLANs or interfaces produces an evaluation error.
+QEMU monitor commands, graphical interaction, emulated keyboards and the SSH
+backdoor are unavailable.
+
+Existing service tests can reuse their NixOS configurations and Python script
+with `umls`. See `nixosTests.user-mode-linux.lighttpd` and
+`nixosTests.user-mode-linux.grafana` for examples using existing QEMU and
+nspawn tests, respectively.
 
 ## Writing the test script {#ssec-test-script}
 

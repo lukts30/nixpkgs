@@ -50,10 +50,13 @@ let
       containerMachineTypeHints = map (
         name: "${pythonizeName name} = create_fake_nspawn_machine()"
       ) containerMachineNames;
+      umlMachineTypeHints = map (name: "${pythonizeName name} = create_fake_uml_machine()") (
+        lib.attrNames config.driverConfiguration.umls
+      );
       vlanTypeHints = map (i: "vlan${toString i} = create_fake_vlan()") config.driverConfiguration.vlans;
     in
     lib.strings.concatStringsSep "\n" (
-      vlanTypeHints ++ vmMachineTypeHints ++ containerMachineTypeHints
+      vlanTypeHints ++ vmMachineTypeHints ++ containerMachineTypeHints ++ umlMachineTypeHints
     );
 
   withChecks = lib.warnIf config.skipLint "Linting is disabled";

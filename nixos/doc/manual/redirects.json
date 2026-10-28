@@ -313,6 +313,9 @@
   "ssec-nixos-test-machines": [
     "index.html#ssec-nixos-test-machines"
   ],
+  "ssec-nixos-test-uml": [
+    "index.html#ssec-nixos-test-uml"
+  ],
   "ssec-nixos-test-nspawn-containers": [
     "index.html#ssec-nixos-test-nspawn-containers"
   ],
@@ -336,6 +339,12 @@
   ],
   "stage-1-26.05": [
     "release-notes.html#stage-1-26.05"
+  ],
+  "test-opt-umlDefaults": [
+    "index.html#test-opt-umlDefaults"
+  ],
+  "test-opt-umls": [
+    "index.html#test-opt-umls"
   ],
   "test-opt-containerDefaults": [
     "index.html#test-opt-containerDefaults"

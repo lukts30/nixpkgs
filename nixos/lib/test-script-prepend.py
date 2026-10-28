@@ -12,6 +12,7 @@ from test_driver.logger import AbstractLogger, CompositeLogger
 from typing_extensions import Protocol
 
 from test_driver.machine import BaseMachine, NspawnMachine, QemuMachine
+from test_driver.machine.uml import UmlMachine
 from test_driver.vlan import VLan
 
 
@@ -54,6 +55,7 @@ class AssertionTester(TestCase):
 debug: DebugAbstract = DebugNop()
 machines: List[BaseMachine] = []
 machines_nspawn: List[NspawnMachine] = []
+machines_uml: List[UmlMachine] = []
 machines_qemu: List[QemuMachine] = []
 t = AssertionTester()
 vlans: List[VLan] = []
@@ -76,6 +78,10 @@ def create_fake_qemu_machine() -> QemuMachine:
 
 def create_fake_nspawn_machine() -> NspawnMachine:
     raise Exception("fake nspawn machine")
+
+
+def create_fake_uml_machine() -> UmlMachine:
+    raise Exception("fake UML machine")
 
 
 def create_fake_vlan() -> VLan:

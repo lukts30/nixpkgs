@@ -50,7 +50,7 @@ let
           {
             key = "nodes";
             _module.args = {
-              inherit (config) containers;
+              inherit (config) containers umls;
               nodes = config.nodesCompat;
             };
           }
@@ -81,6 +81,10 @@ let
       };
       virtualisation.host.pkgs = hostPkgs;
     }
+  ];
+  baseUmlOS = baseOS [
+    ../../modules/virtualisation/uml.nix
+    config.umlDefaults
   ];
   baseNspawnOS = baseOS [
     ../../modules/virtualisation/nspawn-container
@@ -190,13 +194,30 @@ in
       '';
     };
 
+    umls = mkOption {
+      type = types.lazyAttrsOf baseUmlOS.type;
+      default = { };
+      visible = "shallow";
+      description = ''
+        NixOS guests running on User Mode Linux, without KVM or root privileges.
+        These support serial shell service tests and loopback networking.
+        Hardware emulation, graphical interaction and test VLANs are not supported.
+      '';
+    };
+
+    umlDefaults = mkOption {
+      type = types.deferredModule;
+      default = { };
+      description = "NixOS configuration applied to all UML guests.";
+    };
+
     allMachines = mkOption {
       readOnly = true;
       internal = true;
       description = ''
-        Basically a merge of [{option}`nodes`](#test-opt-nodes) and [{option}`containers`](#test-opt-containers).
+        A merge of [{option}`nodes`](#test-opt-nodes), [{option}`containers`](#test-opt-containers) and [{option}`umls`](#test-opt-umls).
 
-        This ensures that there are no name collisions between nodes and containers.
+        This ensures that machine names are unique across all three backends.
       '';
       default =
         let
@@ -206,12 +227,20 @@ in
         in
         lib.throwIfNot (overlappingNames == [ ])
           "The following names are used in both `nodes` and `containers`: ${lib.concatStringsSep ", " overlappingNames}"
-          (config.nodes // config.containers);
+          (
+            lib.throwIf
+              (
+                lib.intersectLists (lib.attrNames config.umls) (lib.attrNames (config.nodes // config.containers))
+                != [ ]
+              )
+              "UML guest names must be distinct from node and container names"
+              (config.nodes // config.containers // config.umls)
+          );
     };
 
     defaults = mkOption {
       description = ''
-        NixOS configuration that is applied to all [{option}`nodes`](#test-opt-nodes) and [{option}`containers`](#test-opt-containers).
+        NixOS configuration that is applied to all [{option}`nodes`](#test-opt-nodes), [{option}`containers`](#test-opt-containers) and [{option}`umls`](#test-opt-umls).
       '';
       type = types.deferredModule;
       default = { };
@@ -235,7 +264,7 @@ in
 
     extraBaseModules = mkOption {
       description = ''
-        NixOS configuration that, like [{option}`defaults`](#test-opt-defaults), is applied to all [{option}`nodes`](#test-opt-nodes) and [{option}`containers`](#test-opt-containers) and can not be undone with [`specialisation.<name>.inheritParentConfig`](https://search.nixos.org/options?show=specialisation.%3Cname%3E.inheritParentConfig&from=0&size=50&sort=relevance&type=packages&query=specialisation).
+        NixOS configuration that, like [{option}`defaults`](#test-opt-defaults), is applied to all [{option}`nodes`](#test-opt-nodes), [{option}`containers`](#test-opt-containers) and [{option}`umls`](#test-opt-umls) and can not be undone with [`specialisation.<name>.inheritParentConfig`](https://search.nixos.org/options?show=specialisation.%3Cname%3E.inheritParentConfig&from=0&size=50&sort=relevance&type=packages&query=specialisation).
       '';
       type = types.deferredModule;
       default = { };
@@ -295,6 +324,7 @@ in
 
   config = {
     _module.args.containers = config.containers;
+    _module.args.umls = config.umls;
     _module.args.nodes = config.nodesCompat;
     nodesCompat = mapAttrs (
       name: config:
@@ -309,6 +339,7 @@ in
 
     passthru.nodes = config.nodesCompat;
     passthru.containers = config.containers;
+    passthru.umls = config.umls;
 
     defaults = mkMerge [
       (mkIf config.node.pkgsReadOnly {
