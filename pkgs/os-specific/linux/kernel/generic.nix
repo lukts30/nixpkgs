@@ -185,6 +185,7 @@ lib.makeOverridable (
           stdenv
           buildPackages
           extraMakeFlags
+          kernelArch
           ;
       };
 
@@ -287,6 +288,7 @@ lib.makeOverridable (
           extraMeta
           configfile
           modDirVersion
+          kernelArch
           ;
         pos = builtins.unsafeGetAttrPos "version" args;
 

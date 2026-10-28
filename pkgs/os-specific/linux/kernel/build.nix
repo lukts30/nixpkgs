@@ -56,6 +56,8 @@ lib.makeOverridable (
     pos ? null,
     # Additional kernel make flags
     extraMakeFlags ? [ ],
+    # Kbuild architecture, which can differ from the host ISA (e.g. UML).
+    kernelArch ? stdenv.hostPlatform.linuxArch,
     # The name of the kernel module directory
     # Needs to be X.Y.Z[-extra], so pad with zeros if needed.
     modDirVersion ? null, # derive from version
@@ -126,6 +128,7 @@ lib.makeOverridable (
         stdenv
         buildPackages
         extraMakeFlags
+        kernelArch
         ;
     };
 
@@ -572,6 +575,7 @@ lib.makeOverridable (
         moduleBuildDependencies
         stdenv
         commonMakeFlags
+        kernelArch
         ;
       inherit
         isZen
@@ -592,7 +596,7 @@ lib.makeOverridable (
     ++ lib.optionals isModular [ "modules_install" ]
     ++ lib.optionals buildDTBs [ "dtbs_install" ];
 
-    karch = stdenv.hostPlatform.linuxArch;
+    karch = kernelArch;
 
     pos = lib.optionalDrvAttr (pos != null) pos;
 

@@ -2,6 +2,7 @@
   lib,
   stdenv,
   buildPackages,
+  kernelArch ? stdenv.hostPlatform.linuxArch,
   extraMakeFlags ? [ ],
 }:
 # Absolute paths for compilers avoid any PATH-clobbering issues.
@@ -22,7 +23,7 @@
   "HOSTCXX=${lib.getExe' buildPackages.stdenv.cc "${buildPackages.stdenv.cc.targetPrefix}c++"}"
   "HOSTAR=${lib.getExe' buildPackages.stdenv.cc.bintools "${buildPackages.stdenv.cc.targetPrefix}ar"}"
   "HOSTLD=${lib.getExe' buildPackages.stdenv.cc.bintools "${buildPackages.stdenv.cc.targetPrefix}ld"}"
-  "ARCH=${stdenv.hostPlatform.linuxArch}"
+  "ARCH=${kernelArch}"
   "CROSS_COMPILE=${stdenv.cc.targetPrefix}"
 
   # Override the kernel module signing rule to use kmodigest instead.
