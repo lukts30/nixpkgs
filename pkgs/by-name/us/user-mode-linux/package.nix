@@ -134,6 +134,10 @@
           inherit (callPackage ./tests.nix { kernel = final.finalPackage; }) boot virtio;
           virtiofs = callPackage ./virtiofs-test.nix { kernel = final.finalPackage; };
           qemuNetwork = callPackage ./qemu-bridge-test.nix { kernel = final.finalPackage; };
+          inherit (callPackage ./block-root-test.nix { kernel = final.finalPackage; })
+            blockRoot
+            qemuBlockRoot
+            ;
           inherit (callPackage ./backend-tests.nix { kernel = final.finalPackage; }) slirp passt vsock;
         };
         inherit (callPackage ./tests.nix { kernel = final.finalPackage; }) demo;

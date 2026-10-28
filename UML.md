@@ -84,6 +84,28 @@ The NixOS runner uses a fresh **tmpfs root**, read-only **hostfs `/nix/store`**,
 and writable **hostfs `/tmp/shared`** for file transfers. It needs no root disk
 image. The separate virtio test mounts a real guest block device, `/dev/vda`.
 
+UML also boots with its **root filesystem on a block image**:
+
+```sh
+nix-build -A user-mode-linux.tests.blockRoot -o result-uml-root
+nix-build -A user-mode-linux.tests.qemuBlockRoot -o result-uml-qemu-root
+cat result-uml-qemu-root/qmp-1.json
+```
+
+Both tests boot a self-contained ext4 image with static BusyBox twice, verify a
+persistent counter and file, and run `e2fsck`. There is **no initrd, hostfs or
+host `/nix/store`** in these guests. UBD uses `ubd0=/path/root.raw root=/dev/ubda`;
+virtio-blk uses `virtio_uml.device=/path/block.sock:2 root=/dev/vda rootwait`.
+Both also pass `rw rootfstype=ext4 init=/init`.
+
+The second test is a non-network use of **QEMU `-machine none -nodefaults`**:
+QMP `block-export-add` exports a writable qcow2 node as `vhost-user-blk`.
+`query-cpus-fast` must return `[]`, and `query-block-exports` must show the
+export. This uses `qemu-system-x86_64`, not `qemu-storage-daemon`; no guest CPU
+executes inside QEMU. Qcow2 and ext4 checks both passed after the second boot.
+The reproducible [test runner](pkgs/by-name/us/user-mode-linux/test-block-root.py)
+contains the exact QMP commands.
+
 Current runner limits: the networking scope above; no graphical input,
 QEMU monitor or SSH backdoor. The reused Grafana suite leaves Grafana using
 SQLite, even in its PostgreSQL/MariaDB cases.
