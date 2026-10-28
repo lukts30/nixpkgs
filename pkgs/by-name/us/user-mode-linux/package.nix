@@ -137,6 +137,7 @@
       passthru = old.passthru // {
         benchmarks.filesystems = callPackage ./filesystem-benchmark.nix { kernel = final.finalPackage; };
         benchmarks.block = callPackage ./block-benchmark.nix { kernel = final.finalPackage; };
+        benchmarks.cpu = callPackage ./cpu-benchmark.nix { kernel = final.finalPackage; };
         tests = old.passthru.tests // {
           inherit (callPackage ./tests.nix { kernel = final.finalPackage; }) boot virtio;
           virtiofs = callPackage ./virtiofs-test.nix { kernel = final.finalPackage; };

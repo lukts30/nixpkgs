@@ -1,0 +1,89 @@
+{
+  "note": "Separate instrumented validation; includes boot/warmup/shutdown; do not use these timings for performance comparisons. No -f, so guest tracees are not seized from UML.",
+  "runs": [
+    {
+      "run": "00-uml-seccomp-trial1",
+      "command": [
+        "/nix/store/a38b23fzz9429a0j4pkqmdzkr2cj46xx-strace-7.3/bin/strace",
+        "-c",
+        "-e",
+        "trace=ptrace,wait4,futex",
+        "-o",
+        "/tmp/uml-cpu-trace/00-uml-seccomp-trial1/strace.txt",
+        "/nix/store/amabzc153a86x7xh00pf9vpwh1vvdys8-user-mode-linux-6.18.59/bin/linux",
+        "mem=512M",
+        "initrd=/nix/store/vx9d663npc82w56shp417yd4pzg4jj96-uml-cpu-benchmark-initrd/initrd",
+        "con=null",
+        "con0=fd:0,fd:1",
+        "ssl=null",
+        "uml_dir=/tmp/tmp.m2BZonbB8F/tmps5bgs110",
+        "panic=-1",
+        "quiet",
+        "seccomp=on"
+      ],
+      "strace_summary": "% time     seconds  usecs/call     calls    errors syscall\n------ ----------- ----------- --------- --------- ----------------\n 52.26    0.119338        7019        17         1 wait4\n 47.73    0.108993           2     43145     21370 futex\n  0.01    0.000031           1        16        16 ptrace\n------ ----------- ----------- --------- --------- ----------------\n100.00    0.228362           5     43178     21387 total\n",
+      "measurement": {
+        "case": "uml-seccomp",
+        "trial": 1,
+        "traced": true,
+        "online_cpus": 1,
+        "workload": "gettid",
+        "threads": 1,
+        "seconds": 0.418893824,
+        "operations": 12288,
+        "checksum": 81985529216830959,
+        "application_cpu_seconds": 0.42,
+        "host_seconds": 0.42008591900230385,
+        "operations_per_second": 29334.402409332248,
+        "ns_per_operation": 34089.666666666664,
+        "host_cpu_seconds": 0.469829843,
+        "host_busy_cores": 1.1215964907613438,
+        "host_context_switches": 111934,
+        "host_switches_per_operation": 9.109212239583334,
+        "application_busy_cores": 1.0026407073502233
+      }
+    },
+    {
+      "run": "01-uml-ptrace-trial1",
+      "command": [
+        "/nix/store/a38b23fzz9429a0j4pkqmdzkr2cj46xx-strace-7.3/bin/strace",
+        "-c",
+        "-e",
+        "trace=ptrace,wait4,futex",
+        "-o",
+        "/tmp/uml-cpu-trace/01-uml-ptrace-trial1/strace.txt",
+        "/nix/store/amabzc153a86x7xh00pf9vpwh1vvdys8-user-mode-linux-6.18.59/bin/linux",
+        "mem=512M",
+        "initrd=/nix/store/vx9d663npc82w56shp417yd4pzg4jj96-uml-cpu-benchmark-initrd/initrd",
+        "con=null",
+        "con0=fd:0,fd:1",
+        "ssl=null",
+        "uml_dir=/tmp/tmp.m2BZonbB8F/tmpna164b7_",
+        "panic=-1",
+        "quiet",
+        "seccomp=off"
+      ],
+      "strace_summary": "% time     seconds  usecs/call     calls    errors syscall\n------ ----------- ----------- --------- --------- ----------------\n 75.41    0.169214           3     48830         8 ptrace\n 24.54    0.055076           5     10480         1 wait4\n  0.05    0.000109          54         2         1 futex\n------ ----------- ----------- --------- --------- ----------------\n100.00    0.224399           3     59312        10 total\n",
+      "measurement": {
+        "case": "uml-ptrace",
+        "trial": 1,
+        "traced": true,
+        "online_cpus": 1,
+        "workload": "gettid",
+        "threads": 1,
+        "seconds": 0.469523712,
+        "operations": 4096,
+        "checksum": 81985529216601583,
+        "application_cpu_seconds": 0.47,
+        "host_seconds": 0.4710091939996346,
+        "operations_per_second": 8723.734063509875,
+        "ns_per_operation": 114629.8125,
+        "host_cpu_seconds": 0.45499718299999997,
+        "host_busy_cores": 0.9690611387055996,
+        "host_context_switches": 113334,
+        "host_switches_per_operation": 27.66943359375,
+        "application_busy_cores": 1.0010144067015725
+      }
+    }
+  ]
+}

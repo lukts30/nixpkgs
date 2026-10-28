@@ -1,0 +1,147 @@
+{
+  "cohorts": 24,
+  "phases": 144,
+  "trials_per_case": 3,
+  "all_completed_successfully": true,
+  "maximum_absolute_host_probe_wall_time_difference_seconds": 0.007817911998857063,
+  "runs": [
+    {
+      "name": "00-gvisor-kvm-trial2",
+      "completed_phases": 6,
+      "online_cpus": 8
+    },
+    {
+      "name": "01-gvisor-systrap-trial1",
+      "completed_phases": 6,
+      "online_cpus": 8
+    },
+    {
+      "name": "02-uml-seccomp-trial3",
+      "completed_phases": 6,
+      "online_cpus": 1,
+      "execution_mode": "seccomp=on"
+    },
+    {
+      "name": "03-gvisor-kvm-trial3",
+      "completed_phases": 6,
+      "online_cpus": 8
+    },
+    {
+      "name": "04-gvisor-systrap-trial2",
+      "completed_phases": 6,
+      "online_cpus": 8
+    },
+    {
+      "name": "05-uml-seccomp-trial2",
+      "completed_phases": 6,
+      "online_cpus": 1,
+      "execution_mode": "seccomp=on"
+    },
+    {
+      "name": "06-uml-ptrace-trial3",
+      "completed_phases": 6,
+      "online_cpus": 1,
+      "execution_mode": "seccomp=off"
+    },
+    {
+      "name": "07-qemu-kvm-1-trial2",
+      "completed_phases": 6,
+      "online_cpus": 1,
+      "qmp_kvm_enabled": true,
+      "qmp_vcpus": 1
+    },
+    {
+      "name": "08-gvisor-ptrace-trial2",
+      "completed_phases": 6,
+      "online_cpus": 8
+    },
+    {
+      "name": "09-native-trial3",
+      "completed_phases": 6,
+      "online_cpus": 16
+    },
+    {
+      "name": "10-uml-ptrace-trial1",
+      "completed_phases": 6,
+      "online_cpus": 1,
+      "execution_mode": "seccomp=off"
+    },
+    {
+      "name": "11-qemu-kvm-8-trial2",
+      "completed_phases": 6,
+      "online_cpus": 8,
+      "qmp_kvm_enabled": true,
+      "qmp_vcpus": 8
+    },
+    {
+      "name": "12-gvisor-systrap-trial3",
+      "completed_phases": 6,
+      "online_cpus": 8
+    },
+    {
+      "name": "13-gvisor-ptrace-trial1",
+      "completed_phases": 6,
+      "online_cpus": 8
+    },
+    {
+      "name": "14-uml-ptrace-trial2",
+      "completed_phases": 6,
+      "online_cpus": 1,
+      "execution_mode": "seccomp=off"
+    },
+    {
+      "name": "15-uml-seccomp-trial1",
+      "completed_phases": 6,
+      "online_cpus": 1,
+      "execution_mode": "seccomp=on"
+    },
+    {
+      "name": "16-gvisor-ptrace-trial3",
+      "completed_phases": 6,
+      "online_cpus": 8
+    },
+    {
+      "name": "17-qemu-kvm-8-trial1",
+      "completed_phases": 6,
+      "online_cpus": 8,
+      "qmp_kvm_enabled": true,
+      "qmp_vcpus": 8
+    },
+    {
+      "name": "18-qemu-kvm-1-trial3",
+      "completed_phases": 6,
+      "online_cpus": 1,
+      "qmp_kvm_enabled": true,
+      "qmp_vcpus": 1
+    },
+    {
+      "name": "19-gvisor-kvm-trial1",
+      "completed_phases": 6,
+      "online_cpus": 8
+    },
+    {
+      "name": "20-native-trial2",
+      "completed_phases": 6,
+      "online_cpus": 16
+    },
+    {
+      "name": "21-native-trial1",
+      "completed_phases": 6,
+      "online_cpus": 16
+    },
+    {
+      "name": "22-qemu-kvm-1-trial1",
+      "completed_phases": 6,
+      "online_cpus": 1,
+      "qmp_kvm_enabled": true,
+      "qmp_vcpus": 1
+    },
+    {
+      "name": "23-qemu-kvm-8-trial3",
+      "completed_phases": 6,
+      "online_cpus": 8,
+      "qmp_kvm_enabled": true,
+      "qmp_vcpus": 8
+    }
+  ]
+}

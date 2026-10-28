@@ -157,6 +157,21 @@ QEMU/KVM guests using the same qcow2/vhost-user-blk backend. It measures direct
 block reads/writes, CPU and memory with one and four guests, with host writeback
 caching and host-cache bypass. The report includes results and rerun commands.
 
+The [CPU and syscall benchmark](UML-CPU-BENCHMARK.md) measures 1/2/4/8 threads
+inside one guest against native Linux, QEMU/KVM and gVisor. UML 6.18 has one
+guest CPU: adding application threads cannot give that guest SMP. The benchmark
+also compares UML's default ptrace path with its optional `seccomp=on` path.
+
+```sh
+nix-build -A user-mode-linux.benchmarks.cpu -o result-uml-cpu-benchmark
+./result-uml-cpu-benchmark/bin/uml-cpu-benchmark \
+  --cpus 0,1,2,3,4,5,6,7 /tmp/uml-cpu-results
+```
+
+Use a fresh output directory and adapt the CPU list to your host. The full
+comparison requires `/dev/kvm`; use `--cases native,uml-ptrace,gvisor-systrap`
+without it. See the report for separate ptrace tracing commands and limitations.
+
 Current runner limits: the networking scope above; no graphical input,
 QEMU monitor or SSH backdoor. The reused Grafana suite leaves Grafana using
 SQLite, even in its PostgreSQL/MariaDB cases.
