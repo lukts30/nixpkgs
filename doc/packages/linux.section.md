@@ -238,6 +238,39 @@ $ ./result-uml-fs-runner/bin/uml-virtiofs-test /tmp/uml-fs-results
 $ cat /tmp/uml-fs-results/comparison.txt
 ```
 
+The kernel enables virtio-net and virtio-vsock as well. Passt's `--vhost-user`
+mode connects through `virtio_uml.device=/path/to/socket:1`; rust-vmm's
+`vhost-device-vsock` connects through `virtio_uml.device=/path/to/socket:19`.
+These use shared guest memory and do not require a QEMU CPU guest. Slirp4netns
+also supports UML directly through `--target-type=bess`: use
+`vec0:transport=bess,dst=/path/to/socket,depth=128,gro=1` on the UML command line.
+That connection uses Ethernet packets over a Unix sequenced-packet socket,
+rather than vhost-user shared memory.
+
+The network tests exercise HTTP/TCP and UDP in both directions between UML and
+local host services, including explicit port forwarding into the guest. The
+vsock test exercises guest `AF_VSOCK` connections to host Unix sockets and the
+reverse direction, without requiring host kernel vsock support:
+
+```ShellSession
+$ nix-build -A user-mode-linux.tests.slirp -A user-mode-linux.tests.passt -A user-mode-linux.tests.vsock
+$ nix-build -A user-mode-linux.tests.slirp.runner -o result-uml-backend-runner
+$ ./result-uml-backend-runner/bin/uml-backend-test passt /tmp/uml-passt-results
+```
+
+The runner also accepts `slirp` or `vsock` instead of `passt`, writes diagnostic
+logs to the requested directory, and cleans up its temporary directories and
+processes. The network tests cover local IPv4 traffic; they do not test Internet
+access, DNS or IPv6. These standalone kernel tests do not configure networking
+for the NixOS test-driver backend described below.
+
+Additional [vhost-user daemons](https://www.qemu.org/docs/master/system/devices/virtio/vhost-user.html)
+can be investigated with their device ID and corresponding kernel driver.
+QEMU's `-device vhost-user-*` options consume these backends; they do not export
+QEMU's internal device models. Xen's QEMU device model and vfio-user PCI device
+servers require different interfaces. UML's host VFIO passthrough driver uses
+`/dev/vfio`, not the vfio-user socket protocol.
+
 ### Architecture and modules {#sec-user-mode-linux-modules}
 
 The compiler's host platform describes the instruction set and ABI. Kbuild's

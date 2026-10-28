@@ -103,3 +103,48 @@ choosing a directory itself; a selected directory must permit executable mapping
 `memfd_create()` is a modern alternative for anonymous shared RAM, with optional
 sealing and no directory dependency. It would be a reasonable choice for a new
 implementation, but is not required by vhost-user and is not used for RAM here.
+
+## Network and device backends
+
+These standalone UML tests passed without root or KVM:
+
+| Backend | UML connection | Verified |
+| --- | --- | --- |
+| slirp4netns 1.3.6 | `vec0:transport=bess,dst=/path/to/socket,depth=128,gro=1` | HTTP/TCP and UDP, guest→host and forwarded host→guest |
+| passt 2026_07_16 | `virtio_uml.device=/path/to/socket:1` | Same TCP/UDP checks through virtio-net |
+| rust-vmm vhost-device-vsock 0.3.0 | `virtio_uml.device=/path/to/socket:19` | Guest `AF_VSOCK` ↔ host Unix sockets, both directions |
+
+```sh
+nix-build -A user-mode-linux.tests.slirp -A user-mode-linux.tests.passt \
+  -A user-mode-linux.tests.vsock -o result-uml-backends
+
+# Run outside the Nix build sandbox; select slirp, passt or vsock.
+nix-build -A user-mode-linux.tests.slirp.runner -o result-uml-backend-runner
+./result-uml-backend-runner/bin/uml-backend-test passt /tmp/uml-passt-results
+```
+
+Start slirp4netns with `--target-type=bess`, or passt with `--vhost-user` and
+`--socket=/path/to/socket`. The tests configure `10.0.2.100/24`, gateway
+`10.0.2.2`, and only contact local test servers. Internet access and DNS are not
+covered. This enables standalone networking; the NixOS `umls` runner still has
+its existing loopback-only setup.
+
+**QEMU without guest CPU execution:** the Xen term is *device model*
+(`xenpvh`/`-xen-attach`); it requires Xen interfaces. For UML, use standalone
+**vhost-user backends**, such as the already tested `qemu-storage-daemon`,
+virtiofsd, passt, and rust-vmm's vsock daemon. QEMU's `-device vhost-user-*`
+options are frontend consumers, not device exporters. Other rust-vmm/QEMU
+backends (RNG, console, sound, GPU, input, SCSI, etc.) need their guest drivers
+and protocol features checked individually; they have not all been tested here.
+
+Arbitrary emulated PCI devices use a different interface: QEMU has experimental
+`x-remote`/`x-vfio-user-server` support. UML's `UML_PCI_OVER_VFIO` accesses host
+`/dev/vfio` devices; it is not a vfio-user socket client. UML also has experimental
+PCI-over-virtio with an unassigned device ID. Neither provides a ready-made
+connection to arbitrary QEMU PCI device models in this branch.
+
+References: [slirp4netns BESS mode](https://github.com/rootless-containers/slirp4netns/blob/v1.3.6/slirp4netns.1.md#bess-mode-for-user-mode-linux),
+[rust-vmm devices](https://github.com/rust-vmm/vhost-device),
+[QEMU backend daemons](https://www.qemu.org/docs/master/system/devices/virtio/vhost-user-contrib.html),
+[Xen device model](https://www.qemu.org/docs/master/system/i386/xenpvh.html),
+[vfio-user](https://www.qemu.org/docs/master/system/devices/vfio-user.html).
