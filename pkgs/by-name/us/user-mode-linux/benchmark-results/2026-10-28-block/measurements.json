@@ -1,0 +1,5882 @@
+[
+  {
+    "case": "kvm-vhost-none",
+    "guests": 4,
+    "trial": 2,
+    "phase": "sequential-read",
+    "host_seconds": 5.0204713359999005,
+    "bytes": 9412018176,
+    "mib_per_second": 1787.8799417967991,
+    "iops": 1787.8799417967991,
+    "guest_cpu_seconds": 1.42798278,
+    "backend_cpu_seconds": 1.78050708,
+    "cpu_seconds_per_gib": 0.3660309287700535,
+    "busy_cores": 0.6390814019777652,
+    "end_pss_mib": 842.20703125,
+    "peak_sampled_pss_mib": 842.20703125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 156.3125,
+    "host_file_cache_mib": 6.94921875,
+    "baseline": {
+      "pss_mib": 842.03515625,
+      "rss_mib": 1065.37109375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 156.296875,
+      "host_file_cache_mib": 1.015625
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.00023128,
+        "bytes": 2348810240,
+        "operations": 2240,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.004620052,
+        "bytes": 2365587456,
+        "operations": 2256,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.006343473,
+        "bytes": 2332033024,
+        "operations": 2224,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.013811857,
+        "bytes": 2365587456,
+        "operations": 2256,
+        "cached_kib": 40016,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-none",
+    "guests": 4,
+    "trial": 2,
+    "phase": "random-read-4k",
+    "host_seconds": 5.007522526997491,
+    "bytes": 832831488,
+    "mib_per_second": 158.61136833991083,
+    "iops": 40604.51029501717,
+    "guest_cpu_seconds": 19.608221761,
+    "backend_cpu_seconds": 8.098330889,
+    "cpu_seconds_per_gib": 35.72113303569405,
+    "busy_cores": 5.532986122503345,
+    "end_pss_mib": 842.20703125,
+    "peak_sampled_pss_mib": 842.20703125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 156.3125,
+    "host_file_cache_mib": 6.94921875,
+    "baseline": {
+      "pss_mib": 842.03515625,
+      "rss_mib": 1065.37109375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 156.296875,
+      "host_file_cache_mib": 1.015625
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.00139918,
+        "bytes": 207028224,
+        "operations": 50544,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.000718239,
+        "bytes": 208994304,
+        "operations": 51024,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.00046985,
+        "bytes": 208470016,
+        "operations": 50896,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.00048159,
+        "bytes": 208338944,
+        "operations": 50864,
+        "cached_kib": 40016,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-none",
+    "guests": 4,
+    "trial": 2,
+    "phase": "sequential-write",
+    "host_seconds": 5.058026866005093,
+    "bytes": 8321499136,
+    "mib_per_second": 1568.9912707537621,
+    "iops": 1568.9912707537621,
+    "guest_cpu_seconds": 1.277916946,
+    "backend_cpu_seconds": 12.983930131,
+    "cpu_seconds_per_gib": 1.840238332516129,
+    "busy_cores": 2.819646367015884,
+    "end_pss_mib": 842.20703125,
+    "peak_sampled_pss_mib": 842.20703125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 156.3125,
+    "host_file_cache_mib": 1.59765625,
+    "baseline": {
+      "pss_mib": 842.03515625,
+      "rss_mib": 1065.37109375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 156.296875,
+      "host_file_cache_mib": 1.015625
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.051486737,
+        "bytes": 2080374784,
+        "operations": 1984,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.050529086,
+        "bytes": 2080374784,
+        "operations": 1984,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.050478936,
+        "bytes": 2080374784,
+        "operations": 1984,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.050354896,
+        "bytes": 2080374784,
+        "operations": 1984,
+        "cached_kib": 40016,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-none",
+    "guests": 4,
+    "trial": 2,
+    "phase": "random-write-4k",
+    "host_seconds": 5.326290860997688,
+    "bytes": 770506752,
+    "mib_per_second": 137.95951426174264,
+    "iops": 35317.635651006116,
+    "guest_cpu_seconds": 19.090436828,
+    "backend_cpu_seconds": 12.766461695,
+    "cpu_seconds_per_gib": 44.39426940553135,
+    "busy_cores": 5.981066253117233,
+    "end_pss_mib": 842.20703125,
+    "peak_sampled_pss_mib": 842.20703125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 156.3125,
+    "host_file_cache_mib": 1.25,
+    "baseline": {
+      "pss_mib": 842.03515625,
+      "rss_mib": 1065.37109375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 156.296875,
+      "host_file_cache_mib": 1.015625
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.318862787,
+        "bytes": 193003520,
+        "operations": 47120,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.318785107,
+        "bytes": 192217088,
+        "operations": 46928,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.318713587,
+        "bytes": 192479232,
+        "operations": 46992,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.319357968,
+        "bytes": 192806912,
+        "operations": 47072,
+        "cached_kib": 40016,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-none",
+    "guests": 1,
+    "trial": 2,
+    "phase": "sequential-read",
+    "host_seconds": 5.013631290996273,
+    "bytes": 6291456000,
+    "mib_per_second": 1196.7373848920836,
+    "iops": 1196.7373848920836,
+    "guest_cpu_seconds": 0.734967382,
+    "backend_cpu_seconds": 1.108415161,
+    "cpu_seconds_per_gib": 0.3146039540053333,
+    "busy_cores": 0.3676741339775898,
+    "end_pss_mib": 241.71875,
+    "peak_sampled_pss_mib": 241.71875,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 39.078125,
+    "host_file_cache_mib": 1.19140625,
+    "baseline": {
+      "pss_mib": 241.67578125,
+      "rss_mib": 268.671875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 39.07421875,
+      "host_file_cache_mib": 0.25390625
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.006682693,
+        "bytes": 6291456000,
+        "operations": 6000,
+        "cached_kib": 40016,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-none",
+    "guests": 1,
+    "trial": 2,
+    "phase": "random-read-4k",
+    "host_seconds": 5.007139123001252,
+    "bytes": 228720640,
+    "mib_per_second": 43.56279996255767,
+    "iops": 11152.076790414763,
+    "guest_cpu_seconds": 4.999588093,
+    "backend_cpu_seconds": 1.894038895,
+    "cpu_seconds_per_gib": 32.362517069166756,
+    "busy_cores": 1.3767596263368844,
+    "end_pss_mib": 241.71875,
+    "peak_sampled_pss_mib": 241.71875,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 39.078125,
+    "host_file_cache_mib": 1.19140625,
+    "baseline": {
+      "pss_mib": 241.67578125,
+      "rss_mib": 268.671875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 39.07421875,
+      "host_file_cache_mib": 0.25390625
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.001039711,
+        "bytes": 228720640,
+        "operations": 55840,
+        "cached_kib": 40016,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-none",
+    "guests": 1,
+    "trial": 2,
+    "phase": "sequential-write",
+    "host_seconds": 5.020428609001101,
+    "bytes": 3187671040,
+    "mib_per_second": 605.5259892650598,
+    "iops": 605.5259892650598,
+    "guest_cpu_seconds": 0.390944342,
+    "backend_cpu_seconds": 4.775765737,
+    "cpu_seconds_per_gib": 1.740365500294737,
+    "busy_cores": 1.0291372473132339,
+    "end_pss_mib": 241.71875,
+    "peak_sampled_pss_mib": 241.71875,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 39.078125,
+    "host_file_cache_mib": 0.671875,
+    "baseline": {
+      "pss_mib": 241.67578125,
+      "rss_mib": 268.671875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 39.07421875,
+      "host_file_cache_mib": 0.25390625
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.014185647,
+        "bytes": 3187671040,
+        "operations": 3040,
+        "cached_kib": 40016,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-none",
+    "guests": 1,
+    "trial": 2,
+    "phase": "random-write-4k",
+    "host_seconds": 5.9120734539974364,
+    "bytes": 272498688,
+    "mib_per_second": 43.95665954121156,
+    "iops": 11252.904842550159,
+    "guest_cpu_seconds": 4.93700796,
+    "backend_cpu_seconds": 4.539366709,
+    "cpu_seconds_per_gib": 37.34028922003271,
+    "busy_cores": 1.602885137124365,
+    "end_pss_mib": 241.71875,
+    "peak_sampled_pss_mib": 241.71875,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 39.078125,
+    "host_file_cache_mib": 0.33203125,
+    "baseline": {
+      "pss_mib": 241.67578125,
+      "rss_mib": 268.671875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 39.07421875,
+      "host_file_cache_mib": 0.25390625
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.905684126,
+        "bytes": 272498688,
+        "operations": 66528,
+        "cached_kib": 40016,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-ubd-writeback",
+    "guests": 1,
+    "trial": 2,
+    "phase": "sequential-read",
+    "host_seconds": 5.674762578004447,
+    "bytes": 12784238592,
+    "mib_per_second": 2148.4599280429043,
+    "iops": 2148.4599280429043,
+    "guest_cpu_seconds": 3.957607084,
+    "backend_cpu_seconds": 0.0,
+    "cpu_seconds_per_gib": 0.3323974453753281,
+    "busy_cores": 0.6974048745827369,
+    "end_pss_mib": 75.716796875,
+    "peak_sampled_pss_mib": 75.716796875,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 128.0,
+    "baseline": {
+      "pss_mib": 75.708984375,
+      "rss_mib": 79.921875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 128.0
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.67403392,
+        "bytes": 12784238592,
+        "operations": 12192,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-ubd-writeback",
+    "guests": 1,
+    "trial": 2,
+    "phase": "random-read-4k",
+    "host_seconds": 5.00098807199538,
+    "bytes": 519831552,
+    "mib_per_second": 99.13041040351796,
+    "iops": 25377.385063300597,
+    "guest_cpu_seconds": 4.934140548,
+    "backend_cpu_seconds": 0.0,
+    "cpu_seconds_per_gib": 10.191749714880485,
+    "busy_cores": 0.9866331366855855,
+    "end_pss_mib": 75.716796875,
+    "peak_sampled_pss_mib": 75.716796875,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 128.0,
+    "baseline": {
+      "pss_mib": 75.708984375,
+      "rss_mib": 79.921875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 128.0
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.000308736,
+        "bytes": 519831552,
+        "operations": 126912,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-ubd-writeback",
+    "guests": 1,
+    "trial": 2,
+    "phase": "sequential-write",
+    "host_seconds": 5.015423805001774,
+    "bytes": 5402263552,
+    "mib_per_second": 1027.2312371413202,
+    "iops": 1027.2312371413202,
+    "guest_cpu_seconds": 5.003905675,
+    "backend_cpu_seconds": 0.0,
+    "cpu_seconds_per_gib": 0.9945651031055901,
+    "busy_cores": 0.9977034582819727,
+    "end_pss_mib": 75.716796875,
+    "peak_sampled_pss_mib": 75.716796875,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 128.0,
+    "baseline": {
+      "pss_mib": 75.708984375,
+      "rss_mib": 79.921875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 128.0
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.014856448,
+        "bytes": 5402263552,
+        "operations": 5152,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-ubd-writeback",
+    "guests": 1,
+    "trial": 2,
+    "phase": "random-write-4k",
+    "host_seconds": 5.270064944998012,
+    "bytes": 146735104,
+    "mib_per_second": 26.55327808299956,
+    "iops": 6797.639189247888,
+    "guest_cpu_seconds": 1.491300178,
+    "backend_cpu_seconds": 0.0,
+    "cpu_seconds_per_gib": 10.912667314136668,
+    "busy_cores": 0.28297567365188564,
+    "end_pss_mib": 75.716796875,
+    "peak_sampled_pss_mib": 75.716796875,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 128.0,
+    "baseline": {
+      "pss_mib": 75.708984375,
+      "rss_mib": 79.921875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 128.0
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.269417984,
+        "bytes": 146735104,
+        "operations": 35824,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-writeback",
+    "guests": 4,
+    "trial": 3,
+    "phase": "sequential-read",
+    "host_seconds": 5.365665279998211,
+    "bytes": 65380810752,
+    "mib_per_second": 11620.553416261699,
+    "iops": 11620.553416261699,
+    "guest_cpu_seconds": 3.745198764,
+    "backend_cpu_seconds": 11.687833875,
+    "cpu_seconds_per_gib": 0.2534549881693611,
+    "busy_cores": 2.876257059218786,
+    "end_pss_mib": 358.0146484375,
+    "peak_sampled_pss_mib": 358.0146484375,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 513.25,
+    "baseline": {
+      "pss_mib": 357.74609375,
+      "rss_mib": 473.7578125,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 513.25
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.00389632,
+        "bytes": 13740539904,
+        "operations": 13104,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.3648832,
+        "bytes": 19511902208,
+        "operations": 18608,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.001364992,
+        "bytes": 16122904576,
+        "operations": 15376,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.001122304,
+        "bytes": 16005464064,
+        "operations": 15264,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-writeback",
+    "guests": 4,
+    "trial": 3,
+    "phase": "random-read-4k",
+    "host_seconds": 5.771005952999985,
+    "bytes": 356384768,
+    "mib_per_second": 58.89354520996816,
+    "iops": 15076.747573751849,
+    "guest_cpu_seconds": 2.918485818,
+    "backend_cpu_seconds": 2.367877507,
+    "cpu_seconds_per_gib": 15.927138050165501,
+    "busy_cores": 0.916021117991041,
+    "end_pss_mib": 358.0146484375,
+    "peak_sampled_pss_mib": 358.0146484375,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 513.25,
+    "baseline": {
+      "pss_mib": 357.74609375,
+      "rss_mib": 473.7578125,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 513.25
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.136859392,
+        "bytes": 89128960,
+        "operations": 21760,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.497742336,
+        "bytes": 71041024,
+        "operations": 17344,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.000301312,
+        "bytes": 83689472,
+        "operations": 20432,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.7702784,
+        "bytes": 112525312,
+        "operations": 27472,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-writeback",
+    "guests": 4,
+    "trial": 3,
+    "phase": "sequential-write",
+    "host_seconds": 5.426611872004287,
+    "bytes": 17515413504,
+    "mib_per_second": 3078.1637592648535,
+    "iops": 3078.1637592648535,
+    "guest_cpu_seconds": 1.300535159,
+    "backend_cpu_seconds": 18.13885098,
+    "cpu_seconds_per_gib": 1.191686506605364,
+    "busy_cores": 3.58223263382575,
+    "end_pss_mib": 358.01171875,
+    "peak_sampled_pss_mib": 358.0146484375,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 513.25,
+    "baseline": {
+      "pss_mib": 357.74609375,
+      "rss_mib": 473.7578125,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 513.25
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.425851136,
+        "bytes": 3590324224,
+        "operations": 3424,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.241779456,
+        "bytes": 5150605312,
+        "operations": 4912,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.235495936,
+        "bytes": 4529848320,
+        "operations": 4320,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.243176704,
+        "bytes": 4244635648,
+        "operations": 4048,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-writeback",
+    "guests": 4,
+    "trial": 3,
+    "phase": "random-write-4k",
+    "host_seconds": 6.191048572996806,
+    "bytes": 310444032,
+    "mib_per_second": 47.82105914841653,
+    "iops": 12242.191141994632,
+    "guest_cpu_seconds": 2.620678978,
+    "backend_cpu_seconds": 3.790658452,
+    "cpu_seconds_per_gib": 22.175079681891493,
+    "busy_cores": 1.035581833094319,
+    "end_pss_mib": 358.01171875,
+    "peak_sampled_pss_mib": 358.01171875,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 513.25,
+    "baseline": {
+      "pss_mib": 357.74609375,
+      "rss_mib": 473.7578125,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 513.25
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.90807808,
+        "bytes": 98697216,
+        "operations": 24096,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.56838656,
+        "bytes": 80216064,
+        "operations": 19584,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.650870784,
+        "bytes": 51511296,
+        "operations": 12576,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 6.190379776,
+        "bytes": 80019456,
+        "operations": 19536,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-writeback",
+    "guests": 1,
+    "trial": 3,
+    "phase": "sequential-read",
+    "host_seconds": 5.006440898003348,
+    "bytes": 40282095616,
+    "mib_per_second": 7673.315391642982,
+    "iops": 7673.315391642982,
+    "guest_cpu_seconds": 4.981814108,
+    "backend_cpu_seconds": 6.292308275,
+    "cpu_seconds_per_gib": 0.3005180476934611,
+    "busy_cores": 2.2519235945632174,
+    "end_pss_mib": 241.728515625,
+    "peak_sampled_pss_mib": 241.728515625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 39.078125,
+    "host_file_cache_mib": 128.3125,
+    "baseline": {
+      "pss_mib": 241.654296875,
+      "rss_mib": 268.30078125,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 39.07421875,
+      "host_file_cache_mib": 128.3125
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.000299499,
+        "bytes": 40282095616,
+        "operations": 38416,
+        "cached_kib": 40016,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-writeback",
+    "guests": 1,
+    "trial": 3,
+    "phase": "random-read-4k",
+    "host_seconds": 5.008875978004653,
+    "bytes": 771424256,
+    "mib_per_second": 146.87676501287024,
+    "iops": 37600.45184329478,
+    "guest_cpu_seconds": 5.021667012,
+    "backend_cpu_seconds": 4.252441353,
+    "cpu_seconds_per_gib": 12.908588178757965,
+    "busy_cores": 1.8515348365032696,
+    "end_pss_mib": 241.728515625,
+    "peak_sampled_pss_mib": 241.728515625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 39.078125,
+    "host_file_cache_mib": 128.3125,
+    "baseline": {
+      "pss_mib": 241.654296875,
+      "rss_mib": 268.30078125,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 39.07421875,
+      "host_file_cache_mib": 128.3125
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.002507721,
+        "bytes": 771424256,
+        "operations": 188336,
+        "cached_kib": 40016,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-writeback",
+    "guests": 1,
+    "trial": 3,
+    "phase": "sequential-write",
+    "host_seconds": 5.0964974890011945,
+    "bytes": 6459228160,
+    "mib_per_second": 1208.6732139658582,
+    "iops": 1208.6732139658582,
+    "guest_cpu_seconds": 0.661411597,
+    "backend_cpu_seconds": 6.926686272,
+    "cpu_seconds_per_gib": 1.2613980873142858,
+    "busy_cores": 1.488884844027875,
+    "end_pss_mib": 241.728515625,
+    "peak_sampled_pss_mib": 241.728515625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 39.078125,
+    "host_file_cache_mib": 128.3125,
+    "baseline": {
+      "pss_mib": 241.654296875,
+      "rss_mib": 268.30078125,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 39.07421875,
+      "host_file_cache_mib": 128.3125
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.089989256,
+        "bytes": 6459228160,
+        "operations": 6160,
+        "cached_kib": 40016,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-writeback",
+    "guests": 1,
+    "trial": 3,
+    "phase": "random-write-4k",
+    "host_seconds": 5.088795940995624,
+    "bytes": 667222016,
+    "mib_per_second": 125.04185810907272,
+    "iops": 32010.715675922616,
+    "guest_cpu_seconds": 5.041313648,
+    "backend_cpu_seconds": 4.431847699,
+    "cpu_seconds_per_gib": 15.244894952288382,
+    "busy_cores": 1.8615722573357059,
+    "end_pss_mib": 241.728515625,
+    "peak_sampled_pss_mib": 241.728515625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 39.078125,
+    "host_file_cache_mib": 128.3125,
+    "baseline": {
+      "pss_mib": 241.654296875,
+      "rss_mib": 268.30078125,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 39.07421875,
+      "host_file_cache_mib": 128.3125
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.082377153,
+        "bytes": 667222016,
+        "operations": 162896,
+        "cached_kib": 40016,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-writeback",
+    "guests": 4,
+    "trial": 1,
+    "phase": "sequential-read",
+    "host_seconds": 5.631160254000861,
+    "bytes": 52428800000,
+    "mib_per_second": 8879.164815896635,
+    "iops": 8879.164815896635,
+    "guest_cpu_seconds": 3.1098733,
+    "backend_cpu_seconds": 11.315978659,
+    "cpu_seconds_per_gib": 0.29544144812032,
+    "busy_cores": 2.561790343073727,
+    "end_pss_mib": 358.390625,
+    "peak_sampled_pss_mib": 358.390625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 513.25,
+    "baseline": {
+      "pss_mib": 358.0927734375,
+      "rss_mib": 474.0703125,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 513.25
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.00502656,
+        "bytes": 12247367680,
+        "operations": 11680,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.220551424,
+        "bytes": 16726884352,
+        "operations": 15952,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.630342912,
+        "bytes": 15904800768,
+        "operations": 15168,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.006000128,
+        "bytes": 7549747200,
+        "operations": 7200,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-writeback",
+    "guests": 4,
+    "trial": 1,
+    "phase": "random-read-4k",
+    "host_seconds": 5.46459768400382,
+    "bytes": 502661120,
+    "mib_per_second": 87.72374980197442,
+    "iops": 22457.27994930545,
+    "guest_cpu_seconds": 4.211156867,
+    "backend_cpu_seconds": 3.440053938,
+    "cpu_seconds_per_gib": 16.34386412374446,
+    "busy_cores": 1.4001416476453368,
+    "end_pss_mib": 358.390625,
+    "peak_sampled_pss_mib": 358.390625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 513.25,
+    "baseline": {
+      "pss_mib": 358.0927734375,
+      "rss_mib": 474.0703125,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 513.25
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.17465344,
+        "bytes": 111411200,
+        "operations": 27200,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.000505344,
+        "bytes": 122552320,
+        "operations": 29920,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.00074496,
+        "bytes": 143261696,
+        "operations": 34976,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.463579904,
+        "bytes": 125435904,
+        "operations": 30624,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-writeback",
+    "guests": 4,
+    "trial": 1,
+    "phase": "sequential-write",
+    "host_seconds": 6.051475805004884,
+    "bytes": 15250489344,
+    "mib_per_second": 2403.3806741772573,
+    "iops": 2403.3806741772573,
+    "guest_cpu_seconds": 1.131785141,
+    "backend_cpu_seconds": 18.318119666,
+    "cpu_seconds_per_gib": 1.3694102394367438,
+    "busy_cores": 3.2140762739089075,
+    "end_pss_mib": 358.408203125,
+    "peak_sampled_pss_mib": 358.408203125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 513.25,
+    "baseline": {
+      "pss_mib": 358.0927734375,
+      "rss_mib": 474.0703125,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 513.25
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 6.050789888,
+        "bytes": 3539992576,
+        "operations": 3376,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.16817152,
+        "bytes": 3254779904,
+        "operations": 3104,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.347248384,
+        "bytes": 4278190080,
+        "operations": 4080,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.15223296,
+        "bytes": 4177526784,
+        "operations": 3984,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-writeback",
+    "guests": 4,
+    "trial": 1,
+    "phase": "random-write-4k",
+    "host_seconds": 6.1815224299934926,
+    "bytes": 349241344,
+    "mib_per_second": 53.8803351070831,
+    "iops": 13793.365787413273,
+    "guest_cpu_seconds": 2.90775488,
+    "backend_cpu_seconds": 4.041031828,
+    "cpu_seconds_per_gib": 21.364031042197787,
+    "busy_cores": 1.1241222185466235,
+    "end_pss_mib": 358.408203125,
+    "peak_sampled_pss_mib": 358.408203125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 513.25,
+    "baseline": {
+      "pss_mib": 358.0927734375,
+      "rss_mib": 474.0703125,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 513.25
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.870810624,
+        "bytes": 66387968,
+        "operations": 16208,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 6.104623616,
+        "bytes": 84934656,
+        "operations": 20736,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.333277184,
+        "bytes": 70123520,
+        "operations": 17120,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 6.18085504,
+        "bytes": 127795200,
+        "operations": 31200,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-ubd-writeback",
+    "guests": 4,
+    "trial": 1,
+    "phase": "sequential-read",
+    "host_seconds": 5.620358626998495,
+    "bytes": 48603594752,
+    "mib_per_second": 8247.160559708605,
+    "iops": 8247.160559708605,
+    "guest_cpu_seconds": 16.470991321,
+    "backend_cpu_seconds": 0.0,
+    "cpu_seconds_per_gib": 0.36387416104383846,
+    "busy_cores": 2.9305943649001973,
+    "end_pss_mib": 283.94921875,
+    "peak_sampled_pss_mib": 283.94921875,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 512.0,
+    "baseline": {
+      "pss_mib": 283.91796875,
+      "rss_mib": 319.515625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 512.0
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.120576768,
+        "bytes": 10938744832,
+        "operations": 10432,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.374593536,
+        "bytes": 14176747520,
+        "operations": 13520,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.619442176,
+        "bytes": 12650020864,
+        "operations": 12064,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.003717632,
+        "bytes": 10838081536,
+        "operations": 10336,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-ubd-writeback",
+    "guests": 4,
+    "trial": 1,
+    "phase": "random-read-4k",
+    "host_seconds": 5.738384696996945,
+    "bytes": 1625227264,
+    "mib_per_second": 270.0999639865771,
+    "iops": 69145.59078056374,
+    "guest_cpu_seconds": 15.481765374,
+    "backend_cpu_seconds": 0.0,
+    "cpu_seconds_per_gib": 10.228365816670673,
+    "busy_cores": 2.6979308971916844,
+    "end_pss_mib": 283.94921875,
+    "peak_sampled_pss_mib": 283.94921875,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 512.0,
+    "baseline": {
+      "pss_mib": 283.91796875,
+      "rss_mib": 319.515625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 512.0
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.220989952,
+        "bytes": 284360704,
+        "operations": 69424,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.000354048,
+        "bytes": 456458240,
+        "operations": 111440,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.000369408,
+        "bytes": 500826112,
+        "operations": 122272,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.737702912,
+        "bytes": 383582208,
+        "operations": 93648,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-ubd-writeback",
+    "guests": 4,
+    "trial": 1,
+    "phase": "sequential-write",
+    "host_seconds": 5.742999891001091,
+    "bytes": 16391340032,
+    "mib_per_second": 2721.922391900848,
+    "iops": 2721.922391900848,
+    "guest_cpu_seconds": 16.004408194,
+    "backend_cpu_seconds": 0.0,
+    "cpu_seconds_per_gib": 1.048395214345957,
+    "busy_cores": 2.786767978017529,
+    "end_pss_mib": 283.94921875,
+    "peak_sampled_pss_mib": 283.94921875,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 512.0,
+    "baseline": {
+      "pss_mib": 283.91796875,
+      "rss_mib": 319.515625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 512.0
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.739952896,
+        "bytes": 3976200192,
+        "operations": 3792,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.004023296,
+        "bytes": 4294967296,
+        "operations": 4096,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.264132096,
+        "bytes": 4680843264,
+        "operations": 4464,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.000649728,
+        "bytes": 3439329280,
+        "operations": 3280,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-ubd-writeback",
+    "guests": 4,
+    "trial": 1,
+    "phase": "random-write-4k",
+    "host_seconds": 5.544855604995973,
+    "bytes": 762511360,
+    "mib_per_second": 131.1463366773332,
+    "iops": 33573.4621893973,
+    "guest_cpu_seconds": 8.073383265,
+    "backend_cpu_seconds": 0.0,
+    "cpu_seconds_per_gib": 11.368655901483455,
+    "busy_cores": 1.4560132562741213,
+    "end_pss_mib": 283.94921875,
+    "peak_sampled_pss_mib": 283.94921875,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 512.0,
+    "baseline": {
+      "pss_mib": 283.91796875,
+      "rss_mib": 319.515625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 512.0
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.54422144,
+        "bytes": 166002688,
+        "operations": 40528,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.000055296,
+        "bytes": 208076800,
+        "operations": 50800,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.493275648,
+        "bytes": 174325760,
+        "operations": 42560,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.000317696,
+        "bytes": 214106112,
+        "operations": 52272,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-writeback",
+    "guests": 1,
+    "trial": 2,
+    "phase": "sequential-read",
+    "host_seconds": 5.007170663004217,
+    "bytes": 39644561408,
+    "mib_per_second": 7550.771192870794,
+    "iops": 7550.771192870794,
+    "guest_cpu_seconds": 5.029083199,
+    "backend_cpu_seconds": 7.148855823,
+    "cpu_seconds_per_gib": 0.3298299184968261,
+    "busy_cores": 2.4320998507155824,
+    "end_pss_mib": 241.2705078125,
+    "peak_sampled_pss_mib": 241.2705078125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 39.078125,
+    "host_file_cache_mib": 128.3125,
+    "baseline": {
+      "pss_mib": 241.1611328125,
+      "rss_mib": 267.88671875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 39.07421875,
+      "host_file_cache_mib": 128.3125
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.00107122,
+        "bytes": 39644561408,
+        "operations": 37808,
+        "cached_kib": 40016,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-writeback",
+    "guests": 1,
+    "trial": 2,
+    "phase": "random-read-4k",
+    "host_seconds": 5.006352625001455,
+    "bytes": 789643264,
+    "mib_per_second": 150.42138586867543,
+    "iops": 38507.87478238091,
+    "guest_cpu_seconds": 5.027670047,
+    "backend_cpu_seconds": 4.166729953,
+    "cpu_seconds_per_gib": 12.50236945804631,
+    "busy_cores": 1.8365466216030535,
+    "end_pss_mib": 241.2705078125,
+    "peak_sampled_pss_mib": 241.2705078125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 39.078125,
+    "host_file_cache_mib": 128.3125,
+    "baseline": {
+      "pss_mib": 241.1611328125,
+      "rss_mib": 267.88671875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 39.07421875,
+      "host_file_cache_mib": 128.3125
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.00034035,
+        "bytes": 789643264,
+        "operations": 192784,
+        "cached_kib": 40016,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-writeback",
+    "guests": 1,
+    "trial": 2,
+    "phase": "sequential-write",
+    "host_seconds": 5.110294951999094,
+    "bytes": 6727663616,
+    "mib_per_second": 1255.504830986346,
+    "iops": 1255.504830986346,
+    "guest_cpu_seconds": 0.66016162,
+    "backend_cpu_seconds": 11.090597564,
+    "cpu_seconds_per_gib": 1.875432887221945,
+    "busy_cores": 2.299428759861155,
+    "end_pss_mib": 241.2705078125,
+    "peak_sampled_pss_mib": 241.2705078125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 39.078125,
+    "host_file_cache_mib": 128.3125,
+    "baseline": {
+      "pss_mib": 241.1611328125,
+      "rss_mib": 267.88671875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 39.07421875,
+      "host_file_cache_mib": 128.3125
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.103934944,
+        "bytes": 6727663616,
+        "operations": 6416,
+        "cached_kib": 40016,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-writeback",
+    "guests": 1,
+    "trial": 2,
+    "phase": "random-write-4k",
+    "host_seconds": 5.104332482995233,
+    "bytes": 687865856,
+    "mib_per_second": 128.51827387526643,
+    "iops": 32900.678112068206,
+    "guest_cpu_seconds": 5.035345711,
+    "backend_cpu_seconds": 4.347377059,
+    "cpu_seconds_per_gib": 14.646201397073172,
+    "busy_cores": 1.8381880101380466,
+    "end_pss_mib": 241.2705078125,
+    "peak_sampled_pss_mib": 241.2705078125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 39.078125,
+    "host_file_cache_mib": 128.3125,
+    "baseline": {
+      "pss_mib": 241.1611328125,
+      "rss_mib": 267.88671875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 39.07421875,
+      "host_file_cache_mib": 128.3125
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.098095551,
+        "bytes": 687865856,
+        "operations": 167936,
+        "cached_kib": 40016,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-writeback",
+    "guests": 1,
+    "trial": 2,
+    "phase": "sequential-read",
+    "host_seconds": 5.000777228000516,
+    "bytes": 18035507200,
+    "mib_per_second": 3439.465350244597,
+    "iops": 3439.465350244597,
+    "guest_cpu_seconds": 0.96365219,
+    "backend_cpu_seconds": 3.001230713,
+    "cpu_seconds_per_gib": 0.2360488425972093,
+    "busy_cores": 0.7928533350375413,
+    "end_pss_mib": 112.1337890625,
+    "peak_sampled_pss_mib": 112.1337890625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 128.3125,
+    "baseline": {
+      "pss_mib": 112.068359375,
+      "rss_mib": 118.34765625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 128.3125
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.00011648,
+        "bytes": 18035507200,
+        "operations": 17200,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-writeback",
+    "guests": 1,
+    "trial": 2,
+    "phase": "random-read-4k",
+    "host_seconds": 5.061679421996814,
+    "bytes": 98304000,
+    "mib_per_second": 18.52152066221056,
+    "iops": 4741.509289525903,
+    "guest_cpu_seconds": 0.725123157,
+    "backend_cpu_seconds": 0.605757277,
+    "cpu_seconds_per_gib": 14.536763353770667,
+    "busy_cores": 0.2629325808774694,
+    "end_pss_mib": 112.1337890625,
+    "peak_sampled_pss_mib": 112.1337890625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 128.3125,
+    "baseline": {
+      "pss_mib": 112.068359375,
+      "rss_mib": 118.34765625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 128.3125
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.0610112,
+        "bytes": 98304000,
+        "operations": 24000,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-writeback",
+    "guests": 1,
+    "trial": 2,
+    "phase": "sequential-write",
+    "host_seconds": 5.2675372079975205,
+    "bytes": 4915724288,
+    "mib_per_second": 889.979475205675,
+    "iops": 889.979475205675,
+    "guest_cpu_seconds": 0.322516472,
+    "backend_cpu_seconds": 5.134552297,
+    "cpu_seconds_per_gib": 1.191987717460751,
+    "busy_cores": 1.0359810578489546,
+    "end_pss_mib": 112.1337890625,
+    "peak_sampled_pss_mib": 112.1337890625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 128.3125,
+    "baseline": {
+      "pss_mib": 112.068359375,
+      "rss_mib": 118.34765625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 128.3125
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.266957568,
+        "bytes": 4915724288,
+        "operations": 4688,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-writeback",
+    "guests": 1,
+    "trial": 2,
+    "phase": "random-write-4k",
+    "host_seconds": 5.37551160100702,
+    "bytes": 82640896,
+    "mib_per_second": 14.661395202874399,
+    "iops": 3753.317171935846,
+    "guest_cpu_seconds": 0.672952787,
+    "backend_cpu_seconds": 0.936159653,
+    "cpu_seconds_per_gib": 20.906977174432992,
+    "busy_cores": 0.2993412645037465,
+    "end_pss_mib": 112.1337890625,
+    "peak_sampled_pss_mib": 112.1337890625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 128.3125,
+    "baseline": {
+      "pss_mib": 112.068359375,
+      "rss_mib": 118.34765625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 128.3125
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.37488128,
+        "bytes": 82640896,
+        "operations": 20176,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-ubd-writeback",
+    "guests": 4,
+    "trial": 2,
+    "phase": "sequential-read",
+    "host_seconds": 5.4726244830017095,
+    "bytes": 50063212544,
+    "mib_per_second": 8724.150569492873,
+    "iops": 8724.150569492873,
+    "guest_cpu_seconds": 17.68950908,
+    "backend_cpu_seconds": 0.0,
+    "cpu_seconds_per_gib": 0.3793996585522788,
+    "busy_cores": 3.232363034398696,
+    "end_pss_mib": 283.98046875,
+    "peak_sampled_pss_mib": 283.98046875,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 512.0,
+    "baseline": {
+      "pss_mib": 283.94921875,
+      "rss_mib": 319.66015625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 512.0
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.001678336,
+        "bytes": 11811160064,
+        "operations": 11264,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.21011456,
+        "bytes": 11945377792,
+        "operations": 11392,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.471775232,
+        "bytes": 12985565184,
+        "operations": 12384,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.00222976,
+        "bytes": 13321109504,
+        "operations": 12704,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-ubd-writeback",
+    "guests": 4,
+    "trial": 2,
+    "phase": "random-read-4k",
+    "host_seconds": 5.62661664999905,
+    "bytes": 1326252032,
+    "mib_per_second": 224.79094963759678,
+    "iops": 57546.483107224776,
+    "guest_cpu_seconds": 13.247028407,
+    "backend_cpu_seconds": 0.0,
+    "cpu_seconds_per_gib": 10.724875891697781,
+    "busy_cores": 2.3543506215235466,
+    "end_pss_mib": 283.98046875,
+    "peak_sampled_pss_mib": 283.98046875,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 512.0,
+    "baseline": {
+      "pss_mib": 283.94921875,
+      "rss_mib": 319.66015625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 512.0
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.000091904,
+        "bytes": 352976896,
+        "operations": 86176,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.002184448,
+        "bytes": 458358784,
+        "operations": 111904,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.625897728,
+        "bytes": 219873280,
+        "operations": 53680,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.000215808,
+        "bytes": 295043072,
+        "operations": 72032,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-ubd-writeback",
+    "guests": 4,
+    "trial": 2,
+    "phase": "sequential-write",
+    "host_seconds": 5.015214696999465,
+    "bytes": 18756927488,
+    "mib_per_second": 3566.746606222491,
+    "iops": 3566.746606222491,
+    "guest_cpu_seconds": 17.738490875,
+    "backend_cpu_seconds": 0.0,
+    "cpu_seconds_per_gib": 1.0154413381037568,
+    "busy_cores": 3.536935494628515,
+    "end_pss_mib": 283.98046875,
+    "peak_sampled_pss_mib": 283.98046875,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 512.0,
+    "baseline": {
+      "pss_mib": 283.94921875,
+      "rss_mib": 319.66015625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 512.0
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.01466496,
+        "bytes": 4362076160,
+        "operations": 4160,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.000385024,
+        "bytes": 4563402752,
+        "operations": 4352,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.012866048,
+        "bytes": 4362076160,
+        "operations": 4160,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.009683968,
+        "bytes": 5469372416,
+        "operations": 5216,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-ubd-writeback",
+    "guests": 4,
+    "trial": 2,
+    "phase": "random-write-4k",
+    "host_seconds": 5.198015180998482,
+    "bytes": 748879872,
+    "mib_per_second": 137.3961935722574,
+    "iops": 35173.425554497895,
+    "guest_cpu_seconds": 7.481536489,
+    "backend_cpu_seconds": 0.0,
+    "cpu_seconds_per_gib": 10.727005673910563,
+    "busy_cores": 1.4393063945540225,
+    "end_pss_mib": 283.98046875,
+    "peak_sampled_pss_mib": 283.98046875,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 512.0,
+    "baseline": {
+      "pss_mib": 283.94921875,
+      "rss_mib": 319.66015625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 512.0
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.000131584,
+        "bytes": 172425216,
+        "operations": 42096,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.000114688,
+        "bytes": 210960384,
+        "operations": 51504,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.000193024,
+        "bytes": 216203264,
+        "operations": 52784,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.197452032,
+        "bytes": 149291008,
+        "operations": 36448,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-none",
+    "guests": 4,
+    "trial": 1,
+    "phase": "sequential-read",
+    "host_seconds": 5.037768261994643,
+    "bytes": 9462349824,
+    "mib_per_second": 1791.2693737974873,
+    "iops": 1791.2693737974873,
+    "guest_cpu_seconds": 1.405071341,
+    "backend_cpu_seconds": 1.796720169,
+    "cpu_seconds_per_gib": 0.36332385929078015,
+    "busy_cores": 0.6355575214037912,
+    "end_pss_mib": 848.140625,
+    "peak_sampled_pss_mib": 848.140625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 156.3125,
+    "host_file_cache_mib": 4.765625,
+    "baseline": {
+      "pss_mib": 847.9375,
+      "rss_mib": 1070.9609375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 156.296875,
+      "host_file_cache_mib": 1.015625
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.031437976,
+        "bytes": 2365587456,
+        "operations": 2256,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.029302255,
+        "bytes": 2365587456,
+        "operations": 2256,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.029536655,
+        "bytes": 2365587456,
+        "operations": 2256,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.030732146,
+        "bytes": 2365587456,
+        "operations": 2256,
+        "cached_kib": 40016,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-none",
+    "guests": 4,
+    "trial": 1,
+    "phase": "random-read-4k",
+    "host_seconds": 5.0081492850004,
+    "bytes": 771620864,
+    "mib_per_second": 146.93551612049066,
+    "iops": 37615.49212684561,
+    "guest_cpu_seconds": 19.224748008,
+    "backend_cpu_seconds": 8.015797205,
+    "cpu_seconds_per_gib": 37.90632688719143,
+    "busy_cores": 5.439243852931158,
+    "end_pss_mib": 848.140625,
+    "peak_sampled_pss_mib": 848.140625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 156.3125,
+    "host_file_cache_mib": 4.765625,
+    "baseline": {
+      "pss_mib": 847.9375,
+      "rss_mib": 1070.9609375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 156.296875,
+      "host_file_cache_mib": 1.015625
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.00179597,
+        "bytes": 193134592,
+        "operations": 47152,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.00031721,
+        "bytes": 192217088,
+        "operations": 46928,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.00112577,
+        "bytes": 193265664,
+        "operations": 47184,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.00180941,
+        "bytes": 193003520,
+        "operations": 47120,
+        "cached_kib": 40016,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-none",
+    "guests": 4,
+    "trial": 1,
+    "phase": "sequential-write",
+    "host_seconds": 5.049986609003099,
+    "bytes": 8438939648,
+    "mib_per_second": 1593.6675922371858,
+    "iops": 1593.6675922371858,
+    "guest_cpu_seconds": 1.29466898,
+    "backend_cpu_seconds": 12.948687455,
+    "cpu_seconds_per_gib": 1.8122759678727633,
+    "busy_cores": 2.8204740997940454,
+    "end_pss_mib": 848.140625,
+    "peak_sampled_pss_mib": 848.140625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 156.3125,
+    "host_file_cache_mib": 2.66796875,
+    "baseline": {
+      "pss_mib": 847.9375,
+      "rss_mib": 1070.9609375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 156.296875,
+      "host_file_cache_mib": 1.015625
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.043477252,
+        "bytes": 2113929216,
+        "operations": 2016,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.043482242,
+        "bytes": 2113929216,
+        "operations": 2016,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.006065873,
+        "bytes": 2097152000,
+        "operations": 2000,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.043475823,
+        "bytes": 2113929216,
+        "operations": 2016,
+        "cached_kib": 40016,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-none",
+    "guests": 4,
+    "trial": 1,
+    "phase": "random-write-4k",
+    "host_seconds": 5.36246003999986,
+    "bytes": 663027712,
+    "mib_per_second": 117.91463158390576,
+    "iops": 30186.145685479874,
+    "guest_cpu_seconds": 17.877683006,
+    "backend_cpu_seconds": 11.91841711,
+    "cpu_seconds_per_gib": 48.25336604730098,
+    "busy_cores": 5.556423711084807,
+    "end_pss_mib": 848.140625,
+    "peak_sampled_pss_mib": 848.140625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 156.3125,
+    "host_file_cache_mib": 1.6171875,
+    "baseline": {
+      "pss_mib": 847.9375,
+      "rss_mib": 1070.9609375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 156.296875,
+      "host_file_cache_mib": 1.015625
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.355984747,
+        "bytes": 167182336,
+        "operations": 40816,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.355966887,
+        "bytes": 165609472,
+        "operations": 40432,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.355911256,
+        "bytes": 165150720,
+        "operations": 40320,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.302599119,
+        "bytes": 165085184,
+        "operations": 40304,
+        "cached_kib": 40016,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-ubd-writeback",
+    "guests": 4,
+    "trial": 3,
+    "phase": "sequential-read",
+    "host_seconds": 5.651489086005313,
+    "bytes": 45466255360,
+    "mib_per_second": 7672.314206068563,
+    "iops": 7672.314206068563,
+    "guest_cpu_seconds": 16.70334491,
+    "backend_cpu_seconds": 0.0,
+    "cpu_seconds_per_gib": 0.39447013809594095,
+    "busy_cores": 2.9555652777180814,
+    "end_pss_mib": 283.98828125,
+    "peak_sampled_pss_mib": 283.98828125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 512.0,
+    "baseline": {
+      "pss_mib": 283.95703125,
+      "rss_mib": 319.66796875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 512.0
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.128827648,
+        "bytes": 10821304320,
+        "operations": 10320,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.005060864,
+        "bytes": 14092861440,
+        "operations": 13440,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.650592512,
+        "bytes": 10687086592,
+        "operations": 10192,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.004018176,
+        "bytes": 9865003008,
+        "operations": 9408,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-ubd-writeback",
+    "guests": 4,
+    "trial": 3,
+    "phase": "random-read-4k",
+    "host_seconds": 5.18781744199805,
+    "bytes": 1505427456,
+    "mib_per_second": 276.7421012885634,
+    "iops": 70845.97792987223,
+    "guest_cpu_seconds": 14.826792338,
+    "backend_cpu_seconds": 0.0,
+    "cpu_seconds_per_gib": 10.575167196281921,
+    "busy_cores": 2.8580019447040472,
+    "end_pss_mib": 283.98828125,
+    "peak_sampled_pss_mib": 283.98828125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 512.0,
+    "baseline": {
+      "pss_mib": 283.95703125,
+      "rss_mib": 319.66796875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 512.0
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.000217344,
+        "bytes": 365821952,
+        "operations": 89312,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.187122688,
+        "bytes": 363069440,
+        "operations": 88640,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.000150016,
+        "bytes": 287899648,
+        "operations": 70288,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.000220416,
+        "bytes": 488636416,
+        "operations": 119296,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-ubd-writeback",
+    "guests": 4,
+    "trial": 3,
+    "phase": "sequential-write",
+    "host_seconds": 5.462823271998786,
+    "bytes": 15300820992,
+    "mib_per_second": 2671.1462687792477,
+    "iops": 2671.1462687792477,
+    "guest_cpu_seconds": 14.920167429,
+    "backend_cpu_seconds": 0.0,
+    "cpu_seconds_per_gib": 1.0470292932631577,
+    "busy_cores": 2.731219130861774,
+    "end_pss_mib": 283.98828125,
+    "peak_sampled_pss_mib": 283.98828125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 512.0,
+    "baseline": {
+      "pss_mib": 283.95703125,
+      "rss_mib": 319.66796875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 512.0
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.461995008,
+        "bytes": 4747952128,
+        "operations": 4528,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.001632,
+        "bytes": 4345298944,
+        "operations": 4144,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.012794368,
+        "bytes": 3405774848,
+        "operations": 3248,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.030344448,
+        "bytes": 2801795072,
+        "operations": 2672,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-ubd-writeback",
+    "guests": 4,
+    "trial": 3,
+    "phase": "random-write-4k",
+    "host_seconds": 5.673955268001009,
+    "bytes": 778633216,
+    "mib_per_second": 130.87211035796764,
+    "iops": 33503.26025163972,
+    "guest_cpu_seconds": 8.467940907,
+    "backend_cpu_seconds": 0.0,
+    "cpu_seconds_per_gib": 11.677362496447099,
+    "busy_cores": 1.4924229231689623,
+    "end_pss_mib": 283.98828125,
+    "peak_sampled_pss_mib": 283.98828125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 512.0,
+    "baseline": {
+      "pss_mib": 283.95703125,
+      "rss_mib": 319.66796875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 512.0
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.000187904,
+        "bytes": 232456192,
+        "operations": 56752,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.6732224,
+        "bytes": 137428992,
+        "operations": 33552,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.349999616,
+        "bytes": 192348160,
+        "operations": 46960,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.510320128,
+        "bytes": 216399872,
+        "operations": 52832,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-none",
+    "guests": 4,
+    "trial": 3,
+    "phase": "sequential-read",
+    "host_seconds": 5.022806597000454,
+    "bytes": 9378463744,
+    "mib_per_second": 1780.6777599880563,
+    "iops": 1780.6777599880563,
+    "guest_cpu_seconds": 1.517879507,
+    "backend_cpu_seconds": 1.910098916,
+    "cpu_seconds_per_gib": 0.39246980155992844,
+    "busy_cores": 0.6824826631881742,
+    "end_pss_mib": 848.0693359375,
+    "peak_sampled_pss_mib": 848.0693359375,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 156.3125,
+    "host_file_cache_mib": 5.91796875,
+    "baseline": {
+      "pss_mib": 847.8349609375,
+      "rss_mib": 1071.40625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 156.296875,
+      "host_file_cache_mib": 1.015625
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.015996988,
+        "bytes": 2315255808,
+        "operations": 2208,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.010201855,
+        "bytes": 2348810240,
+        "operations": 2240,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.010026115,
+        "bytes": 2348810240,
+        "operations": 2240,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.014814277,
+        "bytes": 2365587456,
+        "operations": 2256,
+        "cached_kib": 40016,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-none",
+    "guests": 4,
+    "trial": 3,
+    "phase": "random-read-4k",
+    "host_seconds": 5.00889692799683,
+    "bytes": 708902912,
+    "mib_per_second": 134.97233217581353,
+    "iops": 34552.917037008265,
+    "guest_cpu_seconds": 18.400038785,
+    "backend_cpu_seconds": 7.850989414,
+    "cpu_seconds_per_gib": 39.76119497202699,
+    "busy_cores": 5.240880093234096,
+    "end_pss_mib": 848.0693359375,
+    "peak_sampled_pss_mib": 848.1005859375,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 156.3125,
+    "host_file_cache_mib": 5.91796875,
+    "baseline": {
+      "pss_mib": 847.8349609375,
+      "rss_mib": 1071.40625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 156.296875,
+      "host_file_cache_mib": 1.015625
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.00161928,
+        "bytes": 175570944,
+        "operations": 42864,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.002594271,
+        "bytes": 177405952,
+        "operations": 43312,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.00119943,
+        "bytes": 177799168,
+        "operations": 43408,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.00108007,
+        "bytes": 178126848,
+        "operations": 43488,
+        "cached_kib": 40016,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-none",
+    "guests": 4,
+    "trial": 3,
+    "phase": "sequential-write",
+    "host_seconds": 5.062729664998187,
+    "bytes": 8187281408,
+    "mib_per_second": 1542.2510220092495,
+    "iops": 1542.2510220092495,
+    "guest_cpu_seconds": 1.380732794,
+    "backend_cpu_seconds": 12.513230755,
+    "cpu_seconds_per_gib": 1.822159153967213,
+    "busy_cores": 2.744362126435004,
+    "end_pss_mib": 848.1318359375,
+    "peak_sampled_pss_mib": 848.1943359375,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 156.3125,
+    "host_file_cache_mib": 1.453125,
+    "baseline": {
+      "pss_mib": 847.8349609375,
+      "rss_mib": 1071.40625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 156.296875,
+      "host_file_cache_mib": 1.015625
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.032445007,
+        "bytes": 2046820352,
+        "operations": 1952,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.035322848,
+        "bytes": 2046820352,
+        "operations": 1952,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.056125459,
+        "bytes": 2046820352,
+        "operations": 1952,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.02107232,
+        "bytes": 2046820352,
+        "operations": 1952,
+        "cached_kib": 40016,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-none",
+    "guests": 4,
+    "trial": 3,
+    "phase": "random-write-4k",
+    "host_seconds": 5.319877017995168,
+    "bytes": 690946048,
+    "mib_per_second": 123.86329566850121,
+    "iops": 31709.00369113631,
+    "guest_cpu_seconds": 18.354373392,
+    "backend_cpu_seconds": 12.255109432,
+    "cpu_seconds_per_gib": 47.56765309574276,
+    "busy_cores": 5.753795194975276,
+    "end_pss_mib": 848.1318359375,
+    "peak_sampled_pss_mib": 848.1318359375,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 156.3125,
+    "host_file_cache_mib": 1.18359375,
+    "baseline": {
+      "pss_mib": 847.8349609375,
+      "rss_mib": 1071.40625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 156.296875,
+      "host_file_cache_mib": 1.015625
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.313322154,
+        "bytes": 171704320,
+        "operations": 41920,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.313294624,
+        "bytes": 172818432,
+        "operations": 42192,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.313242754,
+        "bytes": 173670400,
+        "operations": 42400,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.313285425,
+        "bytes": 172752896,
+        "operations": 42176,
+        "cached_kib": 40016,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-writeback",
+    "guests": 1,
+    "trial": 3,
+    "phase": "sequential-read",
+    "host_seconds": 5.568864109001879,
+    "bytes": 11794382848,
+    "mib_per_second": 2019.8014855162278,
+    "iops": 2019.8014855162278,
+    "guest_cpu_seconds": 0.693126268,
+    "backend_cpu_seconds": 1.995967984,
+    "cpu_seconds_per_gib": 0.24481085651209103,
+    "busy_cores": 0.4828802066929898,
+    "end_pss_mib": 112.2275390625,
+    "peak_sampled_pss_mib": 112.2275390625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 128.3125,
+    "baseline": {
+      "pss_mib": 112.162109375,
+      "rss_mib": 118.4453125,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 128.3125
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.568105472,
+        "bytes": 11794382848,
+        "operations": 11248,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-writeback",
+    "guests": 1,
+    "trial": 3,
+    "phase": "random-read-4k",
+    "host_seconds": 5.806652006001968,
+    "bytes": 77332480,
+    "mib_per_second": 12.700950551844556,
+    "iops": 3251.4433412722065,
+    "guest_cpu_seconds": 0.620631664,
+    "backend_cpu_seconds": 0.514381331,
+    "cpu_seconds_per_gib": 15.759366872949153,
+    "busy_cores": 0.1954677142399457,
+    "end_pss_mib": 112.2275390625,
+    "peak_sampled_pss_mib": 112.2275390625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 128.3125,
+    "baseline": {
+      "pss_mib": 112.162109375,
+      "rss_mib": 118.4453125,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 128.3125
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.806027008,
+        "bytes": 77332480,
+        "operations": 18880,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-writeback",
+    "guests": 1,
+    "trial": 3,
+    "phase": "sequential-write",
+    "host_seconds": 5.089053376002994,
+    "bytes": 4915724288,
+    "mib_per_second": 921.1929318929671,
+    "iops": 921.1929318929671,
+    "guest_cpu_seconds": 0.343974978,
+    "backend_cpu_seconds": 5.262011133,
+    "cpu_seconds_per_gib": 1.224515737556314,
+    "busy_cores": 1.10157738518416,
+    "end_pss_mib": 112.2275390625,
+    "peak_sampled_pss_mib": 112.2275390625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 128.3125,
+    "baseline": {
+      "pss_mib": 112.162109375,
+      "rss_mib": 118.4453125,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 128.3125
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.088360448,
+        "bytes": 4915724288,
+        "operations": 4688,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-writeback",
+    "guests": 1,
+    "trial": 3,
+    "phase": "random-write-4k",
+    "host_seconds": 6.337698861003446,
+    "bytes": 73793536,
+    "mib_per_second": 11.10418805680798,
+    "iops": 2842.6721425428427,
+    "guest_cpu_seconds": 0.643309403,
+    "backend_cpu_seconds": 0.957855384,
+    "cpu_seconds_per_gib": 23.297943046365898,
+    "busy_cores": 0.2526413485582507,
+    "end_pss_mib": 112.2275390625,
+    "peak_sampled_pss_mib": 112.2275390625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 128.3125,
+    "baseline": {
+      "pss_mib": 112.162109375,
+      "rss_mib": 118.4453125,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 128.3125
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 6.336987648,
+        "bytes": 73793536,
+        "operations": 18016,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-writeback",
+    "guests": 4,
+    "trial": 2,
+    "phase": "sequential-read",
+    "host_seconds": 5.142259123000258,
+    "bytes": 55197040640,
+    "mib_per_second": 10236.745901145316,
+    "iops": 10236.745901145316,
+    "guest_cpu_seconds": 3.215374541,
+    "backend_cpu_seconds": 11.604782106,
+    "cpu_seconds_per_gib": 0.2882948405495441,
+    "busy_cores": 2.8820322532391485,
+    "end_pss_mib": 358.380859375,
+    "peak_sampled_pss_mib": 358.380859375,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 513.25,
+    "baseline": {
+      "pss_mib": 358.1142578125,
+      "rss_mib": 473.52734375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 513.25
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.000446976,
+        "bytes": 15686696960,
+        "operations": 14960,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.141267712,
+        "bytes": 8438939648,
+        "operations": 8048,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.002786304,
+        "bytes": 14663286784,
+        "operations": 13984,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.001767424,
+        "bytes": 16408117248,
+        "operations": 15648,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-writeback",
+    "guests": 4,
+    "trial": 2,
+    "phase": "random-read-4k",
+    "host_seconds": 5.71125454200228,
+    "bytes": 476643328,
+    "mib_per_second": 79.59065677374576,
+    "iops": 20375.208134078915,
+    "guest_cpu_seconds": 3.89664125,
+    "backend_cpu_seconds": 3.143929462,
+    "cpu_seconds_per_gib": 15.860402934883542,
+    "busy_cores": 1.2327537951988534,
+    "end_pss_mib": 358.380859375,
+    "peak_sampled_pss_mib": 358.380859375,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 513.25,
+    "baseline": {
+      "pss_mib": 358.1142578125,
+      "rss_mib": 473.52734375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 513.25
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.423459328,
+        "bytes": 68091904,
+        "operations": 16624,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.71045632,
+        "bytes": 141295616,
+        "operations": 34496,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.10584064,
+        "bytes": 125960192,
+        "operations": 30752,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.006017792,
+        "bytes": 141295616,
+        "operations": 34496,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-writeback",
+    "guests": 4,
+    "trial": 2,
+    "phase": "sequential-write",
+    "host_seconds": 5.699968856999476,
+    "bytes": 18236833792,
+    "mib_per_second": 3051.2447412134343,
+    "iops": 3051.2447412134343,
+    "guest_cpu_seconds": 1.354083685,
+    "backend_cpu_seconds": 19.46926249,
+    "cpu_seconds_per_gib": 1.2260295816007358,
+    "busy_cores": 3.653238587335305,
+    "end_pss_mib": 358.37890625,
+    "peak_sampled_pss_mib": 358.3828125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 513.25,
+    "baseline": {
+      "pss_mib": 358.1142578125,
+      "rss_mib": 473.52734375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 513.25
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.229901824,
+        "bytes": 5184159744,
+        "operations": 4944,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.247785984,
+        "bytes": 5016387584,
+        "operations": 4784,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.249542656,
+        "bytes": 4127195136,
+        "operations": 3936,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.699182848,
+        "bytes": 3909091328,
+        "operations": 3728,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-writeback",
+    "guests": 4,
+    "trial": 2,
+    "phase": "random-write-4k",
+    "host_seconds": 7.094406311000057,
+    "bytes": 305987584,
+    "mib_per_second": 41.13275828980042,
+    "iops": 10529.986122188908,
+    "guest_cpu_seconds": 2.492014807,
+    "backend_cpu_seconds": 3.724204697,
+    "cpu_seconds_per_gib": 21.813351971200685,
+    "busy_cores": 0.876214193478261,
+    "end_pss_mib": 358.37890625,
+    "peak_sampled_pss_mib": 358.37890625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 513.25,
+    "baseline": {
+      "pss_mib": 358.1142578125,
+      "rss_mib": 473.52734375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 513.25
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 7.09375232,
+        "bytes": 65667072,
+        "operations": 16032,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.511125504,
+        "bytes": 93913088,
+        "operations": 22928,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.866830336,
+        "bytes": 67698688,
+        "operations": 16528,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 6.206894592,
+        "bytes": 78708736,
+        "operations": 19216,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-writeback",
+    "guests": 4,
+    "trial": 3,
+    "phase": "sequential-read",
+    "host_seconds": 5.008821497001918,
+    "bytes": 77158416384,
+    "mib_per_second": 14690.880887658797,
+    "iops": 14690.880887658797,
+    "guest_cpu_seconds": 13.593690085,
+    "backend_cpu_seconds": 17.863156992,
+    "cpu_seconds_per_gib": 0.4377556453420309,
+    "busy_cores": 6.280289105097641,
+    "end_pss_mib": 843.6572265625,
+    "peak_sampled_pss_mib": 843.6572265625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 156.3125,
+    "host_file_cache_mib": 513.25,
+    "baseline": {
+      "pss_mib": 843.2783203125,
+      "rss_mib": 1066.7421875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 156.296875,
+      "host_file_cache_mib": 513.25
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.002533471,
+        "bytes": 18236833792,
+        "operations": 17392,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.002161151,
+        "bytes": 18555600896,
+        "operations": 17696,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.0003645,
+        "bytes": 19025362944,
+        "operations": 18144,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.000317209,
+        "bytes": 21340618752,
+        "operations": 20352,
+        "cached_kib": 40016,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-writeback",
+    "guests": 4,
+    "trial": 3,
+    "phase": "random-read-4k",
+    "host_seconds": 5.013535116006096,
+    "bytes": 2083979264,
+    "mib_per_second": 396.4143970299426,
+    "iops": 101482.08563966531,
+    "guest_cpu_seconds": 19.322276628,
+    "backend_cpu_seconds": 13.308652654,
+    "cpu_seconds_per_gib": 16.812640188568444,
+    "busy_cores": 6.508567014485098,
+    "end_pss_mib": 843.6572265625,
+    "peak_sampled_pss_mib": 843.6572265625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 156.3125,
+    "host_file_cache_mib": 513.25,
+    "baseline": {
+      "pss_mib": 843.2783203125,
+      "rss_mib": 1066.7421875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 156.296875,
+      "host_file_cache_mib": 513.25
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.000142159,
+        "bytes": 524484608,
+        "operations": 128048,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.000293379,
+        "bytes": 518848512,
+        "operations": 126672,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.006812864,
+        "bytes": 524091392,
+        "operations": 127952,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.00013306,
+        "bytes": 516554752,
+        "operations": 126112,
+        "cached_kib": 40016,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-writeback",
+    "guests": 4,
+    "trial": 3,
+    "phase": "sequential-write",
+    "host_seconds": 5.3396150170010515,
+    "bytes": 22213033984,
+    "mib_per_second": 3967.327219762336,
+    "iops": 3967.327219762336,
+    "guest_cpu_seconds": 2.48460704,
+    "backend_cpu_seconds": 25.721149278,
+    "cpu_seconds_per_gib": 1.363420244978852,
+    "busy_cores": 5.282357665898077,
+    "end_pss_mib": 843.6572265625,
+    "peak_sampled_pss_mib": 843.6572265625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 156.3125,
+    "host_file_cache_mib": 513.25,
+    "baseline": {
+      "pss_mib": 843.2783203125,
+      "rss_mib": 1066.7421875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 156.296875,
+      "host_file_cache_mib": 513.25
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.333156815,
+        "bytes": 5486149632,
+        "operations": 5232,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.332962054,
+        "bytes": 5519704064,
+        "operations": 5264,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.333006065,
+        "bytes": 5519704064,
+        "operations": 5264,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.329004603,
+        "bytes": 5687476224,
+        "operations": 5424,
+        "cached_kib": 40016,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-writeback",
+    "guests": 4,
+    "trial": 3,
+    "phase": "random-write-4k",
+    "host_seconds": 5.429123529000208,
+    "bytes": 1675624448,
+    "mib_per_second": 294.33848603077877,
+    "iops": 75350.65242387936,
+    "guest_cpu_seconds": 19.378638052,
+    "backend_cpu_seconds": 14.04967241,
+    "cpu_seconds_per_gib": 21.420894814197748,
+    "busy_cores": 6.157220458042505,
+    "end_pss_mib": 843.6572265625,
+    "peak_sampled_pss_mib": 843.6572265625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 156.3125,
+    "host_file_cache_mib": 513.25,
+    "baseline": {
+      "pss_mib": 843.2783203125,
+      "rss_mib": 1066.7421875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 156.296875,
+      "host_file_cache_mib": 513.25
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.420297761,
+        "bytes": 423755776,
+        "operations": 103456,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.422329092,
+        "bytes": 417923072,
+        "operations": 102032,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.420301011,
+        "bytes": 417726464,
+        "operations": 101984,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.420296421,
+        "bytes": 416219136,
+        "operations": 101616,
+        "cached_kib": 40016,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-writeback",
+    "guests": 1,
+    "trial": 1,
+    "phase": "sequential-read",
+    "host_seconds": 5.002228714001831,
+    "bytes": 24830279680,
+    "mib_per_second": 4733.889902658164,
+    "iops": 4733.889902658164,
+    "guest_cpu_seconds": 1.294311548,
+    "backend_cpu_seconds": 4.041694931,
+    "cpu_seconds_per_gib": 0.23074622611891893,
+    "busy_cores": 1.0667258104500272,
+    "end_pss_mib": 112.3486328125,
+    "peak_sampled_pss_mib": 112.3486328125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 128.3125,
+    "baseline": {
+      "pss_mib": 112.2822265625,
+      "rss_mib": 118.57421875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 128.3125
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.001507584,
+        "bytes": 24830279680,
+        "operations": 23680,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-writeback",
+    "guests": 1,
+    "trial": 1,
+    "phase": "random-read-4k",
+    "host_seconds": 5.183483038999839,
+    "bytes": 85983232,
+    "mib_per_second": 15.819478791199446,
+    "iops": 4049.786570547058,
+    "guest_cpu_seconds": 0.681534773,
+    "backend_cpu_seconds": 0.561663725,
+    "cpu_seconds_per_gib": 15.524820267707316,
+    "busy_cores": 0.23983844234587812,
+    "end_pss_mib": 112.3486328125,
+    "peak_sampled_pss_mib": 112.3486328125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 128.3125,
+    "baseline": {
+      "pss_mib": 112.2822265625,
+      "rss_mib": 118.57421875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 128.3125
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.182881536,
+        "bytes": 85983232,
+        "operations": 20992,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-writeback",
+    "guests": 1,
+    "trial": 1,
+    "phase": "sequential-write",
+    "host_seconds": 6.046211629000027,
+    "bytes": 3388997632,
+    "mib_per_second": 534.5495987103805,
+    "iops": 534.5495987103805,
+    "guest_cpu_seconds": 0.23305449,
+    "backend_cpu_seconds": 3.852424499,
+    "cpu_seconds_per_gib": 1.2944091846336634,
+    "busy_cores": 0.6757088966923395,
+    "end_pss_mib": 112.3486328125,
+    "peak_sampled_pss_mib": 112.3486328125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 128.3125,
+    "baseline": {
+      "pss_mib": 112.2822265625,
+      "rss_mib": 118.57421875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 128.3125
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 6.045605376,
+        "bytes": 3388997632,
+        "operations": 3232,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-writeback",
+    "guests": 1,
+    "trial": 1,
+    "phase": "random-write-4k",
+    "host_seconds": 5.382346739999775,
+    "bytes": 105316352,
+    "mib_per_second": 18.660540625073924,
+    "iops": 4777.098400018925,
+    "guest_cpu_seconds": 0.898270531,
+    "backend_cpu_seconds": 1.18280983,
+    "cpu_seconds_per_gib": 21.217436611464844,
+    "busy_cores": 0.38664925571110403,
+    "end_pss_mib": 112.3486328125,
+    "peak_sampled_pss_mib": 112.3486328125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 128.3125,
+    "baseline": {
+      "pss_mib": 112.2822265625,
+      "rss_mib": 118.57421875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 128.3125
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.380425216,
+        "bytes": 105316352,
+        "operations": 25712,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-none",
+    "guests": 1,
+    "trial": 2,
+    "phase": "sequential-read",
+    "host_seconds": 5.011346262006555,
+    "bytes": 3808428032,
+    "mib_per_second": 724.7553471880306,
+    "iops": 724.7553471880306,
+    "guest_cpu_seconds": 0.295391256,
+    "backend_cpu_seconds": 0.717253502,
+    "cpu_seconds_per_gib": 0.2855033678942731,
+    "busy_cores": 0.20207040285309175,
+    "end_pss_mib": 112.2470703125,
+    "peak_sampled_pss_mib": 112.2470703125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 1.19140625,
+    "baseline": {
+      "pss_mib": 112.1806640625,
+      "rss_mib": 118.46484375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 0.25390625
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.010658816,
+        "bytes": 3808428032,
+        "operations": 3632,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-none",
+    "guests": 1,
+    "trial": 2,
+    "phase": "random-read-4k",
+    "host_seconds": 5.002076889999444,
+    "bytes": 46465024,
+    "mib_per_second": 8.858820240966933,
+    "iops": 2267.857981687535,
+    "guest_cpu_seconds": 0.44666349,
+    "backend_cpu_seconds": 0.461678679,
+    "cpu_seconds_per_gib": 20.990519177568405,
+    "busy_cores": 0.1815930040611793,
+    "end_pss_mib": 112.2470703125,
+    "peak_sampled_pss_mib": 112.2470703125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 1.19140625,
+    "baseline": {
+      "pss_mib": 112.1806640625,
+      "rss_mib": 118.46484375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 0.25390625
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.001485312,
+        "bytes": 46465024,
+        "operations": 11344,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-none",
+    "guests": 1,
+    "trial": 2,
+    "phase": "sequential-write",
+    "host_seconds": 5.009609423999791,
+    "bytes": 2399141888,
+    "mib_per_second": 456.7222324835868,
+    "iops": 456.7222324835868,
+    "guest_cpu_seconds": 0.204784762,
+    "backend_cpu_seconds": 3.634294927,
+    "cpu_seconds_per_gib": 1.7181895111608392,
+    "busy_cores": 0.766343114616466,
+    "end_pss_mib": 112.2470703125,
+    "peak_sampled_pss_mib": 112.2470703125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 1.7109375,
+    "baseline": {
+      "pss_mib": 112.1806640625,
+      "rss_mib": 118.46484375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 0.25390625
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.008878848,
+        "bytes": 2399141888,
+        "operations": 2288,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-none",
+    "guests": 1,
+    "trial": 2,
+    "phase": "random-write-4k",
+    "host_seconds": 5.310512516000017,
+    "bytes": 54853632,
+    "mib_per_second": 9.850744131077354,
+    "iops": 2521.7904975558026,
+    "guest_cpu_seconds": 0.537588804,
+    "backend_cpu_seconds": 0.905659637,
+    "cpu_seconds_per_gib": 28.251114047005974,
+    "busy_cores": 0.2717719686474034,
+    "end_pss_mib": 112.2470703125,
+    "peak_sampled_pss_mib": 112.2470703125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 1.34765625,
+    "baseline": {
+      "pss_mib": 112.1806640625,
+      "rss_mib": 118.46484375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 0.25390625
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.309823488,
+        "bytes": 54853632,
+        "operations": 13392,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-none",
+    "guests": 4,
+    "trial": 2,
+    "phase": "sequential-read",
+    "host_seconds": 5.531758700002683,
+    "bytes": 8740929536,
+    "mib_per_second": 1506.934855997236,
+    "iops": 1506.934855997236,
+    "guest_cpu_seconds": 0.72839527,
+    "backend_cpu_seconds": 1.656264221,
+    "cpu_seconds_per_gib": 0.29293321962380037,
+    "busy_cores": 0.4310852335259749,
+    "end_pss_mib": 352.66015625,
+    "peak_sampled_pss_mib": 352.666015625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 6.90625,
+    "baseline": {
+      "pss_mib": 352.3955078125,
+      "rss_mib": 467.93359375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 1.015625
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.051591936,
+        "bytes": 2617245696,
+        "operations": 2496,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.000096768,
+        "bytes": 1996488704,
+        "operations": 1904,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.530899456,
+        "bytes": 1660944384,
+        "operations": 1584,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.003438336,
+        "bytes": 2466250752,
+        "operations": 2352,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-none",
+    "guests": 4,
+    "trial": 2,
+    "phase": "random-read-4k",
+    "host_seconds": 5.827562812999531,
+    "bytes": 315949056,
+    "mib_per_second": 51.704719394506206,
+    "iops": 13236.408164993589,
+    "guest_cpu_seconds": 2.916864915,
+    "backend_cpu_seconds": 3.068458173,
+    "cpu_seconds_per_gib": 20.340911320014932,
+    "busy_cores": 1.027071398466706,
+    "end_pss_mib": 352.66015625,
+    "peak_sampled_pss_mib": 352.66015625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 6.90625,
+    "baseline": {
+      "pss_mib": 352.3955078125,
+      "rss_mib": 467.93359375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 1.015625
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.000917248,
+        "bytes": 77398016,
+        "operations": 18896,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.524641024,
+        "bytes": 99549184,
+        "operations": 24304,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.00103552,
+        "bytes": 62521344,
+        "operations": 15264,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.826942464,
+        "bytes": 76480512,
+        "operations": 18672,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-none",
+    "guests": 4,
+    "trial": 2,
+    "phase": "sequential-write",
+    "host_seconds": 5.094131001998903,
+    "bytes": 8170504192,
+    "mib_per_second": 1529.6033802315785,
+    "iops": 1529.6033802315785,
+    "guest_cpu_seconds": 0.696945835,
+    "backend_cpu_seconds": 12.431704108,
+    "cpu_seconds_per_gib": 1.7253256598603695,
+    "busy_cores": 2.577210899729199,
+    "end_pss_mib": 352.658203125,
+    "peak_sampled_pss_mib": 352.66015625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 1.91015625,
+    "baseline": {
+      "pss_mib": 352.3955078125,
+      "rss_mib": 467.93359375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 1.015625
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.031914496,
+        "bytes": 2365587456,
+        "operations": 2256,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.093476608,
+        "bytes": 1593835520,
+        "operations": 1520,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.01118592,
+        "bytes": 1962934272,
+        "operations": 1872,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.049142528,
+        "bytes": 2248146944,
+        "operations": 2144,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-none",
+    "guests": 4,
+    "trial": 2,
+    "phase": "random-write-4k",
+    "host_seconds": 5.47831042100006,
+    "bytes": 372899840,
+    "mib_per_second": 64.91508743951042,
+    "iops": 16618.262384514666,
+    "guest_cpu_seconds": 3.680450985,
+    "backend_cpu_seconds": 5.61721177,
+    "cpu_seconds_per_gib": 26.77203982037258,
+    "busy_cores": 1.6971770565171296,
+    "end_pss_mib": 352.658203125,
+    "peak_sampled_pss_mib": 352.658203125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 1.5390625,
+    "baseline": {
+      "pss_mib": 352.3955078125,
+      "rss_mib": 467.93359375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 1.015625
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.243120384,
+        "bytes": 77594624,
+        "operations": 18944,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.477585408,
+        "bytes": 65470464,
+        "operations": 15984,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.242009344,
+        "bytes": 93257728,
+        "operations": 22768,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.293297664,
+        "bytes": 136577024,
+        "operations": 33344,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-writeback",
+    "guests": 1,
+    "trial": 1,
+    "phase": "sequential-read",
+    "host_seconds": 5.006468097999459,
+    "bytes": 40735080448,
+    "mib_per_second": 7759.562078408793,
+    "iops": 7759.562078408793,
+    "guest_cpu_seconds": 5.034200331,
+    "backend_cpu_seconds": 6.353223225,
+    "cpu_seconds_per_gib": 0.30016272964744645,
+    "busy_cores": 2.2745423186757776,
+    "end_pss_mib": 238.4443359375,
+    "peak_sampled_pss_mib": 238.4443359375,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 39.078125,
+    "host_file_cache_mib": 128.3125,
+    "baseline": {
+      "pss_mib": 238.4013671875,
+      "rss_mib": 265.43359375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 39.07421875,
+      "host_file_cache_mib": 128.3125
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.00042206,
+        "bytes": 40735080448,
+        "operations": 38848,
+        "cached_kib": 40016,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-writeback",
+    "guests": 1,
+    "trial": 1,
+    "phase": "random-read-4k",
+    "host_seconds": 5.006482264005172,
+    "bytes": 793247744,
+    "mib_per_second": 151.10410066544452,
+    "iops": 38682.6497703538,
+    "guest_cpu_seconds": 5.0119172,
+    "backend_cpu_seconds": 4.230684062,
+    "cpu_seconds_per_gib": 12.510804616375415,
+    "busy_cores": 1.8461268360922838,
+    "end_pss_mib": 238.4443359375,
+    "peak_sampled_pss_mib": 238.4443359375,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 39.078125,
+    "host_file_cache_mib": 128.3125,
+    "baseline": {
+      "pss_mib": 238.4013671875,
+      "rss_mib": 265.43359375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 39.07421875,
+      "host_file_cache_mib": 128.3125
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.00034438,
+        "bytes": 793247744,
+        "operations": 193664,
+        "cached_kib": 40016,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-writeback",
+    "guests": 1,
+    "trial": 1,
+    "phase": "sequential-write",
+    "host_seconds": 5.104256430997339,
+    "bytes": 6576668672,
+    "mib_per_second": 1228.7783901120524,
+    "iops": 1228.7783901120524,
+    "guest_cpu_seconds": 0.629123915,
+    "backend_cpu_seconds": 7.020513812,
+    "cpu_seconds_per_gib": 1.2489204452244898,
+    "busy_cores": 1.4986781777939222,
+    "end_pss_mib": 238.4443359375,
+    "peak_sampled_pss_mib": 238.4443359375,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 39.078125,
+    "host_file_cache_mib": 128.3125,
+    "baseline": {
+      "pss_mib": 238.4013671875,
+      "rss_mib": 265.43359375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 39.07421875,
+      "host_file_cache_mib": 128.3125
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.098054961,
+        "bytes": 6576668672,
+        "operations": 6272,
+        "cached_kib": 40016,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-writeback",
+    "guests": 1,
+    "trial": 1,
+    "phase": "random-write-4k",
+    "host_seconds": 5.090570843000023,
+    "bytes": 662372352,
+    "mib_per_second": 124.08971792792651,
+    "iops": 31766.967789549188,
+    "guest_cpu_seconds": 5.033648207,
+    "backend_cpu_seconds": 4.360336332,
+    "cpu_seconds_per_gib": 15.228162925395864,
+    "busy_cores": 1.8453695722391417,
+    "end_pss_mib": 238.4443359375,
+    "peak_sampled_pss_mib": 238.4443359375,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 39.078125,
+    "host_file_cache_mib": 128.3125,
+    "baseline": {
+      "pss_mib": 238.4013671875,
+      "rss_mib": 265.43359375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 39.07421875,
+      "host_file_cache_mib": 128.3125
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.084014653,
+        "bytes": 662372352,
+        "operations": 161712,
+        "cached_kib": 40016,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-writeback",
+    "guests": 4,
+    "trial": 2,
+    "phase": "sequential-read",
+    "host_seconds": 5.009122397997999,
+    "bytes": 77326188544,
+    "mib_per_second": 14721.940120583467,
+    "iops": 14721.940120583467,
+    "guest_cpu_seconds": 13.231245825,
+    "backend_cpu_seconds": 17.340889529,
+    "cpu_seconds_per_gib": 0.424520864104144,
+    "busy_cores": 6.10329173953082,
+    "end_pss_mib": 836.44921875,
+    "peak_sampled_pss_mib": 836.44921875,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 156.3125,
+    "host_file_cache_mib": 513.25,
+    "baseline": {
+      "pss_mib": 836.08984375,
+      "rss_mib": 1058.921875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 156.296875,
+      "host_file_cache_mib": 513.25
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.000068029,
+        "bytes": 18152947712,
+        "operations": 17312,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.002848641,
+        "bytes": 18421383168,
+        "operations": 17568,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.002579641,
+        "bytes": 20283654144,
+        "operations": 19344,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.00077505,
+        "bytes": 20468203520,
+        "operations": 19520,
+        "cached_kib": 40016,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-writeback",
+    "guests": 4,
+    "trial": 2,
+    "phase": "random-read-4k",
+    "host_seconds": 5.007559978002973,
+    "bytes": 1981284352,
+    "mib_per_second": 377.32947948704094,
+    "iops": 96596.34674868248,
+    "guest_cpu_seconds": 19.486634763,
+    "backend_cpu_seconds": 13.360877067,
+    "cpu_seconds_per_gib": 17.801456530256683,
+    "busy_cores": 6.559584303391542,
+    "end_pss_mib": 836.44921875,
+    "peak_sampled_pss_mib": 836.44921875,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 156.3125,
+    "host_file_cache_mib": 513.25,
+    "baseline": {
+      "pss_mib": 836.08984375,
+      "rss_mib": 1058.921875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 156.296875,
+      "host_file_cache_mib": 513.25
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.000056909,
+        "bytes": 495255552,
+        "operations": 120912,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.00136716,
+        "bytes": 490340352,
+        "operations": 119712,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.00009439,
+        "bytes": 494338048,
+        "operations": 120688,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.00044038,
+        "bytes": 501350400,
+        "operations": 122400,
+        "cached_kib": 40016,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-writeback",
+    "guests": 4,
+    "trial": 2,
+    "phase": "sequential-write",
+    "host_seconds": 5.341914163996989,
+    "bytes": 22800236544,
+    "mib_per_second": 4070.4510279383544,
+    "iops": 4070.4510279383544,
+    "guest_cpu_seconds": 2.592811707,
+    "backend_cpu_seconds": 23.171832983,
+    "cpu_seconds_per_gib": 1.2133460339661517,
+    "busy_cores": 4.82311094843989,
+    "end_pss_mib": 836.44921875,
+    "peak_sampled_pss_mib": 836.44921875,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 156.3125,
+    "host_file_cache_mib": 513.25,
+    "baseline": {
+      "pss_mib": 836.08984375,
+      "rss_mib": 1058.921875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 156.296875,
+      "host_file_cache_mib": 513.25
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.335311826,
+        "bytes": 5586812928,
+        "operations": 5328,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.335357206,
+        "bytes": 5637144576,
+        "operations": 5376,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.335339676,
+        "bytes": 5721030656,
+        "operations": 5456,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.332505174,
+        "bytes": 5855248384,
+        "operations": 5584,
+        "cached_kib": 40016,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-writeback",
+    "guests": 4,
+    "trial": 2,
+    "phase": "random-write-4k",
+    "host_seconds": 5.43198460900021,
+    "bytes": 1590558720,
+    "mib_per_second": 279.2487661851439,
+    "iops": 71487.68414339684,
+    "guest_cpu_seconds": 19.116584427,
+    "backend_cpu_seconds": 13.704598422,
+    "cpu_seconds_per_gib": 22.156665010219033,
+    "busy_cores": 6.042208366094935,
+    "end_pss_mib": 836.44921875,
+    "peak_sampled_pss_mib": 836.44921875,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 156.3125,
+    "host_file_cache_mib": 513.25,
+    "baseline": {
+      "pss_mib": 836.08984375,
+      "rss_mib": 1058.921875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 156.296875,
+      "host_file_cache_mib": 513.25
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.425164353,
+        "bytes": 395640832,
+        "operations": 96592,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.425214233,
+        "bytes": 393871360,
+        "operations": 96160,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.425136093,
+        "bytes": 393674752,
+        "operations": 96112,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.394992208,
+        "bytes": 407371776,
+        "operations": 99456,
+        "cached_kib": 40016,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-none",
+    "guests": 4,
+    "trial": 3,
+    "phase": "sequential-read",
+    "host_seconds": 5.013499300002877,
+    "bytes": 9042919424,
+    "mib_per_second": 1720.1558201065372,
+    "iops": 1720.1558201065372,
+    "guest_cpu_seconds": 0.783719574,
+    "backend_cpu_seconds": 1.7735554,
+    "cpu_seconds_per_gib": 0.3036467501595548,
+    "busy_cores": 0.510077855999408,
+    "end_pss_mib": 358.5693359375,
+    "peak_sampled_pss_mib": 358.5693359375,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 6.3515625,
+    "baseline": {
+      "pss_mib": 358.3056640625,
+      "rss_mib": 473.7265625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 1.015625
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.012648448,
+        "bytes": 2868903936,
+        "operations": 2736,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.006620416,
+        "bytes": 1962934272,
+        "operations": 1872,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.00313984,
+        "bytes": 2332033024,
+        "operations": 2224,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.003372032,
+        "bytes": 1879048192,
+        "operations": 1792,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-none",
+    "guests": 4,
+    "trial": 3,
+    "phase": "random-read-4k",
+    "host_seconds": 5.643113662998076,
+    "bytes": 243924992,
+    "mib_per_second": 41.222809585658936,
+    "iops": 10553.039253928688,
+    "guest_cpu_seconds": 2.449283633,
+    "backend_cpu_seconds": 2.57688181,
+    "cpu_seconds_per_gib": 22.124850784017195,
+    "busy_cores": 0.8906723740045486,
+    "end_pss_mib": 358.5693359375,
+    "peak_sampled_pss_mib": 358.5693359375,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 6.3515625,
+    "baseline": {
+      "pss_mib": 358.3056640625,
+      "rss_mib": 473.7265625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 1.015625
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.64249856,
+        "bytes": 60948480,
+        "operations": 14880,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.000617216,
+        "bytes": 87490560,
+        "operations": 21360,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.041075712,
+        "bytes": 34406400,
+        "operations": 8400,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.13550336,
+        "bytes": 61079552,
+        "operations": 14912,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-none",
+    "guests": 4,
+    "trial": 3,
+    "phase": "sequential-write",
+    "host_seconds": 5.032236844999716,
+    "bytes": 7969177600,
+    "mib_per_second": 1510.2627785796178,
+    "iops": 1510.2627785796178,
+    "guest_cpu_seconds": 0.713941454,
+    "backend_cpu_seconds": 12.087289938,
+    "cpu_seconds_per_gib": 1.7247974928168421,
+    "busy_cores": 2.5438451699108615,
+    "end_pss_mib": 358.5693359375,
+    "peak_sampled_pss_mib": 358.5693359375,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 3.23828125,
+    "baseline": {
+      "pss_mib": 358.3056640625,
+      "rss_mib": 473.7265625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 1.015625
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.014491136,
+        "bytes": 2197815296,
+        "operations": 2096,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.014470144,
+        "bytes": 1795162112,
+        "operations": 1712,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.031580928,
+        "bytes": 1778384896,
+        "operations": 1696,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.01450624,
+        "bytes": 2197815296,
+        "operations": 2096,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-none",
+    "guests": 4,
+    "trial": 3,
+    "phase": "random-write-4k",
+    "host_seconds": 5.249759561003884,
+    "bytes": 281411584,
+    "mib_per_second": 51.12138887150863,
+    "iops": 13087.075551106209,
+    "guest_cpu_seconds": 2.992444309,
+    "backend_cpu_seconds": 4.888392262,
+    "cpu_seconds_per_gib": 30.06977791785375,
+    "busy_cores": 1.5011804787290084,
+    "end_pss_mib": 358.5849609375,
+    "peak_sampled_pss_mib": 358.5849609375,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 2.6953125,
+    "baseline": {
+      "pss_mib": 358.3056640625,
+      "rss_mib": 473.7265625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 1.015625
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.248825856,
+        "bytes": 56033280,
+        "operations": 13680,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.248873472,
+        "bytes": 92733440,
+        "operations": 22640,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.248896,
+        "bytes": 71303168,
+        "operations": 17408,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.248829952,
+        "bytes": 61341696,
+        "operations": 14976,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-none",
+    "guests": 1,
+    "trial": 1,
+    "phase": "sequential-read",
+    "host_seconds": 5.0093709969951306,
+    "bytes": 5989466112,
+    "mib_per_second": 1140.2629199207527,
+    "iops": 1140.2629199207527,
+    "guest_cpu_seconds": 0.732977402,
+    "backend_cpu_seconds": 1.024072173,
+    "cpu_seconds_per_gib": 0.3149892795518207,
+    "busy_cores": 0.3507525348100521,
+    "end_pss_mib": 241.078125,
+    "peak_sampled_pss_mib": 241.078125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 39.078125,
+    "host_file_cache_mib": 1.19140625,
+    "baseline": {
+      "pss_mib": 241.03515625,
+      "rss_mib": 267.859375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 39.07421875,
+      "host_file_cache_mib": 0.25390625
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.002825081,
+        "bytes": 5989466112,
+        "operations": 5712,
+        "cached_kib": 40016,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-none",
+    "guests": 1,
+    "trial": 1,
+    "phase": "random-read-4k",
+    "host_seconds": 5.007327454994083,
+    "bytes": 239927296,
+    "mib_per_second": 45.69553360681309,
+    "iops": 11698.056603344152,
+    "guest_cpu_seconds": 5.003021411,
+    "backend_cpu_seconds": 1.974578156,
+    "cpu_seconds_per_gib": 31.22671163772958,
+    "busy_cores": 1.3934777842501302,
+    "end_pss_mib": 241.078125,
+    "peak_sampled_pss_mib": 241.078125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 39.078125,
+    "host_file_cache_mib": 1.19140625,
+    "baseline": {
+      "pss_mib": 241.03515625,
+      "rss_mib": 267.859375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 39.07421875,
+      "host_file_cache_mib": 0.25390625
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.00123462,
+        "bytes": 239927296,
+        "operations": 58576,
+        "cached_kib": 40016,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-none",
+    "guests": 1,
+    "trial": 1,
+    "phase": "sequential-write",
+    "host_seconds": 5.029307090000657,
+    "bytes": 3288334336,
+    "mib_per_second": 623.5451412849777,
+    "iops": 623.5451412849777,
+    "guest_cpu_seconds": 0.371128532,
+    "backend_cpu_seconds": 4.937707017,
+    "cpu_seconds_per_gib": 1.733497322122449,
+    "busy_cores": 1.0555799146874738,
+    "end_pss_mib": 241.078125,
+    "peak_sampled_pss_mib": 241.078125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 39.078125,
+    "host_file_cache_mib": 0.94921875,
+    "baseline": {
+      "pss_mib": 241.03515625,
+      "rss_mib": 267.859375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 39.07421875,
+      "host_file_cache_mib": 0.25390625
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.022930981,
+        "bytes": 3288334336,
+        "operations": 3136,
+        "cached_kib": 40016,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-none",
+    "guests": 1,
+    "trial": 1,
+    "phase": "random-write-4k",
+    "host_seconds": 5.321638444998825,
+    "bytes": 246546432,
+    "mib_per_second": 44.18282121758309,
+    "iops": 11310.802231701271,
+    "guest_cpu_seconds": 4.544637519,
+    "backend_cpu_seconds": 3.778002893,
+    "cpu_seconds_per_gib": 36.246183017067516,
+    "busy_cores": 1.5639244375614167,
+    "end_pss_mib": 241.078125,
+    "peak_sampled_pss_mib": 241.078125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 39.078125,
+    "host_file_cache_mib": 0.515625,
+    "baseline": {
+      "pss_mib": 241.03515625,
+      "rss_mib": 267.859375,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 39.07421875,
+      "host_file_cache_mib": 0.25390625
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.315158035,
+        "bytes": 246546432,
+        "operations": 60192,
+        "cached_kib": 40016,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-none",
+    "guests": 1,
+    "trial": 3,
+    "phase": "sequential-read",
+    "host_seconds": 5.007284942003025,
+    "bytes": 6241124352,
+    "mib_per_second": 1188.6681243306812,
+    "iops": 1188.6681243306812,
+    "guest_cpu_seconds": 0.742336835,
+    "backend_cpu_seconds": 1.132642407,
+    "cpu_seconds_per_gib": 0.32257707389247314,
+    "busy_cores": 0.37445027868734926,
+    "end_pss_mib": 239.513671875,
+    "peak_sampled_pss_mib": 239.513671875,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 39.078125,
+    "host_file_cache_mib": 1.19140625,
+    "baseline": {
+      "pss_mib": 239.439453125,
+      "rss_mib": 266.13671875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 39.07421875,
+      "host_file_cache_mib": 0.25390625
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.00049461,
+        "bytes": 6241124352,
+        "operations": 5952,
+        "cached_kib": 40016,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-none",
+    "guests": 1,
+    "trial": 3,
+    "phase": "random-read-4k",
+    "host_seconds": 5.007110703998478,
+    "bytes": 213254144,
+    "mib_per_second": 40.61723657070191,
+    "iops": 10398.01256209969,
+    "guest_cpu_seconds": 4.743489374,
+    "backend_cpu_seconds": 1.935415257,
+    "cpu_seconds_per_gib": 33.62851059443884,
+    "busy_cores": 1.3338839554049593,
+    "end_pss_mib": 239.513671875,
+    "peak_sampled_pss_mib": 239.544921875,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 39.078125,
+    "host_file_cache_mib": 1.19140625,
+    "baseline": {
+      "pss_mib": 239.439453125,
+      "rss_mib": 266.13671875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 39.07421875,
+      "host_file_cache_mib": 0.25390625
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.0008962,
+        "bytes": 213254144,
+        "operations": 52064,
+        "cached_kib": 40016,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-none",
+    "guests": 1,
+    "trial": 3,
+    "phase": "sequential-write",
+    "host_seconds": 5.023089826005162,
+    "bytes": 3070230528,
+    "mib_per_second": 582.9081504458429,
+    "iops": 582.9081504458429,
+    "guest_cpu_seconds": 0.385358972,
+    "backend_cpu_seconds": 4.818154387,
+    "cpu_seconds_per_gib": 1.8198079506885245,
+    "busy_cores": 1.035918834670398,
+    "end_pss_mib": 239.513671875,
+    "peak_sampled_pss_mib": 239.513671875,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 39.078125,
+    "host_file_cache_mib": 0.3515625,
+    "baseline": {
+      "pss_mib": 239.439453125,
+      "rss_mib": 266.13671875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 39.07421875,
+      "host_file_cache_mib": 0.25390625
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.016176998,
+        "bytes": 3070230528,
+        "operations": 2928,
+        "cached_kib": 40016,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-none",
+    "guests": 1,
+    "trial": 3,
+    "phase": "random-write-4k",
+    "host_seconds": 5.325645375000022,
+    "bytes": 281149440,
+    "mib_per_second": 50.34601088135706,
+    "iops": 12888.578785627407,
+    "guest_cpu_seconds": 4.923393095,
+    "backend_cpu_seconds": 4.050505616,
+    "cpu_seconds_per_gib": 34.272344168070866,
+    "busy_cores": 1.6850349730618261,
+    "end_pss_mib": 239.513671875,
+    "peak_sampled_pss_mib": 239.513671875,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 39.078125,
+    "host_file_cache_mib": 0.26953125,
+    "baseline": {
+      "pss_mib": 239.439453125,
+      "rss_mib": 266.13671875,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 39.07421875,
+      "host_file_cache_mib": 0.25390625
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.318930027,
+        "bytes": 281149440,
+        "operations": 68640,
+        "cached_kib": 40016,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-writeback",
+    "guests": 4,
+    "trial": 1,
+    "phase": "sequential-read",
+    "host_seconds": 5.009643641998991,
+    "bytes": 71454162944,
+    "mib_per_second": 13602.564347832253,
+    "iops": 13602.564347832253,
+    "guest_cpu_seconds": 12.518859276,
+    "backend_cpu_seconds": 17.856488275,
+    "cpu_seconds_per_gib": 0.45645039757313927,
+    "busy_cores": 6.063374906818595,
+    "end_pss_mib": 840.0947265625,
+    "peak_sampled_pss_mib": 840.0947265625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 156.3125,
+    "host_file_cache_mib": 513.25,
+    "baseline": {
+      "pss_mib": 839.8291015625,
+      "rss_mib": 1062.72265625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 156.296875,
+      "host_file_cache_mib": 513.25
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.002243551,
+        "bytes": 17649631232,
+        "operations": 16832,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.002296941,
+        "bytes": 17985175552,
+        "operations": 17152,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.000053179,
+        "bytes": 17683185664,
+        "operations": 16864,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.003454791,
+        "bytes": 18136170496,
+        "operations": 17296,
+        "cached_kib": 40016,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-writeback",
+    "guests": 4,
+    "trial": 1,
+    "phase": "random-read-4k",
+    "host_seconds": 5.006660357001238,
+    "bytes": 2019491840,
+    "mib_per_second": 384.67508532045684,
+    "iops": 98476.82184203695,
+    "guest_cpu_seconds": 19.103479028,
+    "backend_cpu_seconds": 13.05194505,
+    "cpu_seconds_per_gib": 17.096688888332043,
+    "busy_cores": 6.4225295476723,
+    "end_pss_mib": 840.0947265625,
+    "peak_sampled_pss_mib": 840.1259765625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 156.3125,
+    "host_file_cache_mib": 513.25,
+    "baseline": {
+      "pss_mib": 839.8291015625,
+      "rss_mib": 1062.72265625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 156.296875,
+      "host_file_cache_mib": 513.25
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.000287399,
+        "bytes": 503447552,
+        "operations": 122912,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.00038808,
+        "bytes": 507838464,
+        "operations": 123984,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.00020743,
+        "bytes": 503250944,
+        "operations": 122864,
+        "cached_kib": 40016,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.00010832,
+        "bytes": 504954880,
+        "operations": 123280,
+        "cached_kib": 40016,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-writeback",
+    "guests": 4,
+    "trial": 1,
+    "phase": "sequential-write",
+    "host_seconds": 5.6247575570014305,
+    "bytes": 22498246656,
+    "mib_per_second": 3814.56441145496,
+    "iops": 3814.56441145496,
+    "guest_cpu_seconds": 2.572357022,
+    "backend_cpu_seconds": 24.623458525,
+    "cpu_seconds_per_gib": 1.2979360141744967,
+    "busy_cores": 4.835020046890366,
+    "end_pss_mib": 840.0947265625,
+    "peak_sampled_pss_mib": 840.1259765625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 156.3125,
+    "host_file_cache_mib": 513.25,
+    "baseline": {
+      "pss_mib": 839.8291015625,
+      "rss_mib": 1062.72265625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 156.296875,
+      "host_file_cache_mib": 513.25
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.614768643,
+        "bytes": 5637144576,
+        "operations": 5376,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.618256995,
+        "bytes": 5620367360,
+        "operations": 5360,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.618246065,
+        "bytes": 5603590144,
+        "operations": 5344,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.618197345,
+        "bytes": 5637144576,
+        "operations": 5376,
+        "cached_kib": 40016,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "kvm-vhost-writeback",
+    "guests": 4,
+    "trial": 1,
+    "phase": "random-write-4k",
+    "host_seconds": 5.632316261995584,
+    "bytes": 1421082624,
+    "mib_per_second": 240.62036593091133,
+    "iops": 61598.8136783133,
+    "guest_cpu_seconds": 18.706485025,
+    "backend_cpu_seconds": 13.80068908,
+    "cpu_seconds_per_gib": 24.561775527408226,
+    "busy_cores": 5.771546304021357,
+    "end_pss_mib": 840.0947265625,
+    "peak_sampled_pss_mib": 840.1259765625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 156.3125,
+    "host_file_cache_mib": 513.25,
+    "baseline": {
+      "pss_mib": 839.8291015625,
+      "rss_mib": 1062.72265625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 156.296875,
+      "host_file_cache_mib": 513.25
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.625142788,
+        "bytes": 358744064,
+        "operations": 87584,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.625148299,
+        "bytes": 353566720,
+        "operations": 86320,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.625825529,
+        "bytes": 353435648,
+        "operations": 86288,
+        "cached_kib": 40016,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.625149769,
+        "bytes": 355336192,
+        "operations": 86752,
+        "cached_kib": 40016,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-none",
+    "guests": 4,
+    "trial": 1,
+    "phase": "sequential-read",
+    "host_seconds": 5.1101300829977845,
+    "bytes": 8942256128,
+    "mib_per_second": 1668.8420571472363,
+    "iops": 1668.8420571472363,
+    "guest_cpu_seconds": 0.957177506,
+    "backend_cpu_seconds": 1.998888763,
+    "cpu_seconds_per_gib": 0.354949795902439,
+    "busy_cores": 0.5784718238064629,
+    "end_pss_mib": 358.6533203125,
+    "peak_sampled_pss_mib": 358.6533203125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 5.78515625,
+    "baseline": {
+      "pss_mib": 358.3720703125,
+      "rss_mib": 474.015625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 1.015625
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.00268544,
+        "bytes": 2365587456,
+        "operations": 2256,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.097025536,
+        "bytes": 2415919104,
+        "operations": 2304,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.00582784,
+        "bytes": 1795162112,
+        "operations": 1712,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 0,
+        "seconds": 5.015049216,
+        "bytes": 2365587456,
+        "operations": 2256,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-none",
+    "guests": 4,
+    "trial": 1,
+    "phase": "random-read-4k",
+    "host_seconds": 5.647236388998863,
+    "bytes": 265486336,
+    "mib_per_second": 44.8338767070604,
+    "iops": 11477.472437007462,
+    "guest_cpu_seconds": 2.876304274,
+    "backend_cpu_seconds": 3.061364983,
+    "cpu_seconds_per_gib": 24.014508295899283,
+    "busy_cores": 1.0514292032412378,
+    "end_pss_mib": 358.6533203125,
+    "peak_sampled_pss_mib": 358.6533203125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 5.78515625,
+    "baseline": {
+      "pss_mib": 358.3720703125,
+      "rss_mib": 474.015625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 1.015625
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.196935424,
+        "bytes": 58785792,
+        "operations": 14352,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.254948864,
+        "bytes": 57212928,
+        "operations": 13968,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.646422784,
+        "bytes": 86048768,
+        "operations": 21008,
+        "cached_kib": 41704,
+        "flushes": 0
+      },
+      {
+        "phase": 1,
+        "seconds": 5.067067904,
+        "bytes": 63438848,
+        "operations": 15488,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-none",
+    "guests": 4,
+    "trial": 1,
+    "phase": "sequential-write",
+    "host_seconds": 5.044198483999935,
+    "bytes": 7767851008,
+    "mib_per_second": 1468.6178633727402,
+    "iops": 1468.6178633727402,
+    "guest_cpu_seconds": 0.734066338,
+    "backend_cpu_seconds": 12.285232214,
+    "cpu_seconds_per_gib": 1.7996438603196545,
+    "busy_cores": 2.5810440634516807,
+    "end_pss_mib": 358.65234375,
+    "peak_sampled_pss_mib": 358.6533203125,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 1.03125,
+    "baseline": {
+      "pss_mib": 358.3720703125,
+      "rss_mib": 474.015625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 1.015625
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.027070976,
+        "bytes": 2181038080,
+        "operations": 2080,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.043153664,
+        "bytes": 1392508928,
+        "operations": 1328,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.01472,
+        "bytes": 1778384896,
+        "operations": 1696,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 2,
+        "seconds": 5.043154688,
+        "bytes": 2415919104,
+        "operations": 2304,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-none",
+    "guests": 4,
+    "trial": 1,
+    "phase": "random-write-4k",
+    "host_seconds": 5.482046343997354,
+    "bytes": 237240320,
+    "mib_per_second": 41.27108488379266,
+    "iops": 10565.397730250921,
+    "guest_cpu_seconds": 2.541509146,
+    "backend_cpu_seconds": 4.444621684,
+    "cpu_seconds_per_gib": 31.6189965521326,
+    "busy_cores": 1.274365518206457,
+    "end_pss_mib": 358.65234375,
+    "peak_sampled_pss_mib": 358.65234375,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 162.90625,
+    "host_file_cache_mib": 1.06640625,
+    "baseline": {
+      "pss_mib": 358.3720703125,
+      "rss_mib": 474.015625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 162.90625,
+      "host_file_cache_mib": 1.015625
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.481117696,
+        "bytes": 52363264,
+        "operations": 12784,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.481071616,
+        "bytes": 64552960,
+        "operations": 15760,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.481135104,
+        "bytes": 35454976,
+        "operations": 8656,
+        "cached_kib": 41704,
+        "flushes": 1
+      },
+      {
+        "phase": 3,
+        "seconds": 5.481177088,
+        "bytes": 84869120,
+        "operations": 20720,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-none",
+    "guests": 1,
+    "trial": 3,
+    "phase": "sequential-read",
+    "host_seconds": 5.0009250410003006,
+    "bytes": 2147483648,
+    "mib_per_second": 409.5242346584648,
+    "iops": 409.5242346584648,
+    "guest_cpu_seconds": 0.200451961,
+    "backend_cpu_seconds": 0.483615379,
+    "cpu_seconds_per_gib": 0.34203367,
+    "busy_cores": 0.13678816106853117,
+    "end_pss_mib": 112.3681640625,
+    "peak_sampled_pss_mib": 112.3681640625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 1.75390625,
+    "baseline": {
+      "pss_mib": 112.267578125,
+      "rss_mib": 118.53125,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 0.25390625
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.000177152,
+        "bytes": 2147483648,
+        "operations": 2048,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-none",
+    "guests": 1,
+    "trial": 3,
+    "phase": "random-read-4k",
+    "host_seconds": 5.378590547996282,
+    "bytes": 61603840,
+    "mib_per_second": 10.922935939395217,
+    "iops": 2796.2716004851754,
+    "guest_cpu_seconds": 0.597584921,
+    "backend_cpu_seconds": 0.627705305,
+    "cpu_seconds_per_gib": 21.356547939131914,
+    "busy_cores": 0.22780879397046958,
+    "end_pss_mib": 112.3681640625,
+    "peak_sampled_pss_mib": 112.3681640625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 1.75390625,
+    "baseline": {
+      "pss_mib": 112.267578125,
+      "rss_mib": 118.53125,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 0.25390625
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.377903104,
+        "bytes": 61603840,
+        "operations": 15040,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-none",
+    "guests": 1,
+    "trial": 3,
+    "phase": "sequential-write",
+    "host_seconds": 5.018497327000659,
+    "bytes": 2835349504,
+    "mib_per_second": 538.8067032439898,
+    "iops": 538.8067032439898,
+    "guest_cpu_seconds": 0.305607412,
+    "backend_cpu_seconds": 5.590289723,
+    "cpu_seconds_per_gib": 2.232765778934911,
+    "busy_cores": 1.1748331723280452,
+    "end_pss_mib": 112.3681640625,
+    "peak_sampled_pss_mib": 112.3681640625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 0.828125,
+    "baseline": {
+      "pss_mib": 112.267578125,
+      "rss_mib": 118.53125,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 0.25390625
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.017785856,
+        "bytes": 2835349504,
+        "operations": 2704,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-none",
+    "guests": 1,
+    "trial": 3,
+    "phase": "random-write-4k",
+    "host_seconds": 5.90177108500211,
+    "bytes": 80281600,
+    "mib_per_second": 12.972800689366728,
+    "iops": 3321.0369764778825,
+    "guest_cpu_seconds": 0.787814075,
+    "backend_cpu_seconds": 1.324740727,
+    "cpu_seconds_per_gib": 28.254773776300407,
+    "busy_cores": 0.35795268429989346,
+    "end_pss_mib": 112.3681640625,
+    "peak_sampled_pss_mib": 112.3681640625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 0.59765625,
+    "baseline": {
+      "pss_mib": 112.267578125,
+      "rss_mib": 118.53125,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 0.25390625
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.901100288,
+        "bytes": 80281600,
+        "operations": 19600,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-ubd-writeback",
+    "guests": 1,
+    "trial": 1,
+    "phase": "sequential-read",
+    "host_seconds": 5.003771618001338,
+    "bytes": 10234101760,
+    "mib_per_second": 1950.5286701910763,
+    "iops": 1950.5286701910763,
+    "guest_cpu_seconds": 3.574388731,
+    "backend_cpu_seconds": 0.0,
+    "cpu_seconds_per_gib": 0.37501783407213113,
+    "busy_cores": 0.7143389035064959,
+    "end_pss_mib": 75.708984375,
+    "peak_sampled_pss_mib": 75.708984375,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 128.0,
+    "baseline": {
+      "pss_mib": 75.701171875,
+      "rss_mib": 79.90625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 128.0
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.002732288,
+        "bytes": 10234101760,
+        "operations": 9760,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-ubd-writeback",
+    "guests": 1,
+    "trial": 1,
+    "phase": "random-read-4k",
+    "host_seconds": 5.000681300996803,
+    "bytes": 465960960,
+    "mib_per_second": 88.8628915246851,
+    "iops": 22748.900230319385,
+    "guest_cpu_seconds": 4.388026429,
+    "backend_cpu_seconds": 0.0,
+    "cpu_seconds_per_gib": 10.1115928287955,
+    "busy_cores": 0.8774857194209357,
+    "end_pss_mib": 75.708984375,
+    "peak_sampled_pss_mib": 75.708984375,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 128.0,
+    "baseline": {
+      "pss_mib": 75.701171875,
+      "rss_mib": 79.90625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 128.0
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.000116992,
+        "bytes": 465960960,
+        "operations": 113760,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-ubd-writeback",
+    "guests": 1,
+    "trial": 1,
+    "phase": "sequential-write",
+    "host_seconds": 5.317160282000259,
+    "bytes": 4982833152,
+    "mib_per_second": 893.7101287103477,
+    "iops": 893.7101287103477,
+    "guest_cpu_seconds": 4.598073034,
+    "backend_cpu_seconds": 0.0,
+    "cpu_seconds_per_gib": 0.9908305527811447,
+    "busy_cores": 0.864761035992365,
+    "end_pss_mib": 75.708984375,
+    "peak_sampled_pss_mib": 75.708984375,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 128.0,
+    "baseline": {
+      "pss_mib": 75.701171875,
+      "rss_mib": 79.90625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 128.0
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.31649536,
+        "bytes": 4982833152,
+        "operations": 4752,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-ubd-writeback",
+    "guests": 1,
+    "trial": 1,
+    "phase": "random-write-4k",
+    "host_seconds": 5.0008216019996325,
+    "bytes": 124583936,
+    "mib_per_second": 23.7585959780072,
+    "iops": 6082.200570369843,
+    "guest_cpu_seconds": 1.321728151,
+    "backend_cpu_seconds": 0.0,
+    "cpu_seconds_per_gib": 11.391475026819569,
+    "busy_cores": 0.26430219995680165,
+    "end_pss_mib": 75.708984375,
+    "peak_sampled_pss_mib": 75.708984375,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 128.0,
+    "baseline": {
+      "pss_mib": 75.701171875,
+      "rss_mib": 79.90625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 128.0
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.000291328,
+        "bytes": 124583936,
+        "operations": 30416,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-none",
+    "guests": 1,
+    "trial": 1,
+    "phase": "sequential-read",
+    "host_seconds": 5.610149435000494,
+    "bytes": 3305111552,
+    "mib_per_second": 561.8388665969148,
+    "iops": 561.8388665969148,
+    "guest_cpu_seconds": 0.256316493,
+    "backend_cpu_seconds": 0.602241634,
+    "cpu_seconds_per_gib": 0.27892243719796955,
+    "busy_cores": 0.1530365878747621,
+    "end_pss_mib": 112.2353515625,
+    "peak_sampled_pss_mib": 112.2353515625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 1.19140625,
+    "baseline": {
+      "pss_mib": 112.169921875,
+      "rss_mib": 118.453125,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 0.25390625
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.609407488,
+        "bytes": 3305111552,
+        "operations": 3152,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-none",
+    "guests": 1,
+    "trial": 1,
+    "phase": "random-read-4k",
+    "host_seconds": 5.001700502994936,
+    "bytes": 133431296,
+    "mib_per_second": 25.441347382516167,
+    "iops": 6512.984929924139,
+    "guest_cpu_seconds": 1.191528362,
+    "backend_cpu_seconds": 1.241031403,
+    "cpu_seconds_per_gib": 19.57517641933202,
+    "busy_cores": 0.48634654624830553,
+    "end_pss_mib": 112.2353515625,
+    "peak_sampled_pss_mib": 112.2353515625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 1.19140625,
+    "baseline": {
+      "pss_mib": 112.169921875,
+      "rss_mib": 118.453125,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 0.25390625
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.001074432,
+        "bytes": 133431296,
+        "operations": 32576,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-none",
+    "guests": 1,
+    "trial": 1,
+    "phase": "sequential-write",
+    "host_seconds": 7.276285068001016,
+    "bytes": 1191182336,
+    "mib_per_second": 156.12362481450836,
+    "iops": 156.12362481450836,
+    "guest_cpu_seconds": 0.101432584,
+    "backend_cpu_seconds": 1.789002057,
+    "cpu_seconds_per_gib": 1.7040537609014086,
+    "busy_cores": 0.2598076660456283,
+    "end_pss_mib": 112.2353515625,
+    "peak_sampled_pss_mib": 112.2353515625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 1.296875,
+    "baseline": {
+      "pss_mib": 112.169921875,
+      "rss_mib": 118.453125,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 0.25390625
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 7.275666944,
+        "bytes": 1191182336,
+        "operations": 1136,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-vhost-none",
+    "guests": 1,
+    "trial": 1,
+    "phase": "random-write-4k",
+    "host_seconds": 5.53957834099856,
+    "bytes": 70582272,
+    "mib_per_second": 12.151195606679751,
+    "iops": 3110.7060753100163,
+    "guest_cpu_seconds": 0.642102364,
+    "backend_cpu_seconds": 1.179377228,
+    "cpu_seconds_per_gib": 27.709490840601674,
+    "busy_cores": 0.3288119564117694,
+    "end_pss_mib": 112.2353515625,
+    "peak_sampled_pss_mib": 112.2353515625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 0.875,
+    "baseline": {
+      "pss_mib": 112.169921875,
+      "rss_mib": 118.453125,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 0.25390625
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.538938112,
+        "bytes": 70582272,
+        "operations": 17232,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-ubd-writeback",
+    "guests": 1,
+    "trial": 3,
+    "phase": "sequential-read",
+    "host_seconds": 5.0049336349984515,
+    "bytes": 13153337344,
+    "mib_per_second": 2506.326939538706,
+    "iops": 2506.326939538706,
+    "guest_cpu_seconds": 4.274094793,
+    "backend_cpu_seconds": 0.0,
+    "cpu_seconds_per_gib": 0.34890569738775506,
+    "busy_cores": 0.8539763171108107,
+    "end_pss_mib": 75.759765625,
+    "peak_sampled_pss_mib": 75.759765625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 128.0,
+    "baseline": {
+      "pss_mib": 75.751953125,
+      "rss_mib": 79.97265625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 128.0
+    },
+    "guest_results": [
+      {
+        "phase": 0,
+        "seconds": 5.004224768,
+        "bytes": 13153337344,
+        "operations": 12544,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-ubd-writeback",
+    "guests": 1,
+    "trial": 3,
+    "phase": "random-read-4k",
+    "host_seconds": 5.002633684998727,
+    "bytes": 422838272,
+    "mib_per_second": 80.60754102568328,
+    "iops": 20635.53050257492,
+    "guest_cpu_seconds": 4.034229158,
+    "backend_cpu_seconds": 0.0,
+    "cpu_seconds_per_gib": 10.244390967866087,
+    "busy_cores": 0.8064210597904343,
+    "end_pss_mib": 75.759765625,
+    "peak_sampled_pss_mib": 75.759765625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 128.0,
+    "baseline": {
+      "pss_mib": 75.751953125,
+      "rss_mib": 79.97265625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 128.0
+    },
+    "guest_results": [
+      {
+        "phase": 1,
+        "seconds": 5.001768448,
+        "bytes": 422838272,
+        "operations": 103232,
+        "cached_kib": 41704,
+        "flushes": 0
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-ubd-writeback",
+    "guests": 1,
+    "trial": 3,
+    "phase": "sequential-write",
+    "host_seconds": 5.014858228001685,
+    "bytes": 5318377472,
+    "mib_per_second": 1011.3944940016947,
+    "iops": 1011.3944940016947,
+    "guest_cpu_seconds": 5.086961357,
+    "backend_cpu_seconds": 0.0,
+    "cpu_seconds_per_gib": 1.0270205894258675,
+    "busy_cores": 1.0143778997770483,
+    "end_pss_mib": 75.759765625,
+    "peak_sampled_pss_mib": 75.759765625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 128.0,
+    "baseline": {
+      "pss_mib": 75.751953125,
+      "rss_mib": 79.97265625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 128.0
+    },
+    "guest_results": [
+      {
+        "phase": 2,
+        "seconds": 5.0128,
+        "bytes": 5318377472,
+        "operations": 5072,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  },
+  {
+    "case": "uml-ubd-writeback",
+    "guests": 1,
+    "trial": 3,
+    "phase": "random-write-4k",
+    "host_seconds": 5.616350567004702,
+    "bytes": 196542464,
+    "mib_per_second": 33.373539946236605,
+    "iops": 8543.62622623657,
+    "guest_cpu_seconds": 2.045684658,
+    "backend_cpu_seconds": 0.0,
+    "cpu_seconds_per_gib": 11.17589110926042,
+    "busy_cores": 0.3642373519235284,
+    "end_pss_mib": 75.759765625,
+    "peak_sampled_pss_mib": 75.759765625,
+    "swap_pss_mib": 0.0,
+    "guest_cached_mib": 40.7265625,
+    "host_file_cache_mib": 128.0,
+    "baseline": {
+      "pss_mib": 75.751953125,
+      "rss_mib": 79.97265625,
+      "swappss_mib": 0.0,
+      "guest_cached_mib": 40.7265625,
+      "host_file_cache_mib": 128.0
+    },
+    "guest_results": [
+      {
+        "phase": 3,
+        "seconds": 5.615660288,
+        "bytes": 196542464,
+        "operations": 47984,
+        "cached_kib": 41704,
+        "flushes": 1
+      }
+    ],
+    "traced_backend_flush_operations": []
+  }
+]

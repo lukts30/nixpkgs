@@ -1,0 +1,151 @@
+{
+  "description": "Separate traced smoke validation, excluded from performance measurements. Guest flush counters and successful backend fsync/fdatasync syscall counts.",
+  "arguments": {
+    "kernel": "/nix/store/d8rqcjchdnkyszq5lxwiq8j05180d1zx-user-mode-linux-6.18.59/bin/linux",
+    "native_kernel": "/nix/store/y01zxghc3c4cfbm1vmzhm84a4xbq8z8a-linux-6.18.59/bzImage",
+    "kernel_version": "6.18.59",
+    "initrd": "/nix/store/7qx4mqkqgzb33w6inmaxvkdpbhz1nnx6-uml-block-benchmark-initrd/initrd",
+    "qemu": "/nix/store/rxskg9ll6fsixn3g8ig6q90za5kscqfj-qemu-for-vm-tests-11.1.2/bin/qemu-system-x86_64",
+    "strace": "/nix/store/a38b23fzz9429a0j4pkqmdzkr2cj46xx-strace-7.3/bin/strace",
+    "runtime": "/tmp/tmp.346pf8KXJG",
+    "cases": [
+      "uml-ubd-writeback",
+      "uml-vhost-writeback",
+      "kvm-vhost-writeback",
+      "uml-vhost-none",
+      "kvm-vhost-none"
+    ],
+    "guests": [
+      1
+    ],
+    "trials": 1,
+    "seconds": 0.3,
+    "size_mib": 16,
+    "memory_mib": 512,
+    "cpus": "0,1,2,3,4,5,6,7",
+    "trace_flush": true,
+    "output": "/tmp/uml-block-flush-verified"
+  },
+  "writes": [
+    {
+      "case": "uml-vhost-none",
+      "phase": "sequential-write",
+      "guest_flushes": [
+        1
+      ],
+      "backend_sync_calls": [
+        1
+      ]
+    },
+    {
+      "case": "uml-vhost-none",
+      "phase": "random-write-4k",
+      "guest_flushes": [
+        1
+      ],
+      "backend_sync_calls": [
+        1
+      ]
+    },
+    {
+      "case": "uml-vhost-writeback",
+      "phase": "sequential-write",
+      "guest_flushes": [
+        1
+      ],
+      "backend_sync_calls": [
+        1
+      ]
+    },
+    {
+      "case": "uml-vhost-writeback",
+      "phase": "random-write-4k",
+      "guest_flushes": [
+        1
+      ],
+      "backend_sync_calls": [
+        1
+      ]
+    },
+    {
+      "case": "kvm-vhost-writeback",
+      "phase": "sequential-write",
+      "guest_flushes": [
+        1
+      ],
+      "backend_sync_calls": [
+        1
+      ]
+    },
+    {
+      "case": "kvm-vhost-writeback",
+      "phase": "random-write-4k",
+      "guest_flushes": [
+        1
+      ],
+      "backend_sync_calls": [
+        1
+      ]
+    },
+    {
+      "case": "kvm-vhost-none",
+      "phase": "sequential-write",
+      "guest_flushes": [
+        1
+      ],
+      "backend_sync_calls": [
+        1
+      ]
+    },
+    {
+      "case": "kvm-vhost-none",
+      "phase": "random-write-4k",
+      "guest_flushes": [
+        1
+      ],
+      "backend_sync_calls": [
+        1
+      ]
+    },
+    {
+      "case": "uml-ubd-writeback",
+      "phase": "sequential-write",
+      "guest_flushes": [
+        1
+      ],
+      "backend_sync_calls": []
+    },
+    {
+      "case": "uml-ubd-writeback",
+      "phase": "random-write-4k",
+      "guest_flushes": [
+        1
+      ],
+      "backend_sync_calls": []
+    }
+  ],
+  "successful_syscall_lines": {
+    "00-uml-vhost-none-1-trial1/backend-0.log.trace.1311999": [
+      "fdatasync(10)                           = 0"
+    ],
+    "00-uml-vhost-none-1-trial1/backend-0.log.trace.1312041": [
+      "fdatasync(10)                           = 0"
+    ],
+    "01-uml-vhost-writeback-1-trial1/backend-0.log.trace.1312149": [
+      "fdatasync(10)                           = 0"
+    ],
+    "01-uml-vhost-writeback-1-trial1/backend-0.log.trace.1312150": [
+      "fdatasync(10)                           = 0"
+    ],
+    "02-kvm-vhost-writeback-1-trial1/backend-0.log.trace.1312220": [
+      "fdatasync(10)                           = 0",
+      "fdatasync(10)                           = 0"
+    ],
+    "03-kvm-vhost-none-1-trial1/backend-0.log.trace.1312332": [
+      "fdatasync(10)                           = 0"
+    ],
+    "03-kvm-vhost-none-1-trial1/backend-0.log.trace.1312333": [
+      "fdatasync(10)                           = 0"
+    ]
+  }
+}

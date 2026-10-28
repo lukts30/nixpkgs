@@ -106,6 +106,11 @@ executes inside QEMU. Qcow2 and ext4 checks both passed after the second boot.
 The reproducible [test runner](pkgs/by-name/us/user-mode-linux/test-block-root.py)
 contains the exact QMP commands.
 
+The [block benchmark](UML-BLOCK-BENCHMARK.md) compares native UBD with UML and
+QEMU/KVM guests using the same qcow2/vhost-user-blk backend. It measures direct
+block reads/writes, CPU and memory with one and four guests, with host writeback
+caching and host-cache bypass. The report includes results and rerun commands.
+
 Current runner limits: the networking scope above; no graphical input,
 QEMU monitor or SSH backdoor. The reused Grafana suite leaves Grafana using
 SQLite, even in its PostgreSQL/MariaDB cases.
