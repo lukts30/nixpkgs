@@ -138,8 +138,9 @@ cat /tmp/uml-fs-results/comparison.txt
 
 The test uses temporary directories, `--cache=auto`, UID/GID translation and
 `--sandbox=none`; root and user namespaces are unnecessary. Ordinary mmap works,
-but this UML transport has no virtio-fs DAX window. Performance and host/guest
-lock coordination have not been compared.
+but this UML transport has no virtio-fs DAX window. Host/guest lock coordination
+has not been compared. See the [filesystem benchmark](UML-BENCHMARK.md) for
+measured throughput, CPU and memory with one and four concurrent guests.
 
 **Shared RAM works independently of DAX.** A traced test confirmed that UML
 passes its RAM backing FD to virtiofsd using `VHOST_USER_SET_MEM_TABLE` and
@@ -173,11 +174,15 @@ therefore cache the same file data twice. Mapping guest RAM into virtiofsd does
 not copy that RAM again, but it also does not merge the two filesystem caches.
 UML currently has no DAX window to share the exported file's host pages directly.
 
-Hostfs has the shorter path and no daemon/virtqueue overhead, so I expect it to
-be cheaper for many UML workloads; this is an architectural expectation, **not
-a measured performance result**. Virtio-fs provides more filesystem features and
-cache controls. Bypassing guest caching can save memory but makes repeated reads
-go through the daemon. `--cache=never --allow-mmap` needs special care: enabling
+In the [benchmark](UML-BENCHMARK.md), hostfs and `auto` had nearly identical
+repeated-read throughput and CPU cost with four guests. `never` reduced the
+tracked read memory footprint by 53%, but repeated sequential/random reads were
+3.9×/7.4× slower and cost about three times as much CPU per GiB. It was faster
+for large writes followed by `fdatasync`. The report includes one-guest results,
+run-to-run variation, accounting limits, raw data and the rerun command.
+
+Virtio-fs provides more filesystem features and cache controls.
+`--cache=never --allow-mmap` needs special care: enabling
 mmap reintroduces guest-cached mappings and requires exclusive access according
 to virtiofsd. It is not a blanket solution to duplicate caching for executable
 files. See [virtiofsd cache policies](https://virtio-fs.gitlab.io/virtiofsd/doc/virtiofsd/passthrough/enum.CachePolicy.html)
