@@ -156,6 +156,35 @@ For port or xterm consoles, set `UML_PORT_HELPER` to
 does not install setuid helpers; network transports requiring host privileges
 need a separately configured host interface or appropriate permissions.
 
+### Virtio over Unix sockets {#sec-user-mode-linux-virtio}
+
+The kernel enables `CONFIG_VIRTIO_UML` and `CONFIG_VIRTIO_BLK`. UML can attach
+virtio devices directly to vhost-user Unix sockets; it does not need PCI
+emulation. For example, export an existing qcow2 disk with
+[`qemu-storage-daemon`](https://www.qemu.org/docs/master/tools/qemu-storage-daemon.html):
+
+```sh
+qemu-storage-daemon \
+  --blockdev driver=file,node-name=file,filename=disk.qcow2 \
+  --blockdev driver=qcow2,node-name=disk,file=file \
+  --export type=vhost-user-blk,id=uml,addr.type=unix,addr.path=/tmp/uml-block.sock,node-name=disk,writable=on
+```
+
+Add `virtio_uml.device=/tmp/uml-block.sock:2` to the UML command line. The `2`
+is the virtio block device ID; the guest sees `/dev/vda`. The qcow2 format is
+handled by the storage daemon on the host. Stop the daemon after shutting
+down the guest before inspecting or modifying the image from the host.
+
+The integration test creates an ext4 image, converts it to qcow2, exports it,
+checks guest reads and writes, and verifies the image and written data after
+shutdown:
+
+```ShellSession
+$ nix-build -A user-mode-linux.tests.virtio -o result-uml-virtio
+$ cat result-uml-virtio/boot.log
+$ cat result-uml-virtio/qcow2-check.log
+```
+
 ### Architecture and modules {#sec-user-mode-linux-modules}
 
 The compiler's host platform describes the instruction set and ABI. Kbuild's

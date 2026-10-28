@@ -4845,6 +4845,9 @@
   "sec-user-mode-linux": [
     "index.html#sec-user-mode-linux"
   ],
+  "sec-user-mode-linux-virtio": [
+    "index.html#sec-user-mode-linux-virtio"
+  ],
   "sec-user-mode-linux-modules": [
     "index.html#sec-user-mode-linux-modules"
   ],

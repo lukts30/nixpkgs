@@ -9,6 +9,7 @@
   e2fsprogs,
   coreutils,
   uml-utilities,
+  qemu-utils,
   linuxPackagesFor,
   kernel,
 }:
@@ -74,6 +75,15 @@ let
       grep -q 'UML host input' /mnt/host/input
       echo 'UML host output' > /mnt/host/output
       umount /mnt/host
+    fi
+
+    if grep -q 'uml_test_virtio' /proc/cmdline; then
+      mkdir -p /mnt/virtio
+      mount -t ext4 /dev/vda /mnt/virtio
+      grep -q 'UML qcow2 input' /mnt/virtio/input
+      echo 'UML qcow2 output' > /mnt/virtio/output
+      umount /mnt/virtio
+      echo UML_VIRTIO_SUCCESS
     fi
 
     echo UML_TEST_SUCCESS
@@ -156,4 +166,50 @@ in
         grep -q 'UML host output' host-data/output
         debugfs -R 'cat /output' disk.img | grep -q 'UML block output'
       '';
+
+  virtio =
+    runCommand "user-mode-linux-virtio-qcow2-test"
+      {
+        nativeBuildInputs = [
+          e2fsprogs
+          qemu-utils
+        ];
+        meta.platforms = kernel.meta.platforms;
+      }
+      ''
+        mkdir -p "$out" runtime disk-data
+        echo 'UML qcow2 input' > disk-data/input
+        truncate -s 32M disk.raw
+        mkfs.ext4 -q -d disk-data disk.raw
+        qemu-img convert -f raw -O qcow2 disk.raw disk.qcow2
+        rm disk.raw
+
+        qemu-storage-daemon \
+          --blockdev driver=file,node-name=file,filename="$PWD/disk.qcow2" \
+          --blockdev driver=qcow2,node-name=disk,file=file \
+          --export type=vhost-user-blk,id=uml,addr.type=unix,addr.path="$PWD/runtime/block.sock",node-name=disk,writable=on \
+          > "$out/storage-daemon.log" 2>&1 &
+        daemon=$!
+        trap 'kill "$daemon" 2>/dev/null || true; wait "$daemon" || true' EXIT
+        for attempt in $(seq 1 100); do
+          test ! -S runtime/block.sock || break
+          kill -0 "$daemon" || { cat "$out/storage-daemon.log"; exit 1; }
+          sleep 0.1
+        done
+        test -S runtime/block.sock
+
+        TMPDIR="$PWD/runtime" timeout 90 ${lib.getExe kernel} \
+          mem=512M initrd=${initrd}/initrd con=null con0=fd:0,fd:1 ssl=null \
+          uml_dir="$PWD/runtime" virtio_uml.device="$PWD/runtime/block.sock:2" \
+          uml_test_virtio > "$out/boot.log" 2>&1 || { cat "$out/boot.log"; exit 1; }
+        grep '^UML_VIRTIO_SUCCESS' "$out/boot.log"
+        kill "$daemon"
+        wait "$daemon"
+        trap - EXIT
+
+        qemu-img check disk.qcow2 | tee "$out/qcow2-check.log"
+        qemu-img convert -f qcow2 -O raw disk.qcow2 disk.raw
+        debugfs -R 'cat /output' disk.raw | grep -q 'UML qcow2 output'
+      '';
+
 }

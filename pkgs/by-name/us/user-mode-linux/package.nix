@@ -52,6 +52,10 @@
     FW_LOADER = yes;
     UML_NET_VECTOR = yes;
     IPV6 = yes;
+
+    # UML exposes virtio devices directly over vhost-user Unix sockets.
+    VIRTIO_UML = yes;
+    VIRTIO_BLK = yes;
   };
 
   extraMeta = {
@@ -100,7 +104,7 @@
 
       passthru = old.passthru // {
         tests = old.passthru.tests // {
-          inherit (callPackage ./tests.nix { kernel = final.finalPackage; }) boot;
+          inherit (callPackage ./tests.nix { kernel = final.finalPackage; }) boot virtio;
         };
         inherit (callPackage ./tests.nix { kernel = final.finalPackage; }) demo;
       };
