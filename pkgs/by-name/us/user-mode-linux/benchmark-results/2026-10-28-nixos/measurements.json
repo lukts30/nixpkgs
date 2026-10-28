@@ -1,0 +1,290 @@
+[
+  {
+    "case": "tmpfs-ptrace",
+    "trial": 0,
+    "warmup": true,
+    "wall_seconds": 58.60812073099805,
+    "user_cpu_seconds": 19.690124,
+    "system_cpu_seconds": 45.797762,
+    "cpu_seconds": 65.487886,
+    "host_busy_cores": 1.1173858704765331,
+    "context_switches": 6922418,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/s6gw5z62m82q486cq3n100xs43w55wx2-nixos-test-driver-user-mode-linux-gitdaemon/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-nixos-seccomp-results/00-tmpfs-ptrace-trial0"
+    ]
+  },
+  {
+    "case": "tmpfs-seccomp",
+    "trial": 0,
+    "warmup": true,
+    "wall_seconds": 43.46306397100125,
+    "user_cpu_seconds": 17.136981999999996,
+    "system_cpu_seconds": 31.233700000000006,
+    "cpu_seconds": 48.370682,
+    "host_busy_cores": 1.1129146815851072,
+    "context_switches": 4628939,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/d5sry4xfb4k4n4zvg49fx0xx7h0dqbqs-nixos-test-driver-user-mode-linux-gitdaemon-seccomp/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-nixos-seccomp-results/01-tmpfs-seccomp-trial0"
+    ]
+  },
+  {
+    "case": "block-ptrace",
+    "trial": 0,
+    "warmup": true,
+    "wall_seconds": 82.44211560600525,
+    "user_cpu_seconds": 26.650771000000006,
+    "system_cpu_seconds": 60.786328999999995,
+    "cpu_seconds": 87.4371,
+    "host_busy_cores": 1.060587775523205,
+    "context_switches": 9378080,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/i03xwlvjrbzcrznvqij2n7f09jmvlv5n-nixos-test-driver-user-mode-linux-gitdaemon-block-root/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-nixos-seccomp-results/02-block-ptrace-trial0"
+    ]
+  },
+  {
+    "case": "block-seccomp",
+    "trial": 0,
+    "warmup": true,
+    "wall_seconds": 63.65162381400296,
+    "user_cpu_seconds": 23.750231999999997,
+    "system_cpu_seconds": 42.31172599999999,
+    "cpu_seconds": 66.06195799999999,
+    "host_busy_cores": 1.0378675993096467,
+    "context_switches": 6264157,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/c6skgjf21z2yrqdpvqghci9v27l4sd68-nixos-test-driver-user-mode-linux-gitdaemon-block-root-seccomp/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-nixos-seccomp-results/03-block-seccomp-trial0"
+    ]
+  },
+  {
+    "case": "block-seccomp",
+    "trial": 2,
+    "warmup": false,
+    "wall_seconds": 67.099629508004,
+    "user_cpu_seconds": 24.627818000000005,
+    "system_cpu_seconds": 44.08806000000001,
+    "cpu_seconds": 68.71587800000002,
+    "host_busy_cores": 1.024087293832274,
+    "context_switches": 6297719,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/c6skgjf21z2yrqdpvqghci9v27l4sd68-nixos-test-driver-user-mode-linux-gitdaemon-block-root-seccomp/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-nixos-seccomp-results/04-block-seccomp-trial2"
+    ]
+  },
+  {
+    "case": "tmpfs-seccomp",
+    "trial": 2,
+    "warmup": false,
+    "wall_seconds": 49.23458751900034,
+    "user_cpu_seconds": 19.296419999999983,
+    "system_cpu_seconds": 33.34637700000002,
+    "cpu_seconds": 52.642797,
+    "host_busy_cores": 1.0692238861488255,
+    "context_switches": 4636145,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/d5sry4xfb4k4n4zvg49fx0xx7h0dqbqs-nixos-test-driver-user-mode-linux-gitdaemon-seccomp/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-nixos-seccomp-results/05-tmpfs-seccomp-trial2"
+    ]
+  },
+  {
+    "case": "block-ptrace",
+    "trial": 1,
+    "warmup": false,
+    "wall_seconds": 81.9833698729999,
+    "user_cpu_seconds": 26.063317000000012,
+    "system_cpu_seconds": 60.956575999999984,
+    "cpu_seconds": 87.019893,
+    "host_busy_cores": 1.0614334728470194,
+    "context_switches": 9412365,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/i03xwlvjrbzcrznvqij2n7f09jmvlv5n-nixos-test-driver-user-mode-linux-gitdaemon-block-root/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-nixos-seccomp-results/06-block-ptrace-trial1"
+    ]
+  },
+  {
+    "case": "tmpfs-ptrace",
+    "trial": 3,
+    "warmup": false,
+    "wall_seconds": 53.027440211000794,
+    "user_cpu_seconds": 17.751216999999997,
+    "system_cpu_seconds": 42.675973,
+    "cpu_seconds": 60.427189999999996,
+    "host_busy_cores": 1.1395456721945272,
+    "context_switches": 6855670,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/s6gw5z62m82q486cq3n100xs43w55wx2-nixos-test-driver-user-mode-linux-gitdaemon/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-nixos-seccomp-results/07-tmpfs-ptrace-trial3"
+    ]
+  },
+  {
+    "case": "tmpfs-seccomp",
+    "trial": 3,
+    "warmup": false,
+    "wall_seconds": 42.41417994299991,
+    "user_cpu_seconds": 16.39415600000001,
+    "system_cpu_seconds": 30.567756999999972,
+    "cpu_seconds": 46.96191299999998,
+    "host_busy_cores": 1.1072219965849095,
+    "context_switches": 4705903,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/d5sry4xfb4k4n4zvg49fx0xx7h0dqbqs-nixos-test-driver-user-mode-linux-gitdaemon-seccomp/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-nixos-seccomp-results/08-tmpfs-seccomp-trial3"
+    ]
+  },
+  {
+    "case": "block-ptrace",
+    "trial": 2,
+    "warmup": false,
+    "wall_seconds": 79.03370661100053,
+    "user_cpu_seconds": 24.825580000000002,
+    "system_cpu_seconds": 59.01760899999999,
+    "cpu_seconds": 83.843189,
+    "host_busy_cores": 1.0608535597687638,
+    "context_switches": 9346380,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/i03xwlvjrbzcrznvqij2n7f09jmvlv5n-nixos-test-driver-user-mode-linux-gitdaemon-block-root/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-nixos-seccomp-results/09-block-ptrace-trial2"
+    ]
+  },
+  {
+    "case": "block-seccomp",
+    "trial": 3,
+    "warmup": false,
+    "wall_seconds": 60.91844544000196,
+    "user_cpu_seconds": 22.363913999999994,
+    "system_cpu_seconds": 40.331011000000046,
+    "cpu_seconds": 62.69492500000004,
+    "host_busy_cores": 1.0291616036352687,
+    "context_switches": 6247608,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/c6skgjf21z2yrqdpvqghci9v27l4sd68-nixos-test-driver-user-mode-linux-gitdaemon-block-root-seccomp/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-nixos-seccomp-results/10-block-seccomp-trial3"
+    ]
+  },
+  {
+    "case": "block-seccomp",
+    "trial": 1,
+    "warmup": false,
+    "wall_seconds": 70.9856573490033,
+    "user_cpu_seconds": 25.45521499999998,
+    "system_cpu_seconds": 44.590194999999994,
+    "cpu_seconds": 70.04540999999998,
+    "host_busy_cores": 0.9867544038596336,
+    "context_switches": 6299927,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/c6skgjf21z2yrqdpvqghci9v27l4sd68-nixos-test-driver-user-mode-linux-gitdaemon-block-root-seccomp/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-nixos-seccomp-results/11-block-seccomp-trial1"
+    ]
+  },
+  {
+    "case": "tmpfs-ptrace",
+    "trial": 2,
+    "warmup": false,
+    "wall_seconds": 57.13479153899971,
+    "user_cpu_seconds": 20.149977000000035,
+    "system_cpu_seconds": 45.22947799999997,
+    "cpu_seconds": 65.37945500000001,
+    "host_busy_cores": 1.1443019785129096,
+    "context_switches": 6896637,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/s6gw5z62m82q486cq3n100xs43w55wx2-nixos-test-driver-user-mode-linux-gitdaemon/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-nixos-seccomp-results/12-tmpfs-ptrace-trial2"
+    ]
+  },
+  {
+    "case": "tmpfs-ptrace",
+    "trial": 1,
+    "warmup": false,
+    "wall_seconds": 54.164213975003804,
+    "user_cpu_seconds": 18.409063000000003,
+    "system_cpu_seconds": 43.739855000000034,
+    "cpu_seconds": 62.14891800000004,
+    "host_busy_cores": 1.1474165955529436,
+    "context_switches": 6863419,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/s6gw5z62m82q486cq3n100xs43w55wx2-nixos-test-driver-user-mode-linux-gitdaemon/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-nixos-seccomp-results/13-tmpfs-ptrace-trial1"
+    ]
+  },
+  {
+    "case": "tmpfs-seccomp",
+    "trial": 1,
+    "warmup": false,
+    "wall_seconds": 47.99760213900299,
+    "user_cpu_seconds": 19.266452999999956,
+    "system_cpu_seconds": 33.549417999999946,
+    "cpu_seconds": 52.8158709999999,
+    "host_busy_cores": 1.1003856160781327,
+    "context_switches": 4659499,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/d5sry4xfb4k4n4zvg49fx0xx7h0dqbqs-nixos-test-driver-user-mode-linux-gitdaemon-seccomp/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-nixos-seccomp-results/14-tmpfs-seccomp-trial1"
+    ]
+  },
+  {
+    "case": "block-ptrace",
+    "trial": 3,
+    "warmup": false,
+    "wall_seconds": 83.95627950000198,
+    "user_cpu_seconds": 25.890873999999997,
+    "system_cpu_seconds": 61.61475500000006,
+    "cpu_seconds": 87.50562900000006,
+    "host_busy_cores": 1.0422761647030583,
+    "context_switches": 9427059,
+    "exit_code": 0,
+    "command": [
+      "/nix/store/i03xwlvjrbzcrznvqij2n7f09jmvlv5n-nixos-test-driver-user-mode-linux-gitdaemon-block-root/bin/nixos-test-driver",
+      "--no-interactive",
+      "-o",
+      "/tmp/uml-nixos-seccomp-results/15-block-ptrace-trial3"
+    ]
+  }
+]

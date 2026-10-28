@@ -54,6 +54,16 @@ in
       default = 1024;
       description = "Memory available to the UML guest, in MiB.";
     };
+    uml.seccomp.enable = lib.mkEnableOption ''
+      UML's seccomp-based userspace execution instead of ptrace. Passes
+      `seccomp=on`, which fails boot if the host cannot support it, rather
+      than falling back to ptrace. Disabled guests explicitly use `seccomp=off`.
+
+      This is intended only for trusted test userspace: upstream Linux's UML
+      seccomp stub does not yet prevent guest processes from accessing all
+      guest physical memory or interfering with scheduling. This option does
+      not control seccomp filters installed by services inside the guest
+    '';
     uml.rootDisk = {
       enable = lib.mkEnableOption ''
         an ext4 root filesystem on a qcow2 image, exported by a CPU-less QEMU
@@ -95,7 +105,10 @@ in
     systemd.tpm2.enable = false;
     boot.loader.grub.enable = false;
     system.boot.loader.kernelFile = "bin/linux";
-    boot.kernelParams = [ "console=tty0" ];
+    boot.kernelParams = [
+      "console=tty0"
+      "seccomp=${if cfg.seccomp.enable then "on" else "off"}"
+    ];
     # Unlike hardware serial consoles, UML's tty0 is not tagged by systemd's
     # default tty rule, but the test backdoor waits for its device unit.
     services.udev.extraRules = ''

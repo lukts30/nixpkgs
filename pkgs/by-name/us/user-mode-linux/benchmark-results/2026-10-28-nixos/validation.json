@@ -1,0 +1,762 @@
+[
+  {
+    "case": "tmpfs-ptrace",
+    "trial": 0,
+    "warmup": true,
+    "exit_code": 0,
+    "mode_probe": "Checking that ptrace can change system call numbers...OK",
+    "successful_boots": 3,
+    "startup": [
+      {
+        "machine": "server",
+        "message": "systemd[1]: Startup finished in 238ms (kernel) + 7.131s (initrd) + 12.680s (userspace) = 20.050s."
+      },
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 240ms (kernel) + 7.110s (initrd) + 12.709s (userspace) = 20.060s."
+      },
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 265ms (kernel) + 7.057s (initrd) + 13.117s (userspace) = 20.440s."
+      }
+    ],
+    "qmp": []
+  },
+  {
+    "case": "tmpfs-seccomp",
+    "trial": 0,
+    "warmup": true,
+    "exit_code": 0,
+    "mode_probe": "Checking that seccomp filters can be installed...OK",
+    "successful_boots": 3,
+    "startup": [
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 283ms (kernel) + 5.446s (initrd) + 9.161s (userspace) = 14.890s."
+      },
+      {
+        "machine": "server",
+        "message": "systemd[1]: Startup finished in 219ms (kernel) + 5.513s (initrd) + 9.267s (userspace) = 15.000s."
+      },
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 225ms (kernel) + 5.340s (initrd) + 9.164s (userspace) = 14.730s."
+      }
+    ],
+    "qmp": []
+  },
+  {
+    "case": "block-ptrace",
+    "trial": 0,
+    "warmup": true,
+    "exit_code": 0,
+    "mode_probe": "Checking that ptrace can change system call numbers...OK",
+    "successful_boots": 4,
+    "startup": [
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 229ms (kernel) + 8.073s (initrd) + 12.467s (userspace) = 20.770s."
+      },
+      {
+        "machine": "server",
+        "message": "systemd[1]: Startup finished in 396ms (kernel) + 8.059s (initrd) + 12.694s (userspace) = 21.150s."
+      },
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 278ms (kernel) + 7.899s (initrd) + 11.062s (userspace) = 19.240s."
+      },
+      {
+        "machine": "server",
+        "message": "systemd[1]: Startup finished in 289ms (kernel) + 7.567s (initrd) + 11.053s (userspace) = 18.910s."
+      }
+    ],
+    "qmp": [
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      },
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      },
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      },
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case": "block-seccomp",
+    "trial": 0,
+    "warmup": true,
+    "exit_code": 0,
+    "mode_probe": "Checking that seccomp filters can be installed...OK",
+    "successful_boots": 4,
+    "startup": [
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 259ms (kernel) + 5.938s (initrd) + 9.422s (userspace) = 15.620s."
+      },
+      {
+        "machine": "server",
+        "message": "systemd[1]: Startup finished in 258ms (kernel) + 5.897s (initrd) + 9.474s (userspace) = 15.630s."
+      },
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 225ms (kernel) + 5.986s (initrd) + 8.648s (userspace) = 14.860s."
+      },
+      {
+        "machine": "server",
+        "message": "systemd[1]: Startup finished in 244ms (kernel) + 5.860s (initrd) + 8.355s (userspace) = 14.460s."
+      }
+    ],
+    "qmp": [
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      },
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      },
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      },
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case": "block-seccomp",
+    "trial": 2,
+    "warmup": false,
+    "exit_code": 0,
+    "mode_probe": "Checking that seccomp filters can be installed...OK",
+    "successful_boots": 4,
+    "startup": [
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 236ms (kernel) + 6.211s (initrd) + 9.853s (userspace) = 16.300s."
+      },
+      {
+        "machine": "server",
+        "message": "systemd[1]: Startup finished in 249ms (kernel) + 6.155s (initrd) + 9.917s (userspace) = 16.322s."
+      },
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 225ms (kernel) + 6.068s (initrd) + 8.855s (userspace) = 15.150s."
+      },
+      {
+        "machine": "server",
+        "message": "systemd[1]: Startup finished in 300ms (kernel) + 6.571s (initrd) + 9.068s (userspace) = 15.940s."
+      }
+    ],
+    "qmp": [
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      },
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      },
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      },
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case": "tmpfs-seccomp",
+    "trial": 2,
+    "warmup": false,
+    "exit_code": 0,
+    "mode_probe": "Checking that seccomp filters can be installed...OK",
+    "successful_boots": 3,
+    "startup": [
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 253ms (kernel) + 6.205s (initrd) + 10.107s (userspace) = 16.565s."
+      },
+      {
+        "machine": "server",
+        "message": "systemd[1]: Startup finished in 239ms (kernel) + 6.193s (initrd) + 10.227s (userspace) = 16.661s."
+      },
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 289ms (kernel) + 6.442s (initrd) + 10.618s (userspace) = 17.350s."
+      }
+    ],
+    "qmp": []
+  },
+  {
+    "case": "block-ptrace",
+    "trial": 1,
+    "warmup": false,
+    "exit_code": 0,
+    "mode_probe": "Checking that ptrace can change system call numbers...OK",
+    "successful_boots": 4,
+    "startup": [
+      {
+        "machine": "server",
+        "message": "systemd[1]: Startup finished in 262ms (kernel) + 8.194s (initrd) + 13.142s (userspace) = 21.600s."
+      },
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 346ms (kernel) + 8.138s (initrd) + 13.145s (userspace) = 21.630s."
+      },
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 226ms (kernel) + 7.579s (initrd) + 10.654s (userspace) = 18.460s."
+      },
+      {
+        "machine": "server",
+        "message": "systemd[1]: Startup finished in 291ms (kernel) + 7.529s (initrd) + 11.659s (userspace) = 19.480s."
+      }
+    ],
+    "qmp": [
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      },
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      },
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      },
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case": "tmpfs-ptrace",
+    "trial": 3,
+    "warmup": false,
+    "exit_code": 0,
+    "mode_probe": "Checking that ptrace can change system call numbers...OK",
+    "successful_boots": 3,
+    "startup": [
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 286ms (kernel) + 6.956s (initrd) + 11.687s (userspace) = 18.930s."
+      },
+      {
+        "machine": "server",
+        "message": "systemd[1]: Startup finished in 206ms (kernel) + 6.983s (initrd) + 11.870s (userspace) = 19.060s."
+      },
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 223ms (kernel) + 6.498s (initrd) + 11.388s (userspace) = 18.110s."
+      }
+    ],
+    "qmp": []
+  },
+  {
+    "case": "tmpfs-seccomp",
+    "trial": 3,
+    "warmup": false,
+    "exit_code": 0,
+    "mode_probe": "Checking that seccomp filters can be installed...OK",
+    "successful_boots": 3,
+    "startup": [
+      {
+        "machine": "server",
+        "message": "systemd[1]: Startup finished in 205ms (kernel) + 5.339s (initrd) + 8.932s (userspace) = 14.476s."
+      },
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 253ms (kernel) + 5.406s (initrd) + 8.920s (userspace) = 14.580s."
+      },
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 207ms (kernel) + 5.265s (initrd) + 9.166s (userspace) = 14.640s."
+      }
+    ],
+    "qmp": []
+  },
+  {
+    "case": "block-ptrace",
+    "trial": 2,
+    "warmup": false,
+    "exit_code": 0,
+    "mode_probe": "Checking that ptrace can change system call numbers...OK",
+    "successful_boots": 4,
+    "startup": [
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 247ms (kernel) + 8.497s (initrd) + 12.174s (userspace) = 20.920s."
+      },
+      {
+        "machine": "server",
+        "message": "systemd[1]: Startup finished in 328ms (kernel) + 8.495s (initrd) + 12.336s (userspace) = 21.160s."
+      },
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 242ms (kernel) + 7.693s (initrd) + 10.263s (userspace) = 18.200s."
+      },
+      {
+        "machine": "server",
+        "message": "systemd[1]: Startup finished in 224ms (kernel) + 7.209s (initrd) + 10.346s (userspace) = 17.780s."
+      }
+    ],
+    "qmp": [
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      },
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      },
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      },
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case": "block-seccomp",
+    "trial": 3,
+    "warmup": false,
+    "exit_code": 0,
+    "mode_probe": "Checking that seccomp filters can be installed...OK",
+    "successful_boots": 4,
+    "startup": [
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 230ms (kernel) + 5.686s (initrd) + 8.942s (userspace) = 14.860s."
+      },
+      {
+        "machine": "server",
+        "message": "systemd[1]: Startup finished in 279ms (kernel) + 5.677s (initrd) + 9.069s (userspace) = 15.026s."
+      },
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 214ms (kernel) + 5.605s (initrd) + 7.720s (userspace) = 13.540s."
+      },
+      {
+        "machine": "server",
+        "message": "systemd[1]: Startup finished in 209ms (kernel) + 5.661s (initrd) + 8.359s (userspace) = 14.230s."
+      }
+    ],
+    "qmp": [
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      },
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      },
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      },
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case": "block-seccomp",
+    "trial": 1,
+    "warmup": false,
+    "exit_code": 0,
+    "mode_probe": "Checking that seccomp filters can be installed...OK",
+    "successful_boots": 4,
+    "startup": [
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 242ms (kernel) + 6.079s (initrd) + 9.308s (userspace) = 15.630s."
+      },
+      {
+        "machine": "server",
+        "message": "systemd[1]: Startup finished in 242ms (kernel) + 6.053s (initrd) + 9.484s (userspace) = 15.780s."
+      },
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 220ms (kernel) + 6.131s (initrd) + 13.169s (userspace) = 19.520s."
+      },
+      {
+        "machine": "server",
+        "message": "systemd[1]: Startup finished in 264ms (kernel) + 6.347s (initrd) + 8.673s (userspace) = 15.284s."
+      }
+    ],
+    "qmp": [
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      },
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      },
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      },
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case": "tmpfs-ptrace",
+    "trial": 2,
+    "warmup": false,
+    "exit_code": 0,
+    "mode_probe": "Checking that ptrace can change system call numbers...OK",
+    "successful_boots": 3,
+    "startup": [
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 231ms (kernel) + 7.137s (initrd) + 12.751s (userspace) = 20.120s."
+      },
+      {
+        "machine": "server",
+        "message": "systemd[1]: Startup finished in 250ms (kernel) + 7.130s (initrd) + 12.919s (userspace) = 20.300s."
+      },
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 223ms (kernel) + 7.195s (initrd) + 12.301s (userspace) = 19.720s."
+      }
+    ],
+    "qmp": []
+  },
+  {
+    "case": "tmpfs-ptrace",
+    "trial": 1,
+    "warmup": false,
+    "exit_code": 0,
+    "mode_probe": "Checking that ptrace can change system call numbers...OK",
+    "successful_boots": 3,
+    "startup": [
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 246ms (kernel) + 7.098s (initrd) + 12.115s (userspace) = 19.460s."
+      },
+      {
+        "machine": "server",
+        "message": "systemd[1]: Startup finished in 250ms (kernel) + 7.131s (initrd) + 12.199s (userspace) = 19.580s."
+      },
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 249ms (kernel) + 6.568s (initrd) + 11.501s (userspace) = 18.320s."
+      }
+    ],
+    "qmp": []
+  },
+  {
+    "case": "tmpfs-seccomp",
+    "trial": 1,
+    "warmup": false,
+    "exit_code": 0,
+    "mode_probe": "Checking that seccomp filters can be installed...OK",
+    "successful_boots": 3,
+    "startup": [
+      {
+        "machine": "server",
+        "message": "systemd[1]: Startup finished in 321ms (kernel) + 7.648s (initrd) + 11.603s (userspace) = 19.572s."
+      },
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 333ms (kernel) + 7.486s (initrd) + 11.790s (userspace) = 19.610s."
+      },
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 228ms (kernel) + 5.486s (initrd) + 9.125s (userspace) = 14.840s."
+      }
+    ],
+    "qmp": []
+  },
+  {
+    "case": "block-ptrace",
+    "trial": 3,
+    "warmup": false,
+    "exit_code": 0,
+    "mode_probe": "Checking that ptrace can change system call numbers...OK",
+    "successful_boots": 4,
+    "startup": [
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 231ms (kernel) + 7.768s (initrd) + 12.980s (userspace) = 20.980s."
+      },
+      {
+        "machine": "server",
+        "message": "systemd[1]: Startup finished in 240ms (kernel) + 7.770s (initrd) + 13.152s (userspace) = 21.163s."
+      },
+      {
+        "machine": "client",
+        "message": "systemd[1]: Startup finished in 229ms (kernel) + 7.484s (initrd) + 11.066s (userspace) = 18.780s."
+      },
+      {
+        "machine": "server",
+        "message": "systemd[1]: Startup finished in 236ms (kernel) + 7.540s (initrd) + 10.562s (userspace) = 18.339s."
+      }
+    ],
+    "qmp": [
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      },
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      },
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      },
+      {
+        "cpus": [],
+        "exports": [
+          {
+            "node-name": "root",
+            "shutting-down": false,
+            "type": "vhost-user-blk",
+            "id": "uml-root"
+          }
+        ]
+      }
+    ]
+  }
+]

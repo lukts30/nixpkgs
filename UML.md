@@ -71,6 +71,47 @@ guest, all on one test VLAN. This is TCP/UDP forwarding, not an Ethernet switch:
 do not use it to validate ping, broadcast, DHCP, routing, VLAN isolation or
 arbitrary IP protocols. Networking stays opt-in; other UML tests use loopback.
 
+### Select seccomp execution instead of ptrace
+
+```nix
+umlDefaults.virtualisation.uml.seccomp.enable = true;
+# Or set virtualisation.uml.seccomp.enable on an individual umls.<name> guest.
+```
+
+The default is `false` (`seccomp=off`, ptrace). Enabling it passes `seccomp=on`;
+UML fails boot if the host cannot support it, rather than falling back. This is
+UML's execution mechanism, independent of systemd service seccomp filters inside
+NixOS. It applies to both initrd/stage 1 and stage 2 and survives driver restarts.
+
+Use it only for **trusted test userspace**. The upstream seccomp stub does not
+yet isolate all guest physical memory or prevent guest processes from interfering
+with scheduling. See the [kernel's option definition](https://github.com/torvalds/linux/blob/v6.18/arch/um/os-Linux/start_up.c).
+
+```sh
+# Same existing Git daemon/TCP, bidirectional UDP and client-restart checks.
+nix-build -A nixosTests.user-mode-linux.gitdaemon-seccomp -o result-uml-git-seccomp
+nix-build --check -A nixosTests.user-mode-linux.gitdaemon-seccomp --no-out-link
+
+# Also checks qcow2/ext4 roots, transfers, persistence and server/backend restart.
+nix-build -A nixosTests.user-mode-linux.gitdaemon-block-root-seccomp -o result-uml-block-seccomp
+
+# Interactive use: start_all(), client.succeed(...), server.succeed(...).
+nix-build -A nixosTests.user-mode-linux.gitdaemon-seccomp.driverInteractive -o result-uml-seccomp-driver
+./result-uml-seccomp-driver/bin/nixos-test-driver
+
+# Repeat the prebuilt drivers sequentially, excluding Nix evaluation/build time.
+nix-build -A user-mode-linux.benchmarks.nixos -o result-uml-nixos-benchmark
+./result-uml-nixos-benchmark/bin/uml-nixos-benchmark \
+  --trials 3 --cpus 0,1,2,3,4,5,6,7 /tmp/uml-nixos-seccomp-results
+```
+
+The comparison runs one warmup per configuration, then three shuffled trials of
+both execution modes and root types. Adapt the CPU list and use a fresh output
+directory. It needs unprivileged user/mount/network namespaces, without root or
+KVM, and puts UML RAM and fresh machine state on a private tmpfs. For only the
+default-root comparison, add `--cases tmpfs-ptrace,tmpfs-seccomp`.
+See [the NixOS comparison report](UML-NIXOS-BENCHMARK.md) for results and scope.
+
 ## Storage and modules
 
 ```sh
@@ -83,6 +124,13 @@ cat result-uml-fs/comparison.txt
 By default, the NixOS runner uses a fresh **tmpfs root**, read-only
 **hostfs `/nix/store`**, and writable **hostfs `/tmp/shared`** for file transfers.
 The separate virtio test mounts a real guest block device, `/dev/vda`.
+
+Both NixOS UML root modes boot through **systemd initrd/stage 1**, then switch
+to the real root and run NixOS stage 2. This has been the runner's boot path
+from the start. By contrast, the nspawn test backend shares the host kernel
+and directly starts NixOS stage 2 inside its prepared root directory, without
+a guest initrd. Only the standalone BusyBox block-root tests below skip the
+initrd while booting their own UML kernel.
 
 ### NixOS tests with a block-image root
 

@@ -243,6 +243,13 @@ Use [`umlDefaults`](#test-opt-umlDefaults) for configuration shared by all UML
 guests, or [`defaults`](#test-opt-defaults) for configuration shared by all
 machine types. Names must be unique across `nodes`, `containers` and `umls`.
 
+Set `umlDefaults.virtualisation.uml.seccomp.enable = true` to use UML's
+seccomp-based userspace execution instead of the default ptrace mode. This passes
+`seccomp=on` and fails boot if the host cannot support it. Use this only with
+trusted test userspace: upstream UML's seccomp stub does not yet isolate all
+guest physical memory or prevent interference with guest scheduling. It is
+independent of seccomp filters installed by services inside NixOS.
+
 Each guest has an ephemeral tmpfs root by default. Hostfs shares `/nix/store` read-only
 and `/tmp/shared` read-write for `copy_from_host` and `copy_from_machine`.
 For an ext4 root on a qcow2 image, enable:

@@ -1,0 +1,42 @@
+[
+  {
+    "case": "tmpfs-ptrace",
+    "trials": 3,
+    "wall_seconds": 54.164213975003804,
+    "cpu_seconds": 62.14891800000004,
+    "host_busy_cores": 1.1443019785129096,
+    "context_switches": 6863419,
+    "wall_min": 53.027440211000794,
+    "wall_max": 57.13479153899971
+  },
+  {
+    "case": "tmpfs-seccomp",
+    "trials": 3,
+    "wall_seconds": 47.99760213900299,
+    "cpu_seconds": 52.642797,
+    "host_busy_cores": 1.1003856160781327,
+    "context_switches": 4659499,
+    "wall_min": 42.41417994299991,
+    "wall_max": 49.23458751900034
+  },
+  {
+    "case": "block-ptrace",
+    "trials": 3,
+    "wall_seconds": 81.9833698729999,
+    "cpu_seconds": 87.019893,
+    "host_busy_cores": 1.0608535597687638,
+    "context_switches": 9412365,
+    "wall_min": 79.03370661100053,
+    "wall_max": 83.95627950000198
+  },
+  {
+    "case": "block-seccomp",
+    "trials": 3,
+    "wall_seconds": 67.099629508004,
+    "cpu_seconds": 68.71587800000002,
+    "host_busy_cores": 1.024087293832274,
+    "context_switches": 6297719,
+    "wall_min": 60.91844544000196,
+    "wall_max": 70.9856573490033
+  }
+]
